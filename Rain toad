@@ -1,0 +1,140 @@
+--[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+local player = game.Players.LocalPlayer
+local char = player.Character or player.CharacterAdded:Wait()
+local tool
+
+-- Find F3X tool
+for _, v in player:GetDescendants() do
+    if v.Name == "SyncAPI" then
+        tool = v.Parent
+    end
+end
+for _, v in game.ReplicatedStorage:GetDescendants() do
+    if v.Name == "SyncAPI" then
+        tool = v.Parent
+    end
+end
+
+local remote = tool.SyncAPI.ServerEndpoint
+local function _(args) remote:InvokeServer(unpack(args)) end
+
+-- F3X helpers
+local function CreatePart(cf, parent)
+    local args = { [1] = "CreatePart", [2] = "Normal", [3] = cf, [4] = parent }
+    _(args)
+end
+local function AddMesh(part)
+    local args = { [1] = "CreateMeshes", [2] = { [1] = { ["Part"] = part } } }
+    _(args)
+end
+local function SetMesh(part, meshid)
+    local args = { [1] = "SyncMesh", [2] = { [1] = { ["Part"] = part, ["MeshId"] = "rbxassetid://"..meshid } } }
+    _(args)
+end
+local function SetTexture(part, texid)
+    local args = { [1] = "SyncMesh", [2] = { [1] = { ["Part"] = part, ["TextureId"] = "rbxassetid://"..texid } } }
+    _(args)
+end
+local function MeshResize(part, size)
+    local args = { [1] = "SyncMesh", [2] = { [1] = { ["Part"] = part, ["Scale"] = size } } }
+    _(args)
+end
+local function SetAnchor(boolean, part)
+    local args = { [1] = "SyncAnchor", [2] = { [1] = { ["Part"] = part, ["Anchored"] = boolean } } }
+    _(args)
+end
+local function SetCollision(part, boolean)
+    local args = { [1] = "SyncCollision", [2] = { [1] = { ["Part"] = part, ["CanCollide"] = boolean } } }
+    _(args)
+end
+local function SetName(part, name)
+    local args = { [1] = "SetName", [2] = { [1] = part }, [3] = name }
+    _(args)
+end
+
+-- Rain Spider loop
+local function createRainSpiders()
+    while true do
+        task.wait(0.3)
+        if player.Character and player.Character:FindFirstChild("Humanoid") and player.Character.Humanoid.Health > 0 then
+            local hrpcf = player.Character.HumanoidRootPart.CFrame
+            local x, z = hrpcf.X, hrpcf.Z
+            local xloc = math.random(-600,600) + x
+            local zloc = math.random(-600,600) + z
+            local yloc = hrpcf.Y + math.random(2000,2048)
+
+            spawn(function()
+                CreatePart(CFrame.new(math.floor(xloc), yloc, math.floor(zloc)), workspace)
+                for _, v in workspace:GetDescendants() do
+                    if v:IsA("BasePart") and v.Position.X == math.floor(xloc) and v.Position.Z == math.floor(zloc) then
+                        SetName(v, "GET TOADROASTED YOU IDIOT HAHAHAHA")
+                        v.Orientation = Vector3.new(math.random(0,360), math.random(0,360), math.random(0,360))
+                        SetAnchor(false, v)
+                        AddMesh(v)
+                        SetMesh(v, "1009824073") -- Toad mesh
+                        SetTexture(v, "1009824086")      --texture :)
+                        MeshResize(v, Vector3.new(5,5,5))
+                        SetCollision(v, false)
+                    end
+                end
+            end)
+        else
+            task.wait(1)
+        end
+    end
+end
+
+coroutine.wrap(createRainSpiders)()
+-- Skybox ToadRoast (single part version)
+local player = game.Players.LocalPlayer
+local char = player.Character or player.CharacterAdded:Wait()
+local tool
+
+-- Find F3X tool
+for _, v in player:GetDescendants() do
+    if v.Name == "SyncAPI" then tool = v.Parent end
+end
+for _, v in game.ReplicatedStorage:GetDescendants() do
+    if v.Name == "SyncAPI" then tool = v.Parent end
+end
+
+local remote = tool.SyncAPI.ServerEndpoint
+local function _(args) remote:InvokeServer(unpack(args)) end
+
+-- F3X helpers
+local function CreatePart(cf, parent) _( { "CreatePart", "Normal", cf, parent } ) end
+local function AddMesh(part) _( { "CreateMeshes", { { Part = part } } } ) end
+local function SetMesh(part, meshid) _( { "SyncMesh", { { Part = part, MeshId = "rbxassetid://"..meshid } } } ) end
+local function SetTexture(part, texid) _( { "SyncMesh", { { Part = part, TextureId = "rbxassetid://"..texid } } } ) end
+local function MeshResize(part, size) _( { "SyncMesh", { { Part = part, Scale = size } } } ) end
+local function SetAnchor(boolean, part) _( { "SyncAnchor", { { Part = part, Anchored = boolean } } } ) end
+local function SetName(part, name) _( { "SetName", { part }, name } ) end
+
+-- Create one giant part with toad texture
+local function SkyboxToadRoast()
+    local hrp = char:WaitForChild("HumanoidRootPart")
+    local cf = hrp.CFrame
+
+    -- Create part above player
+    CreatePart(CFrame.new(cf.Position + Vector3.new(0, 10, 0)), workspace)
+
+    for _, v in workspace:GetDescendants() do
+        if v:IsA("BasePart") and math.floor(v.Position.Y) == math.floor(cf.Position.Y + 10) then
+            SetName(v, "SkyboxToadRoast")
+            SetAnchor(true, v)
+            AddMesh(v)
+
+            -- Apply cube mesh + toad texture
+            SetMesh(v, "111891702759441")       -- cube mesh
+            SetTexture(v, "201208408")         -- toad roast texture
+
+            -- Resize huge to act like sky
+            MeshResize(v, Vector3.new(8000,8000,8000))
+        end
+    end
+end
+
+-- Run once
+SkyboxToadRoast()
