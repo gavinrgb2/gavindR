@@ -599,7 +599,7 @@ local function C_7()
 	
 	script.Parent.MouseButton1Click:Connect(function()	
 	wait(2.5)	
-	sct.Parent.Parent.Enabled = k	
+	sct.Parent.Enabled = k	
 	end)	
 end;
 task.spawn(C_7);
