@@ -930,8 +930,8 @@ fly.MouseButton1Click:Connect(function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
 	end)	
 
-	local copy = LMG2L["Copy_6"]	
-	local copyFile = LMG2L["Safe_9"]	
+	local copy = LMG2L["Copy_b"]	
+	local copyFile = LMG2L["Safe_e"]	
 	
 	local function SetupEditor(TextLOL, line, Scrol)	
 	    local function UpdateLines()	
