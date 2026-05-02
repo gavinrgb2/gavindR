@@ -1,0 +1,2015 @@
+--[=[
+ d888b  db    db d888888b      .d888b.      db      db    db  .d8b.  
+88' Y8b 88    88   `88'        VP  `8D      88      88    88 d8' `8b 
+88      88    88    88            odD'      88      88    88 88ooo88 
+88  ooo 88    88    88          .88'        88      88    88 88~~~88 
+88. ~8~ 88b  d88   .88.        j88.         88booo. 88b  d88 88   88    @uniquadev
+ Y888P  ~Y8888P' Y888888P      888888D      Y88888P ~Y8888P' YP   YP  CONVERTER 
+
+designed using localmaze gui creator
+]=]
+
+-- Instances: 68 | Scripts: 4 | Modules: 0 | Tags: 0
+local LMG2L = {};
+
+-- Players.gavinRGB2.PlayerGui.PLer
+LMG2L["PLer_1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
+LMG2L["PLer_1"]["Name"] = [[PLer]];
+
+-- Players.gavinRGB2.PlayerGui.PLer.TextButton
+LMG2L["TextButton_2"] = Instance.new("TextButton", LMG2L["PLer_1"]);
+LMG2L["TextButton_2"]["TextWrapped"] = true;
+LMG2L["TextButton_2"]["BorderSizePixel"] = 2;
+LMG2L["TextButton_2"]["TextScaled"] = true;
+LMG2L["TextButton_2"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton_2"]["BackgroundColor3"] = Color3.fromRGB(116, 116, 116);
+LMG2L["TextButton_2"]["FontFace"] = Font.new([[rbxasset://fonts/families/Inconsolata.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextButton_2"]["AnchorPoint"] = Vector2.new(0, 1);
+LMG2L["TextButton_2"]["Size"] = UDim2.new(0, 32, 0, 36);
+LMG2L["TextButton_2"]["Text"] = [[<]];
+LMG2L["TextButton_2"]["Position"] = UDim2.new(0, 6, 0, 44);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.TextButton.TextLa
+LMG2L["TextLa_3"] = Instance.new("TextLabel", LMG2L["TextButton_2"]);
+LMG2L["TextLa_3"]["TextWrapped"] = true;
+LMG2L["TextLa_3"]["BorderSizePixel"] = 0;
+LMG2L["TextLa_3"]["TextScaled"] = true;
+LMG2L["TextLa_3"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextLa_3"]["Size"] = UDim2.new(0, 94, 0, 20);
+LMG2L["TextLa_3"]["Text"] = [[Require To lua]];
+LMG2L["TextLa_3"]["Name"] = [[TextLa]];
+LMG2L["TextLa_3"]["Position"] = UDim2.new(0, -2, 0, 40);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame
+LMG2L["Frame_4"] = Instance.new("Frame", LMG2L["PLer_1"]);
+LMG2L["Frame_4"]["BorderSizePixel"] = 4;
+LMG2L["Frame_4"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["Frame_4"]["Size"] = UDim2.new(0, 550, 0, 272);
+LMG2L["Frame_4"]["Position"] = UDim2.new(0, 146, 0, 10);
+LMG2L["Frame_4"]["BorderColor3"] = Color3.fromRGB(46, 88, 199);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.close
+LMG2L["close_5"] = Instance.new("TextButton", LMG2L["PLer_1"]);
+LMG2L["close_5"]["TextWrapped"] = true;
+LMG2L["close_5"]["TextStrokeTransparency"] = 0;
+LMG2L["close_5"]["BorderSizePixel"] = 0;
+LMG2L["close_5"]["TextScaled"] = true;
+LMG2L["close_5"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["close_5"]["BackgroundColor3"] = Color3.fromRGB(255, 17, 90);
+LMG2L["close_5"]["Size"] = UDim2.new(0, 40, 0, 44);
+LMG2L["close_5"]["Text"] = [[x]];
+LMG2L["close_5"]["Name"] = [[close]];
+LMG2L["close_5"]["Position"] = UDim2.new(0, 6, 0, 166);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.close.UICorner
+LMG2L["UICorner_6"] = Instance.new("UICorner", LMG2L["close_5"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.close.LocalScript
+LMG2L["LocalScript_7"] = Instance.new("LocalScript", LMG2L["close_5"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.close.TextLabel
+LMG2L["TextLabel_8"] = Instance.new("TextLabel", LMG2L["close_5"]);
+LMG2L["TextLabel_8"]["TextWrapped"] = true;
+LMG2L["TextLabel_8"]["BorderSizePixel"] = 0;
+LMG2L["TextLabel_8"]["TextScaled"] = true;
+LMG2L["TextLabel_8"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextLabel_8"]["Size"] = UDim2.new(0, 68, 0, 14);
+LMG2L["TextLabel_8"]["Text"] = [[Close]];
+LMG2L["TextLabel_8"]["Position"] = UDim2.new(0, -4, 0, 50);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.close.UIStroke
+LMG2L["UIStroke_9"] = Instance.new("UIStroke", LMG2L["close_5"]);
+LMG2L["UIStroke_9"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.VBOX
+LMG2L["VBOX_a"] = Instance.new("TextBox", LMG2L["Frame_4"]);
+LMG2L["VBOX_a"]["Name"] = [[VBOX]];
+LMG2L["VBOX_a"]["BorderSizePixel"] = 2;
+LMG2L["VBOX_a"]["TextWrapped"] = true;
+LMG2L["VBOX_a"]["TextScaled"] = true;
+LMG2L["VBOX_a"]["BackgroundColor3"] = Color3.fromRGB(255, 248, 245);
+LMG2L["VBOX_a"]["PlaceholderText"] = [[Your Id or your name hare]];
+LMG2L["VBOX_a"]["Size"] = UDim2.new(0, 110, 0, 26);
+LMG2L["VBOX_a"]["Position"] = UDim2.new(0, 114, 0, 4);
+LMG2L["VBOX_a"]["Text"] = [[]];
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.Copy
+LMG2L["Copy_b"] = Instance.new("TextButton", LMG2L["Frame_4"]);
+LMG2L["Copy_b"]["TextWrapped"] = true;
+LMG2L["Copy_b"]["TextStrokeTransparency"] = 0;
+LMG2L["Copy_b"]["BorderSizePixel"] = 0;
+LMG2L["Copy_b"]["TextScaled"] = true;
+LMG2L["Copy_b"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["Copy_b"]["BackgroundColor3"] = Color3.fromRGB(86, 255, 34);
+LMG2L["Copy_b"]["Size"] = UDim2.new(0, 158, 0, 32);
+LMG2L["Copy_b"]["Text"] = [[Copy source]];
+LMG2L["Copy_b"]["Name"] = [[Copy]];
+LMG2L["Copy_b"]["Position"] = UDim2.new(0, 388, 0, 236);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.Copy.UICorner
+LMG2L["UICorner_c"] = Instance.new("UICorner", LMG2L["Copy_b"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.Copy.UIStroke
+LMG2L["UIStroke_d"] = Instance.new("UIStroke", LMG2L["Copy_b"]);
+LMG2L["UIStroke_d"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.Safe
+LMG2L["Safe_e"] = Instance.new("TextButton", LMG2L["Frame_4"]);
+LMG2L["Safe_e"]["TextWrapped"] = true;
+LMG2L["Safe_e"]["TextStrokeTransparency"] = 0;
+LMG2L["Safe_e"]["BorderSizePixel"] = 0;
+LMG2L["Safe_e"]["TextScaled"] = true;
+LMG2L["Safe_e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["Safe_e"]["BackgroundColor3"] = Color3.fromRGB(45, 133, 18);
+LMG2L["Safe_e"]["Size"] = UDim2.new(0, 156, 0, 16);
+LMG2L["Safe_e"]["Text"] = [[Copy To File]];
+LMG2L["Safe_e"]["Name"] = [[Safe]];
+LMG2L["Safe_e"]["Position"] = UDim2.new(0, 390, 0, 278);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.Safe.UICorner
+LMG2L["UICorner_f"] = Instance.new("UICorner", LMG2L["Safe_e"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.Safe.UIStroke
+LMG2L["UIStroke_10"] = Instance.new("UIStroke", LMG2L["Safe_e"]);
+LMG2L["UIStroke_10"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs
+LMG2L["ScriptHubs_11"] = Instance.new("Frame", LMG2L["Frame_4"]);
+LMG2L["ScriptHubs_11"]["Visible"] = false;
+LMG2L["ScriptHubs_11"]["BorderSizePixel"] = 0;
+LMG2L["ScriptHubs_11"]["BackgroundColor3"] = Color3.fromRGB(49, 49, 49);
+LMG2L["ScriptHubs_11"]["Size"] = UDim2.new(0, 178, 0, 264);
+LMG2L["ScriptHubs_11"]["Position"] = UDim2.new(0, 564, 0, -2);
+LMG2L["ScriptHubs_11"]["Name"] = [[ScriptHubs]];
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.spy
+LMG2L["spy_12"] = Instance.new("TextButton", LMG2L["ScriptHubs_11"]);
+LMG2L["spy_12"]["TextWrapped"] = true;
+LMG2L["spy_12"]["TextStrokeTransparency"] = 0;
+LMG2L["spy_12"]["BorderSizePixel"] = 0;
+LMG2L["spy_12"]["TextScaled"] = true;
+LMG2L["spy_12"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["spy_12"]["BackgroundColor3"] = Color3.fromRGB(80, 80, 80);
+LMG2L["spy_12"]["Size"] = UDim2.new(0, 150, 0, 24);
+LMG2L["spy_12"]["Text"] = [[RemoteSpy]];
+LMG2L["spy_12"]["Name"] = [[spy]];
+LMG2L["spy_12"]["Position"] = UDim2.new(0, 12, 0, 230);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.spy.UICorner
+LMG2L["UICorner_13"] = Instance.new("UICorner", LMG2L["spy_12"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.spy.UIStroke
+LMG2L["UIStroke_14"] = Instance.new("UIStroke", LMG2L["spy_12"]);
+LMG2L["UIStroke_14"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.Dek
+LMG2L["Dek_15"] = Instance.new("TextButton", LMG2L["ScriptHubs_11"]);
+LMG2L["Dek_15"]["TextWrapped"] = true;
+LMG2L["Dek_15"]["TextStrokeTransparency"] = 0;
+LMG2L["Dek_15"]["BorderSizePixel"] = 0;
+LMG2L["Dek_15"]["TextScaled"] = true;
+LMG2L["Dek_15"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["Dek_15"]["BackgroundColor3"] = Color3.fromRGB(80, 80, 80);
+LMG2L["Dek_15"]["Size"] = UDim2.new(0, 40, 0, 36);
+LMG2L["Dek_15"]["Text"] = [[Dex]];
+LMG2L["Dek_15"]["Name"] = [[Dek]];
+LMG2L["Dek_15"]["Position"] = UDim2.new(0, 126, 0, 12);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.Dek.UICorner
+LMG2L["UICorner_16"] = Instance.new("UICorner", LMG2L["Dek_15"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.Dek.UIStroke
+LMG2L["UIStroke_17"] = Instance.new("UIStroke", LMG2L["Dek_15"]);
+LMG2L["UIStroke_17"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.R6
+LMG2L["R6_18"] = Instance.new("TextButton", LMG2L["ScriptHubs_11"]);
+LMG2L["R6_18"]["TextWrapped"] = true;
+LMG2L["R6_18"]["TextStrokeTransparency"] = 0;
+LMG2L["R6_18"]["BorderSizePixel"] = 0;
+LMG2L["R6_18"]["TextScaled"] = true;
+LMG2L["R6_18"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["R6_18"]["BackgroundColor3"] = Color3.fromRGB(255, 140, 255);
+LMG2L["R6_18"]["Size"] = UDim2.new(0, 42, 0, 36);
+LMG2L["R6_18"]["Text"] = [[R15]];
+LMG2L["R6_18"]["Name"] = [[R6]];
+LMG2L["R6_18"]["Position"] = UDim2.new(0, 128, 0, 62);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.R6.UICorner
+LMG2L["UICorner_19"] = Instance.new("UICorner", LMG2L["R6_18"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.R6.UIStroke
+LMG2L["UIStroke_1a"] = Instance.new("UIStroke", LMG2L["R6_18"]);
+LMG2L["UIStroke_1a"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.Fly
+LMG2L["Fly_1b"] = Instance.new("TextButton", LMG2L["ScriptHubs_11"]);
+LMG2L["Fly_1b"]["TextWrapped"] = true;
+LMG2L["Fly_1b"]["TextStrokeTransparency"] = 0;
+LMG2L["Fly_1b"]["BorderSizePixel"] = 0;
+LMG2L["Fly_1b"]["TextScaled"] = true;
+LMG2L["Fly_1b"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["Fly_1b"]["BackgroundColor3"] = Color3.fromRGB(80, 80, 80);
+LMG2L["Fly_1b"]["Size"] = UDim2.new(0, 72, 0, 42);
+LMG2L["Fly_1b"]["Text"] = [[gavindR Hub(v) ]];
+LMG2L["Fly_1b"]["Name"] = [[Fly]];
+LMG2L["Fly_1b"]["Position"] = UDim2.new(0, 14, 0, 108);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.Fly.UICorner
+LMG2L["UICorner_1c"] = Instance.new("UICorner", LMG2L["Fly_1b"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.Fly.UIStroke
+LMG2L["UIStroke_1d"] = Instance.new("UIStroke", LMG2L["Fly_1b"]);
+LMG2L["UIStroke_1d"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.Fly
+LMG2L["Fly_1e"] = Instance.new("TextButton", LMG2L["ScriptHubs_11"]);
+LMG2L["Fly_1e"]["TextWrapped"] = true;
+LMG2L["Fly_1e"]["TextStrokeTransparency"] = 0;
+LMG2L["Fly_1e"]["BorderSizePixel"] = 0;
+LMG2L["Fly_1e"]["TextScaled"] = true;
+LMG2L["Fly_1e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["Fly_1e"]["BackgroundColor3"] = Color3.fromRGB(80, 80, 80);
+LMG2L["Fly_1e"]["Size"] = UDim2.new(0, 152, 0, 24);
+LMG2L["Fly_1e"]["Text"] = [[fly]];
+LMG2L["Fly_1e"]["Name"] = [[Fly]];
+LMG2L["Fly_1e"]["Position"] = UDim2.new(0, 12, 0, 160);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.Fly.UICorner
+LMG2L["UICorner_1f"] = Instance.new("UICorner", LMG2L["Fly_1e"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.Fly.UIStroke
+LMG2L["UIStroke_20"] = Instance.new("UIStroke", LMG2L["Fly_1e"]);
+LMG2L["UIStroke_20"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.UICorner
+LMG2L["UICorner_21"] = Instance.new("UICorner", LMG2L["ScriptHubs_11"]);
+LMG2L["UICorner_21"]["CornerRadius"] = UDim.new(0, 14);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.RE
+LMG2L["RE_22"] = Instance.new("TextButton", LMG2L["ScriptHubs_11"]);
+LMG2L["RE_22"]["TextWrapped"] = true;
+LMG2L["RE_22"]["TextStrokeTransparency"] = 0;
+LMG2L["RE_22"]["BorderSizePixel"] = 0;
+LMG2L["RE_22"]["TextScaled"] = true;
+LMG2L["RE_22"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["RE_22"]["BackgroundColor3"] = Color3.fromRGB(80, 80, 80);
+LMG2L["RE_22"]["Size"] = UDim2.new(0, 38, 0, 36);
+LMG2L["RE_22"]["Text"] = [[RES]];
+LMG2L["RE_22"]["Name"] = [[RE]];
+LMG2L["RE_22"]["Position"] = UDim2.new(0, 16, 0, 12);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.RE.UICorner
+LMG2L["UICorner_23"] = Instance.new("UICorner", LMG2L["RE_22"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.RE.UIStroke
+LMG2L["UIStroke_24"] = Instance.new("UIStroke", LMG2L["RE_22"]);
+LMG2L["UIStroke_24"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.TextLabel
+LMG2L["TextLabel_25"] = Instance.new("TextLabel", LMG2L["ScriptHubs_11"]);
+LMG2L["TextLabel_25"]["TextWrapped"] = true;
+LMG2L["TextLabel_25"]["BorderSizePixel"] = 2;
+LMG2L["TextLabel_25"]["TextScaled"] = true;
+LMG2L["TextLabel_25"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextLabel_25"]["TextColor3"] = Color3.fromRGB(123, 218, 242);
+LMG2L["TextLabel_25"]["BackgroundTransparency"] = 1;
+LMG2L["TextLabel_25"]["Size"] = UDim2.new(0, 144, 0, 20);
+LMG2L["TextLabel_25"]["BorderColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextLabel_25"]["Text"] = [[Scripts]];
+LMG2L["TextLabel_25"]["Position"] = UDim2.new(0, 18, 0, 8);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.R6
+LMG2L["R6_26"] = Instance.new("TextButton", LMG2L["ScriptHubs_11"]);
+LMG2L["R6_26"]["TextWrapped"] = true;
+LMG2L["R6_26"]["TextStrokeTransparency"] = 0;
+LMG2L["R6_26"]["BorderSizePixel"] = 0;
+LMG2L["R6_26"]["TextScaled"] = true;
+LMG2L["R6_26"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["R6_26"]["BackgroundColor3"] = Color3.fromRGB(255, 140, 255);
+LMG2L["R6_26"]["Size"] = UDim2.new(0, 38, 0, 36);
+LMG2L["R6_26"]["Text"] = [[R6]];
+LMG2L["R6_26"]["Name"] = [[R6]];
+LMG2L["R6_26"]["Position"] = UDim2.new(0, 16, 0, 62);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.R6.UICorner
+LMG2L["UICorner_27"] = Instance.new("UICorner", LMG2L["R6_26"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.R6.UIStroke
+LMG2L["UIStroke_28"] = Instance.new("UIStroke", LMG2L["R6_26"]);
+LMG2L["UIStroke_28"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.spy
+LMG2L["spy_29"] = Instance.new("TextButton", LMG2L["ScriptHubs_11"]);
+LMG2L["spy_29"]["TextWrapped"] = true;
+LMG2L["spy_29"]["TextStrokeTransparency"] = 0;
+LMG2L["spy_29"]["BorderSizePixel"] = 0;
+LMG2L["spy_29"]["TextScaled"] = true;
+LMG2L["spy_29"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["spy_29"]["BackgroundColor3"] = Color3.fromRGB(80, 80, 80);
+LMG2L["spy_29"]["Size"] = UDim2.new(0, 152, 0, 24);
+LMG2L["spy_29"]["Text"] = [[require obfuscator]];
+LMG2L["spy_29"]["Name"] = [[spy]];
+LMG2L["spy_29"]["Position"] = UDim2.new(0, 10, 0, 194);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.spy.UICorner
+LMG2L["UICorner_2a"] = Instance.new("UICorner", LMG2L["spy_29"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScriptHubs.spy.UIStroke
+LMG2L["UIStroke_2b"] = Instance.new("UIStroke", LMG2L["spy_29"]);
+LMG2L["UIStroke_2b"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.mode
+LMG2L["mode_2c"] = Instance.new("TextButton", LMG2L["Frame_4"]);
+LMG2L["mode_2c"]["TextWrapped"] = true;
+LMG2L["mode_2c"]["TextStrokeTransparency"] = 0;
+LMG2L["mode_2c"]["BorderSizePixel"] = 0;
+LMG2L["mode_2c"]["TextScaled"] = true;
+LMG2L["mode_2c"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["mode_2c"]["BackgroundColor3"] = Color3.fromRGB(255, 206, 46);
+LMG2L["mode_2c"]["Size"] = UDim2.new(0, 156, 0, 30);
+LMG2L["mode_2c"]["Text"] = [[Mode :IsUseLua]];
+LMG2L["mode_2c"]["Name"] = [[mode]];
+LMG2L["mode_2c"]["Position"] = UDim2.new(0, 384, 0, 4);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.mode.UICorner
+LMG2L["UICorner_2d"] = Instance.new("UICorner", LMG2L["mode_2c"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.mode.UIStroke
+LMG2L["UIStroke_2e"] = Instance.new("UIStroke", LMG2L["mode_2c"]);
+LMG2L["UIStroke_2e"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.Clear
+LMG2L["Clear_2f"] = Instance.new("TextButton", LMG2L["Frame_4"]);
+LMG2L["Clear_2f"]["TextWrapped"] = true;
+LMG2L["Clear_2f"]["TextStrokeTransparency"] = 0;
+LMG2L["Clear_2f"]["BorderSizePixel"] = 0;
+LMG2L["Clear_2f"]["TextScaled"] = true;
+LMG2L["Clear_2f"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["Clear_2f"]["BackgroundColor3"] = Color3.fromRGB(0, 205, 255);
+LMG2L["Clear_2f"]["Size"] = UDim2.new(0, 180, 0, 28);
+LMG2L["Clear_2f"]["Text"] = [[Clear Box]];
+LMG2L["Clear_2f"]["Name"] = [[Clear]];
+LMG2L["Clear_2f"]["Position"] = UDim2.new(0, 26, 0, 236);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.Clear.UICorner
+LMG2L["UICorner_30"] = Instance.new("UICorner", LMG2L["Clear_2f"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.Clear.UIStroke
+LMG2L["UIStroke_31"] = Instance.new("UIStroke", LMG2L["Clear_2f"]);
+LMG2L["UIStroke_31"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.Script
+LMG2L["Script_32"] = Instance.new("LocalScript", LMG2L["Frame_4"]);
+LMG2L["Script_32"]["Name"] = [[Script]];
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.CONVERT
+LMG2L["CONVERT_33"] = Instance.new("TextButton", LMG2L["Frame_4"]);
+LMG2L["CONVERT_33"]["TextWrapped"] = true;
+LMG2L["CONVERT_33"]["TextStrokeTransparency"] = 0;
+LMG2L["CONVERT_33"]["BorderSizePixel"] = 0;
+LMG2L["CONVERT_33"]["TextScaled"] = true;
+LMG2L["CONVERT_33"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["CONVERT_33"]["BackgroundColor3"] = Color3.fromRGB(255, 206, 46);
+LMG2L["CONVERT_33"]["Size"] = UDim2.new(0, 98, 0, 32);
+LMG2L["CONVERT_33"]["Text"] = [[Convert]];
+LMG2L["CONVERT_33"]["Name"] = [[CONVERT]];
+LMG2L["CONVERT_33"]["Position"] = UDim2.new(0, 6, 0, 2);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.CONVERT.UICorner
+LMG2L["UICorner_34"] = Instance.new("UICorner", LMG2L["CONVERT_33"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.CONVERT.UIStroke
+LMG2L["UIStroke_35"] = Instance.new("UIStroke", LMG2L["CONVERT_33"]);
+LMG2L["UIStroke_35"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.script hub
+LMG2L["script hub_36"] = Instance.new("TextButton", LMG2L["Frame_4"]);
+LMG2L["script hub_36"]["TextWrapped"] = true;
+LMG2L["script hub_36"]["TextStrokeTransparency"] = 0;
+LMG2L["script hub_36"]["BorderSizePixel"] = 0;
+LMG2L["script hub_36"]["TextScaled"] = true;
+LMG2L["script hub_36"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["script hub_36"]["BackgroundColor3"] = Color3.fromRGB(255, 206, 46);
+LMG2L["script hub_36"]["Size"] = UDim2.new(0, 122, 0, 30);
+LMG2L["script hub_36"]["Text"] = [[Script Hub]];
+LMG2L["script hub_36"]["Name"] = [[script hub]];
+LMG2L["script hub_36"]["Position"] = UDim2.new(0, 240, 0, 4);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.script hub.UICorner
+LMG2L["UICorner_37"] = Instance.new("UICorner", LMG2L["script hub_36"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.script hub.LocalScript
+LMG2L["LocalScript_38"] = Instance.new("LocalScript", LMG2L["script hub_36"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.script hub.UIStroke
+LMG2L["UIStroke_39"] = Instance.new("UIStroke", LMG2L["script hub_36"]);
+LMG2L["UIStroke_39"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.UIDragDetector
+LMG2L["UIDragDetector_3a"] = Instance.new("UIDragDetector", LMG2L["Frame_4"]);
+LMG2L["UIDragDetector_3a"]["DragUDim2"] = UDim2.new(0, -43, 0, -1);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.Scaled
+LMG2L["Scaled_3b"] = Instance.new("TextLabel", LMG2L["Frame_4"]);
+LMG2L["Scaled_3b"]["TextWrapped"] = true;
+LMG2L["Scaled_3b"]["TextStrokeTransparency"] = 0;
+LMG2L["Scaled_3b"]["ZIndex"] = 3;
+LMG2L["Scaled_3b"]["BorderSizePixel"] = 0;
+LMG2L["Scaled_3b"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+LMG2L["Scaled_3b"]["TextStrokeColor3"] = Color3.fromRGB(55, 55, 55);
+LMG2L["Scaled_3b"]["TextScaled"] = true;
+LMG2L["Scaled_3b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["Scaled_3b"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["Scaled_3b"]["Size"] = UDim2.new(0, 380, 0, 18);
+LMG2L["Scaled_3b"]["Text"] = [[Made By @gavinrgb27(go to tiktok ang follow the account!!,and get the script]];
+LMG2L["Scaled_3b"]["Name"] = [[Scaled]];
+LMG2L["Scaled_3b"]["Position"] = UDim2.new(0, 32, 0, 212);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.Scaled.LocalScript
+LMG2L["LocalScript_3c"] = Instance.new("LocalScript", LMG2L["Scaled_3b"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.UIGradient
+LMG2L["UIGradient_3d"] = Instance.new("UIGradient", LMG2L["Frame_4"]);
+LMG2L["UIGradient_3d"]["Rotation"] = -99;
+LMG2L["UIGradient_3d"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(152, 152, 152)),ColorSequenceKeypoint.new(0.025, Color3.fromRGB(152, 152, 152)),ColorSequenceKeypoint.new(0.798, Color3.fromRGB(255, 255, 255)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(152, 152, 152))};
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.exec
+LMG2L["exec_3e"] = Instance.new("TextButton", LMG2L["Frame_4"]);
+LMG2L["exec_3e"]["TextWrapped"] = true;
+LMG2L["exec_3e"]["TextStrokeTransparency"] = 0;
+LMG2L["exec_3e"]["BorderSizePixel"] = 0;
+LMG2L["exec_3e"]["TextScaled"] = true;
+LMG2L["exec_3e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["exec_3e"]["BackgroundColor3"] = Color3.fromRGB(255, 30, 11);
+LMG2L["exec_3e"]["Size"] = UDim2.new(0, 158, 0, 30);
+LMG2L["exec_3e"]["Text"] = [[Execute ]];
+LMG2L["exec_3e"]["Name"] = [[exec]];
+LMG2L["exec_3e"]["Position"] = UDim2.new(0, 218, 0, 236);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.exec.UICorner
+LMG2L["UICorner_3f"] = Instance.new("UICorner", LMG2L["exec_3e"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.exec.UIStroke
+LMG2L["UIStroke_40"] = Instance.new("UIStroke", LMG2L["exec_3e"]);
+LMG2L["UIStroke_40"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScrollingFrame
+LMG2L["ScrollingFrame_41"] = Instance.new("ScrollingFrame", LMG2L["Frame_4"]);
+LMG2L["ScrollingFrame_41"]["BorderSizePixel"] = 0;
+LMG2L["ScrollingFrame_41"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["ScrollingFrame_41"]["Size"] = UDim2.new(0, 550, 0, 196);
+LMG2L["ScrollingFrame_41"]["Position"] = UDim2.new(0, 6, 0, 36);
+LMG2L["ScrollingFrame_41"]["BackgroundTransparency"] = 1;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScrollingFrame.instance_output
+LMG2L["instance_output_42"] = Instance.new("TextBox", LMG2L["ScrollingFrame_41"]);
+LMG2L["instance_output_42"]["Visible"] = false;
+LMG2L["instance_output_42"]["Name"] = [[instance_output]];
+LMG2L["instance_output_42"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+LMG2L["instance_output_42"]["BorderSizePixel"] = 3;
+LMG2L["instance_output_42"]["TextWrapped"] = true;
+LMG2L["instance_output_42"]["TextSize"] = 19;
+LMG2L["instance_output_42"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+LMG2L["instance_output_42"]["BackgroundColor3"] = Color3.fromRGB(192, 213, 195);
+LMG2L["instance_output_42"]["ClearTextOnFocus"] = false;
+LMG2L["instance_output_42"]["ClipsDescendants"] = true;
+LMG2L["instance_output_42"]["Size"] = UDim2.new(0, 506, 0, 188);
+LMG2L["instance_output_42"]["Position"] = UDim2.new(0, 28, 0, 4);
+LMG2L["instance_output_42"]["Text"] = [[]];
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScrollingFrame.output
+LMG2L["output_43"] = Instance.new("TextBox", LMG2L["ScrollingFrame_41"]);
+LMG2L["output_43"]["Name"] = [[output]];
+LMG2L["output_43"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+LMG2L["output_43"]["BorderSizePixel"] = 3;
+LMG2L["output_43"]["TextWrapped"] = true;
+LMG2L["output_43"]["TextSize"] = 19;
+LMG2L["output_43"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+LMG2L["output_43"]["BackgroundColor3"] = Color3.fromRGB(192, 213, 195);
+LMG2L["output_43"]["ClearTextOnFocus"] = false;
+LMG2L["output_43"]["ClipsDescendants"] = true;
+LMG2L["output_43"]["Size"] = UDim2.new(0, 506, 0, 188);
+LMG2L["output_43"]["Position"] = UDim2.new(0, 26, 0, 6);
+LMG2L["output_43"]["Text"] = [[]];
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScrollingFrame.TextLabel
+LMG2L["TextLabel_44"] = Instance.new("TextLabel", LMG2L["ScrollingFrame_41"]);
+LMG2L["TextLabel_44"]["TextWrapped"] = true;
+LMG2L["TextLabel_44"]["BorderSizePixel"] = 0;
+LMG2L["TextLabel_44"]["TextSize"] = 19;
+LMG2L["TextLabel_44"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+LMG2L["TextLabel_44"]["BackgroundColor3"] = Color3.fromRGB(149, 149, 149);
+LMG2L["TextLabel_44"]["TextColor3"] = Color3.fromRGB(75, 75, 75);
+LMG2L["TextLabel_44"]["Size"] = UDim2.new(0, 18, 0, 194);
+LMG2L["TextLabel_44"]["Text"] = [[1]];
+LMG2L["TextLabel_44"]["Position"] = UDim2.new(0, 4, 0, 4);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.close.LocalScript
+local function C_7()
+	local script = LMG2L["LocalScript_7"];
+	local sct = script.Parent	
+	local k = false	
+	
+	script.Parent.MouseButton1Click:Connect(function()	
+	wait(2.5)	
+	sct.Parent.Parent.Enabled = k	
+	end)	
+end;
+task.spawn(C_7);
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.Script
+local function C_32()
+	local script = LMG2L["Script_32"];
+	local gui = LMG2L["PLer_1"]	 
+gui.Parent = game.CoreGui
+gui.DisplayOrder = 300
+gui.ResetOnSpawn = false
+	local toggle = LMG2L["TextButton_2"]	
+	local Frame = LMG2L["Frame_4"]	
+	toggle.MouseButton1Click:Connect(function()	
+	    Frame.Visible = not Frame.Visible	
+	    if Frame.Visible then	
+	    toggle.Text = '<'	
+	     else	
+	    toggle.Text = '>'	
+	     end	
+	end)	
+	local Scrol = LMG2L["ScrollingFrame_41"]	
+	local ins = LMG2L["instance_output_42"]	
+	local output = LMG2L["output_43"]	
+	
+	local line = LMG2L["TextLabel_44"]	
+	local mode = LMG2L["mode_2c"]	
+	local idk = LMG2L["VBOX_a"]	
+	local convert = LMG2L["CONVERT_33"]	
+	local exec = LMG2L["exec_3e"]	
+
+   --ocal script = LMG2L["LocalScript_38"];
+	local scriptHubFrame = Frame:WaitForChild("ScriptHubs")	
+
+	local r6 = LMG2L["R6_26"]	
+   local r15 = LMG2L["R6_18"]	
+	local clear = LMG2L["Clear_2f"]	
+	
+	r6.MouseButton1Click:Connect(function()	
+loadstring(game:HttpGet("https://raw.githubusercontent.com/gavinrgb2/gavindR/refs/heads/main/R6%20v2"))()
+	end)	
+		r15.MouseButton1Click:Connect(function()	
+loadstring(game:HttpGet("https://raw.githubusercontent.com/gavinrgb2/gavindR/refs/heads/main/R15"))()
+	end)	
+	local dek = LMG2L["Dek_15"]	
+	local res = LMG2L["RE_22"]	
+	local spy = LMG2L["spy_12"]	
+   local infiniteYil = LMG2L["spy_29"]	
+   local fly = LMG2L["Fly_1e"]	
+   local gavinrHub = LMG2L["Fly_1b"]
+
+	dek.MouseButton1Click:Connect(function()	
+	loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Dex-Explorer-plus-50432"))()	
+	end)	
+
+	gavinrHub.MouseButton1Click:Connect(function()	
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/franserelse-dotcom/GavindR-gui/refs/heads/main/GavindR%20Gui%20BIg%20edition"))()	
+	end)	
+	
+	res.MouseButton1Click:Connect(function()	
+loadstring(game:HttpGet("https://raw.githubusercontent.com/gavinrgb2/gavindR/refs/heads/main/Respawn(lua)"))()
+	end)	
+	spy.MouseButton1Click:Connect(function()	
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/refs/heads/main/SimpleSpyRework.luau"))()
+	end)	
+
+pcall(function()
+	infiniteYil.MouseButton1Click:Connect(function()
+--[[ 
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+You are free to:
+- Share — copy and redistribute the material in any medium or format
+- Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+
+Under the following terms:
+- Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+- No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+
+For details, see: https://creativecommons.org/licenses/by/4.0/
+]]
+-- made by susmic
+local UI = {};
+UI["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
+UI["1"]['Name'] = [[open]];
+UI["1"]['ZIndexBehavior'] = Enum.ZIndexBehavior.Sibling;
+UI["2"] = Instance.new("Frame", UI["1"]);
+UI["2"]['Active'] = true;
+UI["2"]['BorderSizePixel'] = 0;
+UI["2"]['BackgroundColor3'] = Color3.fromRGB(31, 31, 31);
+UI["2"]['Selectable'] = true;
+UI["2"]['AnchorPoint'] = Vector2.new(0.5, 0.5);
+UI["2"]['ClipsDescendants'] = true;
+UI["2"]['Size'] = UDim2.new(0, 0, 0, 158);
+UI["2"]['Position'] = UDim2.new(0.5, 0, 0.5, 0);
+UI["2"]['Name'] = [[MainFrame]];
+UI["3"] = Instance.new("ImageLabel", UI["2"]);
+UI["3"]['BorderSizePixel'] = 0;
+UI["3"]['BackgroundColor3'] = Color3.fromRGB(255, 255, 255);
+UI["3"]['AnchorPoint'] = Vector2.new(0.5, 0.5);
+UI["3"]['Image'] = [[rbxassetid://115983703055106]];
+UI["3"]['Size'] = UDim2.new(0, 86, 0, 86);
+UI["3"]['ClipsDescendants'] = true;
+UI["3"]['BackgroundTransparency'] = 1;
+UI["3"]['Name'] = [[susmic]];
+UI["3"]['Position'] = UDim2.new(0.25518, 0, 0.5, 0);
+UI["4"] = Instance.new("TextLabel", UI["2"]);
+UI["4"]['TextWrapped'] = true;
+UI["4"]['BorderSizePixel'] = 0;
+UI["4"]['TextXAlignment'] = Enum.TextXAlignment.Left;
+UI["4"]['TextScaled'] = true;
+UI["4"]['BackgroundColor3'] = Color3.fromRGB(255, 255, 255);
+UI["4"]['TextSize'] = 14;
+UI["4"]['FontFace'] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UI["4"]['TextColor3'] = Color3.fromRGB(255, 255, 255);
+UI["4"]['BackgroundTransparency'] = 1;
+UI["4"]['AnchorPoint'] = Vector2.new(0.5, 0.5);
+UI["4"]['Size'] = UDim2.new(0, 144, 0, 13);
+UI["4"]['Text'] = [[this is]];
+UI["4"]['Name'] = [[T1]];
+UI["4"]['Position'] = UDim2.new(0.64678, 0, 0.40793, 0);
+UI["5"] = Instance.new("TextLabel", UI["2"]);
+UI["5"]['TextWrapped'] = true;
+UI["5"]['BorderSizePixel'] = 0;
+UI["5"]['TextXAlignment'] = Enum.TextXAlignment.Left;
+UI["5"]['TextScaled'] = true;
+UI["5"]['BackgroundColor3'] = Color3.fromRGB(255, 255, 255);
+UI["5"]['TextSize'] = 14;
+UI["5"]['FontFace'] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+UI["5"]['TextColor3'] = Color3.fromRGB(255, 255, 255);
+UI["5"]['BackgroundTransparency'] = 1;
+UI["5"]['AnchorPoint'] = Vector2.new(0.5, 0.5);
+UI["5"]['Size'] = UDim2.new(0, 144, 0, 28);
+UI["5"]['Text'] = [[susmic's require deobfuscator]];
+UI["5"]['Name'] = [[T2]];
+UI["5"]['Position'] = UDim2.new(0.64678, 0, 0.53882, 0);
+UI["6"] = Instance.new("TextLabel", UI["2"]);
+UI["6"]['TextWrapped'] = true;
+UI["6"]['BorderSizePixel'] = 0;
+UI["6"]['TextScaled'] = true;
+UI["6"]['BackgroundColor3'] = Color3.fromRGB(255, 255, 255);
+UI["6"]['TextSize'] = 14;
+UI["6"]['FontFace'] = Font.new([[rbxasset://fonts/families/GothamSSm.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UI["6"]['TextColor3'] = Color3.fromRGB(255, 255, 255);
+UI["6"]['BackgroundTransparency'] = 1;
+UI["6"]['AnchorPoint'] = Vector2.new(0.5, 0.5);
+UI["6"]['Size'] = UDim2.new(1, 0, 0, 10);
+UI["6"]['Text'] = [[your meal is ready sir]];
+UI["6"]['Name'] = [[T3]];
+UI["6"]['Position'] = UDim2.new(0.5, 0, 0.886, 0);
+UI["7"] = Instance.new("Frame", UI["2"]);
+UI["7"]['Active'] = true;
+UI["7"]['BorderSizePixel'] = 0;
+UI["7"]['BackgroundColor3'] = Color3.fromRGB(61, 61, 61);
+UI["7"]['Selectable'] = true;
+UI["7"]['AnchorPoint'] = Vector2.new(0, 0.5);
+UI["7"]['ClipsDescendants'] = true;
+UI["7"]['Size'] = UDim2.new(1, 0, 0, 7);
+UI["7"]['Position'] = UDim2.new(0, 0, 0.978, 0);
+UI["7"]['Name'] = [[LoadBar]];
+UI["8"] = Instance.new("ScreenGui", UI["2"]);
+UI["8"]['Enabled'] = false;
+UI["8"]['Name'] = [[i7uywqehqw-6g7tsikuygw-76efybew78]];
+UI["9"] = Instance.new("Frame", UI["8"]);
+UI["9"]['Visible'] = false;
+UI["9"]['Active'] = true;
+UI["9"]['BackgroundColor3'] = Color3.fromRGB(32, 32, 32);
+UI["9"]['Size'] = UDim2.new(0, 400, 0, 238);
+UI["9"]['Position'] = UDim2.new(0, 638, 0, 273);
+UI["9"]['BorderColor3'] = Color3.fromRGB(32, 32, 32);
+UI['a'] = Instance.new("TextLabel", UI["9"]);
+UI['a']['Active'] = true;
+UI['a']['BackgroundColor3'] = Color3.fromRGB(255, 171, 0);
+UI['a']['TextSize'] = 24;
+UI['a']['FontFace'] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Light, Enum.FontStyle.Normal);
+UI['a']['Size'] = UDim2.new(0, 400, 0, 40);
+UI['a']['BorderColor3'] = Color3.fromRGB(32, 32, 41);
+UI['a']['Text'] = [[susmic's require deobfuscator 1.0]];
+UI['a']['Position'] = UDim2.new(0.0025, 0, -0.01681, 0);
+UI['b'] = Instance.new("TextBox", UI["9"]);
+UI['b']['TextColor3'] = Color3.fromRGB(255, 255, 255);
+UI['b']['PlaceholderColor3'] = Color3.fromRGB(255, 255, 255);
+UI['b']['TextSize'] = 18;
+UI['b']['Name'] = [[requirebox]];
+UI['b']['BackgroundColor3'] = Color3.fromRGB(62, 62, 62);
+UI['b']['FontFace'] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Light, Enum.FontStyle.Normal);
+UI['b']['PlaceholderText'] = [[Enter Require Here]];
+UI['b']['Size'] = UDim2.new(0, 380, 0, 40);
+UI['b']['Position'] = UDim2.new(0, 10, 0, 80);
+UI['b']['BorderColor3'] = Color3.fromRGB(32, 32, 32);
+UI['b']['Text'] = [[]];
+UI['c'] = Instance.new("TextBox", UI["9"]);
+UI['c']['TextColor3'] = Color3.fromRGB(255, 255, 255);
+UI['c']['PlaceholderColor3'] = Color3.fromRGB(255, 255, 255);
+UI['c']['TextSize'] = 18;
+UI['c']['Name'] = [[OutputBox]];
+UI['c']['BackgroundColor3'] = Color3.fromRGB(62, 62, 62);
+UI['c']['FontFace'] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Light, Enum.FontStyle.Normal);
+UI['c']['PlaceholderText'] = [[Output]];
+UI['c']['Size'] = UDim2.new(0, 380, 0, 40);
+UI['c']['Position'] = UDim2.new(0, 10, 0, 134);
+UI['c']['BorderColor3'] = Color3.fromRGB(32, 32, 32);
+UI['c']['Text'] = [[]];
+UI['d'] = Instance.new("TextButton", UI["9"]);
+UI['d']['TextSize'] = 24;
+UI['d']['TextColor3'] = Color3.fromRGB(255, 255, 255);
+UI['d']['BackgroundColor3'] = Color3.fromRGB(41, 41, 41);
+UI['d']['FontFace'] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Light, Enum.FontStyle.Normal);
+UI['d']['Size'] = UDim2.new(0, 380, 0, 40);
+UI['d']['Name'] = [[StartButton]];
+UI['d']['BorderColor3'] = Color3.fromRGB(32, 32, 32);
+UI['d']['Text'] = [[Start]];
+UI['d']['Position'] = UDim2.new(0, 10, 0, 185);
+UI['e'] = Instance.new("LocalScript", UI["9"]);
+UI['e']['Name'] = [[Dragify]];
+UI['f'] = Instance.new("TextLabel", UI["9"]);
+UI['f']['Active'] = true;
+UI['f']['BackgroundColor3'] = Color3.fromRGB(32, 32, 32);
+UI['f']['TextSize'] = 16;
+UI['f']['FontFace'] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Light, Enum.FontStyle.Normal);
+UI['f']['TextColor3'] = Color3.fromRGB(255, 255, 255);
+UI['f']['Size'] = UDim2.new(0, 380, 0, 20);
+UI['f']['BorderColor3'] = Color3.fromRGB(32, 32, 32);
+UI['f']['Text'] = [[require id (for example 0x75bcd15):]];
+UI['f']['Name'] = [[kjhdejhkjkhd]];
+UI['f']['Position'] = UDim2.new(0, 9, 0, 50);
+UI["10"] = Instance.new("LocalScript", UI["9"]);
+UI["10"]['Name'] = [[alskjdfhbgr]];
+UI["11"] = Instance.new("LocalScript", UI["2"]);
+local function SCRIPT_e()
+	local script = UI['e'];
+	local UIS = game:GetService("UserInputService");
+	function dragify(Frame)
+		local dragToggle = nil;
+		local dragSpeed = 0;
+		local dragInput = nil;
+		local dragStart = nil;
+		local dragPos = nil;
+		local function updateInput(input)
+			local Delta = input.Position - dragStart;
+			local Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y);
+			game:GetService("TweenService"):Create(Frame, TweenInfo.new(0.25), {Position=Position}):Play();
+		end
+		Frame.InputBegan:Connect(function(input)
+			if (((input.UserInputType == Enum.UserInputType.MouseButton1) or (input.UserInputType == Enum.UserInputType.Touch)) and (UIS:GetFocusedTextBox() == nil)) then
+				dragToggle = true;
+				dragStart = input.Position;
+				startPos = Frame.Position;
+				input.Changed:Connect(function()
+					if (input.UserInputState == Enum.UserInputState.End) then
+						dragToggle = false;
+					end
+				end);
+			end
+		end);
+		Frame.InputChanged:Connect(function(input)
+			if ((input.UserInputType == Enum.UserInputType.MouseMovement) or (input.UserInputType == Enum.UserInputType.Touch)) then
+				dragInput = input;
+			end
+		end);
+		game:GetService("UserInputService").InputChanged:Connect(function(input)
+			if ((input == dragInput) and dragToggle) then
+				updateInput(input);
+			end
+		end);
+	end
+	dragify(script.Parent);
+end
+task.spawn(SCRIPT_e);
+local function SCRIPT_10()
+	local script = UI["10"];
+	local screenGui = script.Parent.Parent;
+	local frame = screenGui:WaitForChild("Frame");
+	local inputBox = frame:WaitForChild("requirebox");
+	local resultBox = frame:WaitForChild("OutputBox");
+	local submitButton = frame:WaitForChild("StartButton");
+	local function deobfuscate(input)
+		local hexMatch = input:match("0x%x+");
+		if hexMatch then
+			local decimalValue = tonumber(hexMatch, 16);
+			return decimalValue;
+		else
+			return "Invalid Input";
+		end
+	end
+	submitButton.MouseButton1Click:Connect(function()
+		resultBox.Text = "Using ancient techniques.";
+		wait(0.7);
+		resultBox.Text = "Using ancient techniques..";
+		wait(0.7);
+		resultBox.Text = "Using ancient techniques...";
+		wait(0.7);
+		resultBox.Text = "Cracking Skidded Code.";
+		wait(0.7);
+		resultBox.Text = "Cracking Skidded Code..";
+		wait(0.7);
+		resultBox.Text = "Cracking Skidded Code...";
+		wait(0.1);
+		local inputText = inputBox.Text;
+		local result = deobfuscate(inputText);
+		resultBox.Text = tostring(result);
+	end);
+end
+task.spawn(SCRIPT_10);
+local function SCRIPT_11()
+	local script = UI["11"];
+	wait(1);
+	script.Parent:TweenSize(UDim2.new(0, 310, 0, 158), "Out", "Quad", 0.5, true);
+	wait(1);
+	script.Parent.LoadBar:TweenSize(UDim2.new(0.1, 0, 0, 7), "Out", "Quad", 0.5, true);
+	script.Parent.T3.Text = "loading the assets";
+	wait(1);
+	script.Parent.LoadBar:TweenSize(UDim2.new(0.5, 0, 0, 7), "Out", "Quad", 0.5, true);
+	script.Parent.T3.Text = "wtf is this";
+	wait(1);
+	script.Parent.LoadBar:TweenSize(UDim2.new(1, 0, 0, 7), "Out", "Quad", 0.5, true);
+	script.Parent.T3.Text = "your meal is ready sir";
+	wait(1.5);
+	script.Parent:TweenSize(UDim2.new(0, 0, 0, 158), "Out", "Quad", 0.5, true);
+	wait(0.5);
+	script.Parent:WaitForChild("i7uywqehqw-6g7tsikuygw-76efybew78").Enabled = true;
+	script.Parent:WaitForChild("i7uywqehqw-6g7tsikuygw-76efybew78"):WaitForChild("Frame").Visible = true;
+end
+task.spawn(SCRIPT_11);
+return UI["1"], require;
+	end)	
+end)
+fly.MouseButton1Click:Connect(function()	
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
+	end)	
+
+	local copy = LMG2L["Copy_6"]	
+	local copyFile = LMG2L["Safe_9"]	
+	
+	local function SetupEditor(TextLOL, line, Scrol)	
+	    local function UpdateLines()	
+	        task.wait()	
+	
+	        local text = TextLOL.Text	
+	        local _, lines = text:gsub("\n", "")	
+	        lines += 1	
+	
+	        local nums = table.create(lines)	
+	        for i = 1, lines do	
+	            nums[i] = tostring(i)	
+	        end	
+	
+	        line.Text = table.concat(nums, "\n")	
+	
+	        local height = lines * TextLOL.TextSize + 10	
+	        TextLOL.Size = UDim2.new(1, -50, 0, height)	
+	        line.Size = UDim2.new(0, 45, 0, height)	
+	
+	        Scrol.CanvasSize = UDim2.new(0, 0, 0, height)	
+	    end	
+	
+	    Scrol:GetPropertyChangedSignal("CanvasPosition"):Connect(function()	
+	        local y = Scrol.CanvasPosition.Y	
+	        TextLOL.Position = UDim2.new(0, 50, 0, -y)	
+	        line.Position = UDim2.new(0, 0, 0, -y)	
+	    end)	
+	
+	    TextLOL:GetPropertyChangedSignal("Text"):Connect(UpdateLines)	
+	    TextLOL.Focused:Connect(UpdateLines)	
+	    TextLOL.FocusLost:Connect(UpdateLines)	
+	
+	    UpdateLines()	
+	end	
+	
+	SetupEditor(ins, line, Scrol)	
+	SetupEditor(output, line, Scrol)	
+	
+	exec.MouseButton1Click:Connect(function()	
+		local Exec = (ins.Text or "") .. "\n\n" .. (output.Text or "")	
+	
+		if Exec ~= "" then	
+			local func, err = loadstring(Exec)	
+				
+			if func then	
+				pcall(func)	
+			else	
+				warn("Loadstring error:", err)	
+			end	
+		end	
+	end)	
+	
+	clear.MouseButton1Click:Connect(function()	
+	    ins.Text = ""	
+	    output.Text = ""	
+	end)	
+	
+	local modeIndex = 1	
+	mode.Text = "Mode : UseId(visual)"	
+	mode.MouseButton1Click:Connect(function()	
+		modeIndex = modeIndex + 1	
+		if modeIndex > 2 then	
+			modeIndex = 1	
+		end	
+	
+		if modeIndex == 1 then	
+			mode.Text = "Mode : UseId(visual)"	
+		elseif modeIndex == 2 then	
+	      mode.Text = "Mode : ModelConvert(visual)"	
+		end	
+	end)	
+	
+	convert.MouseButton1Click:Connect(function()	
+	
+		local buffer = {}	
+	
+		local function add(txt)	
+			table.insert(buffer, txt)	
+		end	
+	
+	function flush()	
+		local code = table.concat(buffer)	
+	
+		if code == "" then	
+			warn("No code to save")	
+			return	
+		end	
+	
+		local folder = ".gavindR File Script"	
+		local assetName = "IdLua"	
+	
+		pcall(function()	
+			if MainAsset and MainAsset.Name then	
+				assetName = MainAsset.Name	
+			end	
+		end)	
+	
+		assetName = assetName:gsub("%W+", "_")	
+	
+		local filename = folder.."/ZX_"..assetName.."_"..os.time()..".lua"	
+	
+		if makefolder and not isfolder(folder) then	
+			makefolder(folder)	
+		end	
+	
+		if writefile then	
+			writefile(filename, code)	
+			copyFile.Text = "Saved!"	
+		end	
+	    if setclipboard then	
+	   		setclipboard(code)	
+	        copyFile.Text = "Saved!"	
+		end	
+	
+		task.wait(1.5)	
+		copyFile.Text = "Copy To File"	
+	end	
+	function flush2()	
+	  local code = table.concat(buffer)	
+	
+		if code == "" then	
+			warn("No code to save")	
+			return	
+		end	
+	
+		local folder = ".gavindR File Script"	
+		local assetName = "F3x-System"	
+	
+		pcall(function()	
+			if MainAsset and MainAsset.Name then	
+				assetName = MainAsset.Name	
+			end	
+		end)	
+	
+		assetName = assetName:gsub("%W+", "_")	
+	
+		local filename = folder.."/ZX_"..assetName.."_"..os.time()..".lua"	
+	
+		if makefolder and not isfolder(folder) then	
+			makefolder(folder)	
+		end	
+	
+		if writefile then	
+			writefile(filename, code)	
+			copyFile.Text = "Saved!"	
+		end	
+	    if setclipboard then	
+	   		setclipboard(code)	
+	        copyFile.Text = "Saved!"	
+		end	
+	
+		task.wait(1.5)	
+		copyFile.Text = "Copy To File"	
+	end	
+	function flush3()	
+	  local code = table.concat(buffer)	
+	
+		if code == "" then	
+			warn("No code to save")	
+			return	
+		end	
+	
+		local folder = ".gavindR File Script"	
+		local assetName = "modelConvert"	
+	
+		pcall(function()	
+			if MainAsset and MainAsset.Name then	
+				assetName = MainAsset.Name	
+			end	
+		end)	
+	
+		assetName = assetName:gsub("%W+", "_")	
+	
+		local filename = folder.."/ZX_"..assetName.."_"..os.time()..".lua"	
+	
+		if makefolder and not isfolder(folder) then	
+			makefolder(folder)	
+		end	
+	
+		if writefile then	
+			writefile(filename, code)	
+			copyFile.Text = "Saved!"	
+		end	
+	    if setclipboard then	
+	   		setclipboard(code)	
+	        copyFile.Text = "Saved!"	
+		end	
+	
+		task.wait(1.5)	
+		copyFile.Text = "Copy To File"	
+	end	
+		local function ReplaceRequire(src)
+    return src:gsub("require%s*%((.-)%)", function(content)
+        if content:find('"') or content:find("'") then
+            return "require("..content..")" -- skip string
+        end
+        return "lloadstring("..content..")"
+    end)
+end
+		local function ConvertRemote(code)	
+	
+		code = code:gsub(":OnServerEvent",":OnClientEvent")	
+		code = code:gsub("%.OnServerEvent",".OnClientEvent")	
+		code = code:gsub(":OnServerInvoke",":OnClientInvoke")	
+		code = code:gsub("%.OnServerInvoke",".OnClientInvoke")	
+	
+		code = code:gsub(	
+			"([%w_]+)%.OnClientEvent:Connect%(function%((.-)%)%s*(.-)%s*end%)",	
+			function(remote, args, body)	
+				return "getgenv().RemoteFuncs['"..remote.."'] = function("..args..")\n"..body.."\nend"	
+			end	
+		)	
+	
+		code = code:gsub(	
+			"([%w_]+):FireClient%((.-)%)",	
+			function(remote, args)	
+				if args == "" then	
+					args = "plr"	
+				end	
+				return "if getgenv().RemoteFuncs['"..remote.."'] then getgenv().RemoteFuncs['"..remote.."']("..args..") end"	
+			end	
+		)	
+	
+		code = code:gsub("script%.Parent%.getgenv%(%)", "getgenv()")	
+		code = code:gsub("script%.Parent%.getgenv%.ScriptStates", "getgenv().ScriptStates")	
+	
+		code = code:gsub("script%.Parent%.local%s+function", "local function")	
+		code = code:gsub("script%.Parent%.function", "function")	
+		code = code:gsub("script%.Parent%.if", "if")	
+		code = code:gsub("script%.Parent%.for", "for")	
+		code = code:gsub("script%.Parent%.while", "while")	
+		code = code:gsub("script%.Parent%.repeat", "repeat")	
+		code = code:gsub("script%.Parent%.until", "until")	
+		code = code:gsub("script%.Parent%.end", "end")	
+		code = code:gsub("script%.Parent%.then", "then")	
+		code = code:gsub("script%.Parent%.do", "do")	
+	
+		code = code:gsub(	
+			"%((getgenv%(%)%.RemoteFuncs%['(.-)'%])%s+and%s+%1%((.-)%)%)",	
+			function(func, name, args)	
+				return "if "..func.." then "..func.."("..args..") end"	
+			end	
+		)	
+	
+		code = code:gsub(	
+			"if getgenv%(%)%.RemoteFuncs%['(.-)'%] then getgenv%(%)%.RemoteFuncs%['%1'%]%((.-)%) end",	
+			function(name, args)	
+				return "if getgenv().RemoteFuncs['"..name.."'] then getgenv().RemoteFuncs['"..name.."']("..args..") end"	
+			end	
+		)	
+	
+		code = code:gsub(	
+			"return%s+if%s+getgenv%(%)%.RemoteFuncs%['(.-)'%]%s+then%s+getgenv%(%)%.RemoteFuncs%['%1'%]%((.-)%)%s+end",	
+			function(name, args)	
+				return "(getgenv().RemoteFuncs['"..name.."'] and getgenv().RemoteFuncs['"..name.."']("..args.."))"	
+			end	
+		)	
+	
+		code = code:gsub(	
+			"([%w_]+):FireServer%((.-)%)",	
+			function(remote, args)	
+				if args == "" then	
+					args = ""	
+				else	
+					args = ", "..args	
+				end	
+				return "if getgenv().RemoteFuncs['"..remote.."'] then getgenv().RemoteFuncs['"..remote.."'](game.Players.LocalPlayer"..args..") end"	
+			end	
+		)	
+	
+		code = code:gsub(	
+			"([%w_]+):InvokeServer%((.-)%)",	
+			function(remote, args)	
+				if args == "" then	
+					args = ""	
+				else	
+					args = ", "..args	
+				end	
+				return "(getgenv().RemoteFuncs['"..remote.."'] and getgenv().RemoteFuncs['"..remote.."'](game.Players.LocalPlayer"..args.."))"	
+			end	
+		)	
+	
+		code = code:gsub("%.%s*if%s+", " if ")	
+		code = code:gsub("then%s*%(", "then ")	
+	
+		code = code:gsub(":(%w+)%(%s*\n%s*end", ":%1()")	
+		code = code:gsub(":(%w+)%(%s*end", ":%1()")	
+		code = code:gsub("%(%s*\n%s*end", "()")	
+	
+		code = code:gsub("([%w_]+)%.do%s+", "do ")	
+	
+		return code	
+	end	
+	
+	
+		if modeIndex == 1 then	
+			local id = idk.Text	
+			if id == "" then return end	
+	
+local vvvv =
+[=[
+--//Credits to gavinrgb27\\--
+--//ZXCONVERTER WAS HARE :)\\--
+
+
+
+
+
+
+--//Service\\--
+local plr = game:GetService("Players").LocalPlayer
+local PlrGui = plr:WaitForChild("PlayerGui")
+local Backpack = plr:WaitForChild("Backpack")
+
+--//MainObject\\--
+
+local MainAsset = game:GetObjects("rbxassetid://]=]
+..id..
+[=[")[1]
+MainAsset.Parent = workspace
+
+--//Logic\\--
+
+local function lloadstring(code)
+    local f = loadstring(code)
+    if not f then return end
+    local ok, res = pcall(f)
+    if ok then return res end
+end
+]=]
+			add(vvvv)	
+	
+			local success, result = pcall(function()	
+				return game:GetObjects("rbxassetid://"..id)	
+			end)	
+	
+			if not success or not result or not result[1] then	
+				output.Text = "FAILED LOAD ID"	
+	          wait(1)	
+	         output.Text = ""	
+				return	
+			end	
+	
+			local obj = result[1]	
+	
+	local varMap = {}	
+	local createdVars = {}	
+	
+	local function createVar(name)	
+		name = name:gsub("%s+",""):gsub("[^%w_]","")	
+		if name == "" then name = "obj" end	
+	
+		if createdVars[name] then	
+			local i = 1	
+			while createdVars[name..i] do i+=1 end	
+			name = name..i	
+		end	
+	
+		createdVars[name] = true	
+		return name	
+	end	
+	
+	
+	for _, v in ipairs(obj:GetChildren()) do	
+		local varName = createVar(v.Name)	
+	
+		add("local "..varName.." = MainAsset:WaitForChild(\""..v.Name.."\")\n")	
+	
+		if v:IsA("ScreenGui") then	
+			add(varName..".Parent = PlrGui\n\n")	
+		elseif v:IsA("Tool") then	
+			add(varName..".Parent = Backpack\n\n")	
+		else	
+			add("\n")	
+		end	
+	
+		varMap[v] = varName	
+	end	
+	
+	add("\n")	
+	
+	
+	local function getIndex(o)	
+		local parent = o.Parent	
+		if not parent then return 1,1 end	
+	
+		local count,index = 0,0	
+	
+		for i,v in ipairs(parent:GetChildren()) do	
+			if v.Name == o.Name then	
+				count += 1	
+				if v == o then index = i end	
+			end	
+		end	
+	
+		return count,index	
+	end	
+	
+	local function buildChain(o)	
+		if varMap[o] then return varMap[o] end	
+		if not o or not o.Parent then return "MainAsset" end	
+		if o == obj then return "MainAsset" end	
+	
+		local parentVar = buildChain(o.Parent)	
+		local varName = createVar(o.Name)	
+	
+		local count,index = getIndex(o)	
+	
+		if count > 1 then	
+			add("local "..varName.." = "..parentVar..":GetChildren()["..index.."]\n")	
+		else	
+			add("local "..varName.." = "..parentVar..":WaitForChild(\""..o.Name.."\")\n")	
+		end	
+	
+		varMap[o] = varName	
+		return varName	
+	end	
+	
+	local function getVar(o)	
+		return varMap[o] or buildChain(o)	
+	end	
+	
+	local blacklist = {	
+	    "\227\129\132\227\129\132\227\129\136\227\128\130\227\129\132\227\129\132\227\129\136\227\128\130\227\129\132\227\129\132\227\129\136\227\128\130\227\129\132\227\129\132\227\129\136\227\128\130\227\129\132\227\129\132\227\129\136\227\128\130\227\129\132\227\129\132\227\129\136\227\128\130\227\129\132\239",	
+	}	
+	
+	local function isBlacklisted(name)	
+	    for _, b in ipairs(blacklist) do	
+	        if name == b then	
+	            return true	
+	        end	
+	    end	
+	    return false	
+	end	
+	
+			local scripts = {}	
+	
+	for _, v in ipairs(obj:GetDescendants()) do	
+	    if v:IsA("LocalScript") or v:IsA("Script") or v:IsA("ModuleScript") then	
+	        	
+	        if not isBlacklisted(v.Name) then	
+	            table.insert(scripts, v)	
+	        end	
+	
+	    end	
+	end	
+	
+	if obj:IsA("ModuleScript") then	
+	    if not isBlacklisted(obj.Name) then	
+	        table.insert(scripts, obj)	
+	    end	
+	end	
+	
+	
+	local declared = {}	
+	local moduleIndex = 0
+
+	if obj:IsA("ModuleScript") then	
+	    local src = ""	
+	    pcall(function()	
+	        src = obj.Source	
+	    end)	
+	
+	  src = ReplaceRequire(src)	
+	  --  src = ConvertRemote(src)	
+	
+	    moduleIndex += 1
+	    local moduleName = "MainModule"..moduleIndex
+
+	    add(
+	    "-- "..moduleName.." --\n"..
+	    "local "..moduleName.." = [=[\n"..
+	    "local script = MainAsset\n\n".. 
+	    src.."\n]=]\n\n"
+	    )
+
+	end	
+	
+local scriptIndex = 0
+
+for _, v in ipairs(scripts) do	
+    if v ~= obj then	
+        
+        local varName = getVar(v)	
+
+        scriptIndex += 1
+        local scriptName = v.Name:gsub("%W","_").."_"..scriptIndex
+
+        local src = ""	
+        pcall(function()	
+            src = v.Source	
+        end)	
+
+       src = ReplaceRequire(src)	
+	  --  src = ConvertRemote(src)	
+
+        if v:IsA("ModuleScript") then	
+            add(	
+"-- "..scriptName.." --\n"..
+"local "..scriptName.." = [=[\n"..	
+"local script = "..varName.."\n\n"..	
+src.."\n]=]\n\n"	
+            )	
+
+        else	
+            add(	
+"-- "..scriptName.." --\n"..
+"task.spawn(function()\n".. 	
+"    local script = "..varName.."\n".. 	
+"    if not script then return end\n\n".. 	
+src.."\n".. 	
+"end)\n\n"	
+            )	
+        end	
+
+    end	
+end
+	
+	 add("--THE END 😑")	
+	flush()	
+	
+
+	elseif modeIndex == 2 then 	
+local id = 0
+local map = {}
+
+local function newVar(class)
+	id+=1
+	return "v"..id.."_"..class
+end
+
+
+local function convertObj(obj, parent, isRoot)
+	local var = newVar(obj.ClassName)
+	map[obj] = var
+   if isRoot then
+    	map[obj] = parent
+    	var = parent
+    else
+    	var = newVar(obj.ClassName)
+    	map[obj] = var
+    end
+
+
+local px,py,pz,
+r00,r01,r02,
+r10,r11,r12,
+r20,r21,r22
+
+
+	local txt = "local "..var.." = Instance.new('"..obj.ClassName.."')\n"
+	txt ..= var..".Name = '"..obj.Name.."'\n"
+	txt ..= var..".Parent = "..parent.."\n"
+
+if obj:IsA("BasePart") then
+
+	txt ..= var..".Size = Vector3.new("
+	..obj.Size.X..","..obj.Size.Y..","..obj.Size.Z..")\n"
+local cf = obj:GetPivot()
+px,py,pz,
+r00,r01,r02,
+r10,r11,r12,
+r20,r21,r22 = cf:GetComponents()
+
+	-- Set posisi ke depan player
+	txt ..= var..".CFrame = CFrame.new("
+		..px..","..py..","..pz..","
+		..r00..","..r01..","..r02..","
+		..r10..","..r11..","..r12..","
+		..r20..","..r21..","..r22..")\n"
+
+	local r = obj.Rotation
+
+	if r.X == 0 and r.Y == 0 and r.Z == 0 then
+		txt ..= "--"..var..".Rotation = Vector3.new(0,0,0)\n"
+	else
+		txt ..= var..".Rotation = Vector3.new("
+		..r.X..","..r.Y..","..r.Z..")\n"
+	end
+
+	txt ..= var..".Color = Color3.new("
+	..obj.Color.R..","..obj.Color.G..","..obj.Color.B..")\n"
+
+	txt ..= var..".Material = Enum.Material."..
+	tostring(obj.Material):gsub("Enum.Material.", "").."\n"
+
+	txt ..= var..".Reflectance = "..obj.Reflectance.."\n"
+	txt ..= var..".Transparency = "..obj.Transparency.."\n"
+
+	txt ..= var..".Anchored = "..tostring(obj.Anchored).."\n"
+	txt ..= var..".CanCollide = "..tostring(obj.CanCollide).."\n"
+	txt ..= var..".CanTouch = "..tostring(obj.CanTouch).."\n"
+	txt ..= var..".CanQuery = "..tostring(obj.CanQuery).."\n"
+
+	txt ..= var..".CastShadow = "..tostring(obj.CastShadow).."\n"
+	txt ..= var..".Massless = "..tostring(obj.Massless).."\n"
+
+end
+
+	if obj:IsA("MeshPart") then
+
+	txt ..= var..".Name = '"..obj.Name.."'\n"
+
+	txt ..= var..".MeshId = '"..obj.MeshId.."'\n"
+	txt ..= var..".TextureID = '"..obj.TextureID.."'\n"
+
+	txt ..= var..".Material = Enum.Material."..
+	tostring(obj.Material):gsub("Enum.Material.", "").."\n"
+
+	txt ..= var..".DoubleSided = "..tostring(obj.DoubleSided).."\n"
+
+end
+
+	if obj:IsA("UnionOperation") then
+
+	txt ..= var..".Name = '"..obj.Name.."'\n"
+
+	txt ..= var..".UsePartColor = true\n"
+
+	txt ..= var..".Color = Color3.new("
+	..obj.Color.R..","..obj.Color.G..","..obj.Color.B..")\n"
+
+	txt ..= var..".Material = Enum.Material."..
+	tostring(obj.Material):gsub("Enum.Material.", "").."\n"
+
+end
+
+-- helper kecil (bukan function besar, cuma format biar gak ribet)
+local function esc(s) return tostring(s):gsub("'", "\\'") end
+local function udim2(v)
+	return "UDim2.new("..
+		v.X.Scale..","..v.X.Offset..","..
+		v.Y.Scale..","..v.Y.Offset..")"
+end
+
+-- ===================== GUI OBJECT =====================
+if obj:IsA("GuiObject") then
+	txt ..= var..".Name = '"..esc(obj.Name).."'\n"
+
+	txt ..= var..".Position = "..udim2(obj.Position).."\n"
+	txt ..= var..".Size = "..udim2(obj.Size).."\n"
+	txt ..= var..".AnchorPoint = Vector2.new("..obj.AnchorPoint.X..","..obj.AnchorPoint.Y..")\n"
+
+	txt ..= var..".BackgroundTransparency = "..obj.BackgroundTransparency.."\n"
+	txt ..= var..".BackgroundColor3 = Color3.fromRGB("
+		..math.floor(obj.BackgroundColor3.R*255)..","
+		..math.floor(obj.BackgroundColor3.G*255)..","
+		..math.floor(obj.BackgroundColor3.B*255)..")\n"
+end
+
+-- ===================== TEXT =====================
+if obj:IsA("TextLabel") or obj:IsA("TextButton") or obj:IsA("TextBox") then
+	txt ..= var..".Text = '"..esc(obj.Text).."'\n"
+	txt ..= var..".TextScaled = "..tostring(obj.TextScaled).."\n"
+	txt ..= var..".TextSize = "..obj.TextSize.."\n"
+
+	txt ..= var..".TextColor3 = Color3.fromRGB("
+		..math.floor(obj.TextColor3.R*255)..","
+		..math.floor(obj.TextColor3.G*255)..","
+		..math.floor(obj.TextColor3.B*255)..")\n"
+end
+
+-- ===================== IMAGE =====================
+if obj:IsA("ImageLabel") or obj:IsA("ImageButton") then
+	txt ..= var..".Image = '"..esc(obj.Image).."'\n"
+	txt ..= var..".ImageTransparency = "..obj.ImageTransparency.."\n"
+end
+
+-- ===================== VIEWPORT FRAME =====================
+if obj:IsA("ViewportFrame") then
+	txt ..= var..".CurrentCamera = nil\n"
+	txt ..= var..".BackgroundTransparency = "..obj.BackgroundTransparency.."\n"
+end
+
+-- ===================== SURFACE GUI =====================
+if obj:IsA("SurfaceGui") then
+	txt ..= var..".Face = Enum.NormalId."..obj.Face.Name.."\n"
+	txt ..= var..".CanvasSize = Vector2.new("
+		..obj.CanvasSize.X..","..obj.CanvasSize.Y..")\n"
+
+	txt ..= var..".AlwaysOnTop = "..tostring(obj.AlwaysOnTop).."\n"
+end
+
+-- ===================== DECAL =====================
+if obj:IsA("Decal") then
+	txt ..= var..".Texture = '"..esc(obj.Texture).."'\n"
+	txt ..= var..".Transparency = "..obj.Transparency.."\n"
+	txt ..= var..".Face = Enum.NormalId."..obj.Face.Name.."\n"
+end
+
+-- ===================== TEXTURE (ADVANCED OFFSET) =====================
+if obj:IsA("Texture") then
+	txt ..= var..".Texture = '"..esc(obj.Texture).."'\n"
+	txt ..= var..".Transparency = "..obj.Transparency.."\n"
+	txt ..= var..".Face = Enum.NormalId."..obj.Face.Name.."\n"
+
+	-- 🔥 ini yang kamu maksud “offset baru”
+	txt ..= var..".StudsPerTileU = "..obj.StudsPerTileU.."\n"
+	txt ..= var..".StudsPerTileV = "..obj.StudsPerTileV.."\n"
+	txt ..= var..".OffsetStudsU = "..obj.OffsetStudsU.."\n"
+	txt ..= var..".OffsetStudsV = "..obj.OffsetStudsV.."\n"
+end
+
+
+	if obj:IsA("SpecialMesh") then
+
+	txt ..= var..".Name = '"..obj.Name.."'\n"
+
+	txt ..= var..".MeshId = '"..obj.MeshId.."'\n"
+	txt ..= var..".TextureId = '"..obj.TextureId.."'\n"
+
+	txt ..= var..".Scale = Vector3.new("
+	..obj.Scale.X..","..obj.Scale.Y..","..obj.Scale.Z..")\n"
+   txt ..= var..".Offset = Vector3.new("
+	..obj.Offset.X..","..obj.Offset.Y..","..obj.Offset.Z..")\n"
+	txt ..= var..".MeshType = Enum.MeshType."..obj.MeshType.Name.."\n"
+
+end
+
+
+	if obj:IsA("Attachment") then
+      txt ..= var..".Name = '"..obj.Name.."'\n"
+		local cf = {obj.CFrame:GetComponents()}
+		txt ..= var..".CFrame = CFrame.new("
+		..table.concat(cf,",")..")\n"
+
+	end
+if obj:IsA("Folder") then
+   txt ..= var..".Name = '"..obj.Name.."'\n"
+	txt ..= "-- Folder\n"
+end
+
+if obj:IsA("RemoteEvent") or obj:IsA("RemoteFunction") then
+   txt ..= var..".Name = '"..obj.Name.."'\n"
+	txt ..= "-- Remote\n"
+end
+	if obj:IsA("ParticleEmitter") then
+
+	txt ..= var..".Name = '"..obj.Name.."'\n"
+	txt ..= var..".Enabled = "..tostring(obj.Enabled).."\n"
+	txt ..= var..".Rate = "..obj.Rate.."\n"
+
+	txt ..= var..".Texture = '"..obj.Texture.."'\n"
+
+	txt ..= var..".Lifetime = NumberRange.new("
+	..obj.Lifetime.Min..","..obj.Lifetime.Max..")\n"
+
+	txt ..= var..".Speed = NumberRange.new("
+	..obj.Speed.Min..","..obj.Speed.Max..")\n"
+
+	txt ..= var..".Rotation = NumberRange.new("
+	..obj.Rotation.Min..","..obj.Rotation.Max..")\n"
+
+	txt ..= var..".RotSpeed = NumberRange.new("
+	..obj.RotSpeed.Min..","..obj.RotSpeed.Max..")\n"
+
+	txt ..= var..".SpreadAngle = Vector2.new("
+	..obj.SpreadAngle.X..","..obj.SpreadAngle.Y..")\n"
+
+	txt ..= var..".Size = NumberSequence.new("
+	..obj.Size.Keypoints[1].Value..")\n"
+
+	txt ..= var..".Transparency = NumberSequence.new("
+	..obj.Transparency.Keypoints[1].Value..")\n"
+
+	local c = obj.Color.Keypoints[1].Value
+
+	txt ..= var..".Color = ColorSequence.new(Color3.new("
+	..c.R..","..c.G..","..c.B.."))\n"
+
+end
+
+	if obj:IsA("Trail") then
+	txt ..= var..".Name = '"..obj.Name.."'\n"
+
+	txt ..= var..".Lifetime = "..obj.Lifetime.."\n"
+	txt ..= var..".MinLength = "..obj.MinLength.."\n"
+	txt ..= var..".Enabled = "..tostring(obj.Enabled).."\n"
+
+	txt ..= var..".Transparency = NumberSequence.new("
+	..obj.Transparency.Keypoints[1].Value..")\n"
+
+	txt ..= var..".WidthScale = NumberSequence.new("
+	..obj.WidthScale.Keypoints[1].Value..")\n"
+
+	local c = obj.Color.Keypoints[1].Value
+
+	txt ..= var..".Color = ColorSequence.new(Color3.new("
+	..c.R..","..c.G..","..c.B.."))\n"
+end
+
+	if obj:IsA("Beam") then
+	txt ..= var..".Name = '"..obj.Name.."'\n"
+
+	txt ..= var..".Width0 = "..obj.Width0.."\n"
+	txt ..= var..".Width1 = "..obj.Width1.."\n"
+
+	txt ..= var..".Brightness = "..obj.Brightness.."\n"
+	txt ..= var..".LightEmission = "..obj.LightEmission.."\n"
+
+	txt ..= var..".Transparency = NumberSequence.new("
+	..obj.Transparency.Keypoints[1].Value..")\n"
+
+	local c = obj.Color.Keypoints[1].Value
+
+	txt ..= var..".Color = ColorSequence.new(Color3.new("
+	..c.R..","..c.G..","..c.B.."))\n"
+end
+
+	if obj:IsA("PointLight") or obj:IsA("SpotLight") or obj:IsA("SurfaceLight") then
+
+	txt ..= var..".Name = '"..obj.Name.."'\n"
+
+	txt ..= var..".Brightness = "..obj.Brightness.."\n"
+	txt ..= var..".Range = "..obj.Range.."\n"
+
+	txt ..= var..".Enabled = "..tostring(obj.Enabled).."\n"
+
+	txt ..= var..".Color = Color3.new("
+	..obj.Color.R..","..obj.Color.G..","..obj.Color.B..")\n"
+
+end
+
+	if obj:IsA("SurfaceAppearance") then
+
+		txt ..= var..".ColorMap = '"..obj.ColorMap.."'\n"
+
+	end
+
+	if obj:IsA("Sound") then
+      txt ..= var..".Name = '"..obj.Name.."'\n"
+		txt ..= var..".SoundId = '"..obj.SoundId.."'\n"
+		txt ..= var..".Volume = "..obj.Volume.."\n"
+		txt ..= var..".PlaybackSpeed = "..obj.PlaybackSpeed.."\n"
+      txt ..= var..".Pitch = "..obj.Pitch.."\n"
+		txt ..= var..".Looped = "..tostring(obj.Looped).."\n"
+		txt ..= var..":Play()\n"
+
+	end
+
+	if obj:IsA("Motor6D") then
+
+		txt ..= var..".Part0 = nil\n"
+		txt ..= var..".Part1 = nil\n"
+
+	end
+
+	if obj:IsA("Weld") or obj:IsA("WeldConstraint") or obj:IsA("Snap") then
+
+		txt ..= var..".Part0 = nil\n"
+		txt ..= var..".Part1 = nil\n"
+
+	end
+if obj:IsA("Humanoid") then
+	txt ..= var..".Name = '"..obj.Name.."'\n"
+
+	txt ..= var..".Health = "..obj.Health.."\n"
+	txt ..= var..".MaxHealth = "..obj.MaxHealth.."\n"
+
+	txt ..= var..".WalkSpeed = "..obj.WalkSpeed.."\n"
+	txt ..= var..".JumpPower = "..obj.JumpPower.."\n"
+
+	txt ..= var..".HipHeight = "..obj.HipHeight.."\n"
+
+	txt ..= var..".AutoRotate = "..tostring(obj.AutoRotate).."\n"
+	txt ..= var..".BreakJointsOnDeath = "..tostring(obj.BreakJointsOnDeath).."\n"
+   txt ..= var..".RigType = Enum.HumanoidRigType."..obj.RigType.Name.."\n"
+	txt ..= var..".RequiresNeck = "..tostring(obj.RequiresNeck).."\n"
+end
+if obj:IsA("CharacterMesh") then
+	txt ..= var..".Name = '"..obj.Name.."'\n"
+
+	txt ..= var..".BodyPart = Enum.BodyPart."..obj.BodyPart.Name.."\n"
+
+	txt ..= var..".MeshId = '"..(obj.MeshId or "").."'\n"
+	txt ..= var..".BaseTextureId = '"..(obj.BaseTextureId or "").."'\n"
+	txt ..= var..".OverlayTextureId = '"..(obj.OverlayTextureId or "").."'\n"
+end
+if obj:IsA("Pants") then
+	txt ..= var..".Name = '"..obj.Name.."'\n"
+	txt ..= var..".PantsTemplate = '"..(obj.PantsTemplate or "").."'\n"
+end
+if obj:IsA("Shirt") then
+	txt ..= var..".Name = '"..obj.Name.."'\n"
+	txt ..= var..".ShirtTemplate = '"..(obj.ShirtTemplate or "").."'\n"
+end
+  if obj:IsA("Script") or obj:IsA("LocalScript") or obj:IsA("ModuleScript") then
+
+	local func = newVar("ScriptFunc")
+
+	scriptBuffer ..= "local function "..func.."(parent)\n\n"
+	scriptBuffer ..= "local script = Instance.new('"..obj.ClassName.."')\n"
+	local name = tostring(obj.Name):gsub("'", "\\'")
+   scriptBuffer ..= "script.Name = '"..name.."'\n"
+	scriptBuffer ..= "script.Parent = parent\n\n"
+
+	local src = ""
+      pcall(function()
+    	src = obj.Source
+     end)
+
+     scriptBuffer ..= (src or "--[[ SOURCE LOCKED ]]").."\n\n"
+
+	scriptBuffer ..= "end\n\n"
+	scriptBuffer ..= func.."("..(parent or "nil")..")\n\n"
+
+	return ""
+end
+
+
+	for _,c in ipairs(obj:GetChildren()) do
+	txt ..= convertObj(c, var, false)
+  end
+
+if isRoot and obj:IsA("Model") then
+	local cf = obj:GetPivot()
+	local px,py,pz = cf.Position.X, cf.Position.Y, cf.Position.Z
+
+	txt ..= "do\n"
+	txt ..= "local player = game:GetService('Players').LocalPlayer\n"
+	txt ..= "local char = player.Character or player.CharacterAdded:Wait()\n"
+	txt ..= "local hrp = char:WaitForChild('HumanoidRootPart')\n"
+
+	txt ..= "local forward = hrp.CFrame.LookVector\n"
+	txt ..= "local pos = hrp.Position + forward * 10 + Vector3.new(0,"..py..",0)\n"
+
+	txt ..= var..":PivotTo(CFrame.lookAt(pos, hrp.Position))\n"
+	txt ..= "end\n"
+end
+
+return txt
+end
+
+
+local function convertModel(model)
+	add("local " .. model.Name .. " = Instance.new('Model')")
+	add(model.Name .. ".Name = '" .. model.Name .. "'")
+	add(model.Name .. ".Parent = workspace\n")
+
+	for _, v in ipairs(model:GetChildren()) do
+		local code = convertObj(v, model.Name, false)
+		if code and code ~= "" then
+			add(code)
+		end
+	end
+
+	if scriptBuffer ~= "" then
+		add("\n--// Scripts \\--\n")
+		add(scriptBuffer)
+	end
+end
+
+	local dih	
+	local dihput = idk.Text	
+	
+	if dihput == "FullCode" then	
+	    dih = workspace	
+	else	
+	    dih = workspace:FindFirstChild(dihput, true)	
+	    if not dih then	
+	        output.Text = "TARGET NOT FOUND"	
+	        return	
+	    end	
+	end
+
+		if dih then
+			convertModel(dih)
+		end
+ flush3()	
+	end  -- paling terakhir end dari elseif mode	
+	
+	end)	
+	copy.MouseButton1Click:Connect(function()	
+	
+		if setclipboard then	
+			setclipboard(ins.Text .. "\n\n" .. output.Text)	
+		end	
+	
+	end)	
+	copyFile.MouseButton1Click:Connect(function()	
+	local code = output.Text	
+	
+		if code == "" then	
+			warn("No code to save")	
+			return	
+		end	
+	
+		local folder = ".gavindR File Script"	
+		local assetName = "unknown"	
+	
+		pcall(function()	
+			if MainAsset and MainAsset.Name then	
+				assetName = MainAsset.Name	
+			end	
+		end)	
+	
+		assetName = assetName:gsub("%W+", "_")	
+	
+		local filename = folder.."/ZX_"..assetName.."_"..os.time()..".lua"	
+	
+		if makefolder and not isfolder(folder) then	
+			makefolder(folder)	
+		end	
+	
+		if writefile then	
+			writefile(filename, code)	
+			copyFile.Text = "Saved!"	
+		else	
+			warn("Executor tidak support writefile")	
+			copyFile.Text = "Failed!"	
+		end	
+	
+		task.wait(1.5)	
+		copyFile.Text = "Copy To File"	
+	end)	
+end;
+task.spawn(C_32);
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.script hub.LocalScript
+local function C_38()
+	local script = LMG2L["LocalScript_38"];
+	local v = script.Parent.Parent	
+	local frame = v:WaitForChild("ScriptHubs")	
+	script.Parent.MouseButton1Click:Connect(function()	
+	  frame.Visible = not frame.Visible	
+	end)	
+end;
+task.spawn(C_38);
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.Scaled.LocalScript
+local function C_3c()
+	local script = LMG2L["LocalScript_3c"];
+	local TweenService = game:GetService("TweenService")	
+	local frame = script.Parent	
+	
+	local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)	
+	spawn(function()	
+	while true do	
+	    -- ke kecil	
+	    TweenService:Create(frame, tweenInfo, {	
+	        Size = UDim2.new(0, 0, 0, 18)	
+	    }):Play()	
+	
+	    task.wait(0.5)	
+	
+	    TweenService:Create(frame, tweenInfo, {	
+	        Size = UDim2.new(0, 380, 0, 18)	
+	    }):Play()	
+	
+	    task.wait(1.5)	
+	
+	    TweenService:Create(frame, tweenInfo, {	
+	        Size = UDim2.new(0, 0, 0, 18)	
+	    }):Play()	
+	    frame.Text = "In Name id or Names Add this word(FullCode) for all workspace map"	
+	    task.wait(2.5)	
+	
+	    TweenService:Create(frame, tweenInfo, {	
+	        Size = UDim2.new(0, 380, 0, 18)	
+	    }):Play()	
+	
+	    task.wait(3.5)	
+	   	
+	    -- ke kecil	
+	    TweenService:Create(frame, tweenInfo, {	
+	        Size = UDim2.new(0, 0, 0, 18)	
+	    }):Play()	
+	frame.Text = [[Made By @gavinrgb27(go to tiktok ang follow the account!!,and get the script]]	
+	    task.wait(2.5)	
+	
+	    TweenService:Create(frame, tweenInfo, {	
+	        Size = UDim2.new(0, 380, 0, 18)	
+	    }):Play()	
+	    	
+	    task.wait(1.5)	
+	end	
+	end)	
+	
+end;
+task.spawn(C_3c);
+
+return LMG2L["PLer_1"], require;
