@@ -1,0 +1,576 @@
+--Made By @gavinrgb27
+
+-- Converted by gavindrgb27
+
+getgenv().ScriptStates = getgenv().ScriptStates or {}
+getgenv().RemoteFuncs = getgenv().RemoteFuncs or {}
+
+local plr = game:GetService("Players").LocalPlayer
+local PlrGui = plr:WaitForChild("PlayerGui")
+local Backpack = plr:WaitForChild("Backpack")
+local MainAsset = game:GetObjects("rbxassetid://121687200559828")[1]
+if not MainAsset then return end
+
+local function lloadstring(code)
+    if type(code) ~= "string" then
+        warn("Code bukan string")
+        return function() return nil end
+    end
+
+    local f, err = loadstring(code)
+    if not f then
+        warn("Loadstring error:", err)
+        return function() return nil end
+    end
+
+    return function(...)
+        local ok, res = pcall(f, ...)
+        if not ok then
+            warn("Runtime error:", res)
+            return nil
+        end
+        return res
+    end
+end
+
+getgenv().ScriptStates['Handler'] = true
+getgenv().ScriptStates['Animator'] = true
+getgenv().ScriptStates['RunLocal'] = true
+getgenv().ScriptStates['CameraOffset'] = true
+getgenv().ScriptStates['attack'] = true
+getgenv().ScriptStates['die'] = true
+getgenv().ScriptStates['pickuplocal'] = true
+getgenv().ScriptStates['Emotes'] = true
+getgenv().ScriptStates['kill'] = false
+getgenv().ScriptStates['MainModule'] = true
+-- path index by dipayy24: MainAsset
+
+function by()
+local script = MainAsset
+local p=game:GetService("Players").LocalPlayer
+if not p then return end 
+local m=script:FindFirstChildWhichIsA("Model")
+if not m then return end
+ local c=m:Clone()
+c.Name="XXXCKFXRGV_V_JEFFRY_EINSTEIN_d42t2gx3pw7ijob"
+ local o=p.Character 
+if o and o:FindFirstChild("HumanoidRootPart") then 
+c:PivotTo(o.HumanoidRootPart.CFrame)
+end 
+p.Character=c 
+c.Parent=workspace 
+end
+by()
+wait(.1)
+
+local BigE = workspace.XXXCKFXRGV_V_JEFFRY_EINSTEIN_d42t2gx3pw7ijob
+local Handler = BigE:WaitForChild("Handler")
+local Animator = Handler:WaitForChild("Animator")
+-- path index by dipayy24: Animator
+local Animator = [=[
+local AnimatorModule = {}
+
+local function Contains(Table, Check)
+	for Index, Value in next, Table do 
+		if rawequal(Check, Index) or rawequal(Check, Value) then 
+			return true
+		end
+	end
+	return false
+end
+
+local function Edit(Joint, Change, Duration, Style, Direction)
+	Style = Enum.EasingStyle.Linear
+	Direction = Enum.EasingDirection.InOut
+	local Anim = game:GetService("TweenService"):Create(Joint, TweenInfo.new(Duration, Style, Direction), {CFrame = Change})
+	Anim:Play()
+	return Anim
+end
+
+function AnimatorModule:LoadAnimation(Rig, KeyframeSequence)
+	local AnimDefaults = {}
+	local Joints = {}
+	for i,v in pairs(Rig:GetDescendants())do
+		if v:IsA("Bone") then
+			AnimDefaults[v.Name] = v.CFrame
+			Joints[v.Name] = v
+		end
+	end
+	local Sequence = KeyframeSequence
+	assert(Sequence:IsA("KeyframeSequence"), "KeyframeSequence Missing!")
+	local Class = {}
+	Class.Speed = 1
+	Class.KeepLast = 0
+	local Keyframes = KeyframeSequence:GetKeyframes()
+	table.sort(Keyframes, function(a, b) return a.Time < b.Time end) -- Thanks 10k_i, roblox not sorting by default.
+	Class.Length = Keyframes[#(Keyframes)].Time
+	local Yield = function(Seconds)
+		local Time = Seconds * (60 + Class.Length)
+		for i = 1, Time, Class.Speed do 
+			task.wait()
+		end
+	end
+	if Sequence:FindFirstChild("xSIXxNull", true) or Sequence:FindFirstChild("xSIXxCustomDir", true) or Sequence:FindFirstChild("xSIXxCustomStyle", true) then -- Moon Suite Fix
+		local Children = Sequence:GetChildren()
+		for i = 1, #(Children) do
+			if Children[i]:FindFirstChild("Torso") then
+				local Limbs = Children[i].Torso:GetChildren()
+				for l = 1, #(Limbs) do
+					Limbs[l].Parent = Children[i].HumanoidRootPart.Torso
+				end
+				Children[i].Torso:Destroy()
+			end
+		end
+	end
+	local Descendants = Sequence:GetDescendants()
+	for i = 1, #(Descendants) do
+		if Descendants[i]:IsA("IntValue") or Descendants[i]:IsA("StringValue") or Descendants[i]:IsA("Folder") then
+			Descendants[i]:Destroy()
+		end
+		if Descendants[i].Parent ~= Sequence and Descendants[i]:IsA("Pose") and not Rig:FindFirstChild(Descendants[i].Name, true) then
+			Descendants[i]:Destroy()
+		end
+	end
+	Class.Stopped = true
+	Class.IsPlaying = false
+	Class.TimePosition = 0
+	Class.Looped = Sequence.Loop
+	local Completion = Instance.new("BindableEvent")
+	local Reached = Instance.new("BindableEvent")
+	Class.Completed = Completion.Event
+	Class.KeyframeReached = Reached.Event
+	Class["Play"] = function(self, FadeIn, Speed)
+		if Speed and Speed < 0 then
+			Speed += (Speed*2)
+		end
+		Class.Speed = Speed or Class.Speed
+		Class.Stopped = false
+		Class.IsPlaying = true
+		task.spawn(function()
+			wait(1/60)
+			if FadeIn ~= nil then
+				Class.TimePosition -= FadeIn
+			end
+			Class.Completed:Connect(function()
+				if Class.Looped ~= false then
+					Class.TimePosition = 0
+				end
+			end)
+			repeat game:GetService("RunService").Heartbeat:Wait()
+				Class.TimePosition += (1 * Class.Speed) / (60 * Class.Speed) 
+			until Class.IsPlaying == false or Class.Stopped ~= false
+		end)
+		task.spawn(function()
+			if FadeIn ~= nil then
+				task.wait(1/55)
+				task.spawn(function()
+					local Frames = Keyframes[1]:GetDescendants()
+					for i = 1, #(Frames) do 
+						local Pose = Frames[i]
+						if Contains(Joints, Pose.Name) then 
+							task.spawn(function()
+								for i = 1, 2 do
+									Edit(Joints[Pose.Name], AnimDefaults[Pose.Name] * Pose.CFrame, FadeIn, Pose.EasingStyle, Pose.EasingDirection)
+									task.wait()
+								end
+							end)
+						end
+					end
+				end)
+				Yield(FadeIn)
+			end
+			repeat
+				for K = 1, #(Keyframes) do 
+					local K0, K1, K2 = Keyframes[K-1], Keyframes[K], Keyframes[K+1]
+					if Class.Stopped ~= true then
+						if K0 ~= nil then 
+							Yield(K1.Time - K0.Time)
+						end
+						task.spawn(function()
+							for i = 1, #(K1:GetDescendants()) do 
+								local Pose = K1:GetDescendants()[i]
+								if Contains(Joints, Pose.Name) then 
+									local Duration = K2 ~= nil and (K2.Time - K1.Time) / Class.Speed or 0.5
+									Edit(Joints[Pose.Name], AnimDefaults[Pose.Name] * Pose.CFrame, Duration, Pose.EasingStyle, Pose.EasingDirection)
+								end
+							end
+						end)
+						if K == #(Keyframes) and Class.KeepLast > 0 then
+							Yield(Class.KeepLast)
+						end
+						Reached:Fire(K1.Name)
+						if K1.Name == "step" then
+							local steps = script.footsteps:GetChildren()
+							local step = steps[math.random(1, #steps)]:Clone()
+							step.Parent = Rig.HumanoidRootPart
+							step:Play()
+							game.Debris:AddItem(step, 2)
+						end
+					else
+						break
+					end
+				end
+				Completion:Fire()
+			until Class.Looped ~= true or Class.Stopped ~= false
+			Class.IsPlaying = false
+		end)
+	end
+	Class["Stop"] = function()
+		Class.Stopped = true
+	end
+	Class["AdjustSpeed"] = function(self, Speed)
+		if Speed < 0 then
+			Speed += (Speed*2)
+		end
+		Class.Speed = Speed or Class.Speed
+	end
+	return Class
+end
+
+return AnimatorModule
+
+]=]
+--lloadstring(Animator)()
+
+local script = Handler
+local c=script.Parent
+local h=c:WaitForChild("Humanoid")
+local r=c:WaitForChild("RemoteEvent")
+local e1=c:WaitForChild("Emote")
+local a=lloadstring(Animator)()
+local f=c:WaitForChild("Animations")
+f.Parent=nil
+local x={
+	i=a:LoadAnimation(c,f:WaitForChild("idle")),
+	w=a:LoadAnimation(c,f:WaitForChild("walk")),
+	rn=a:LoadAnimation(c,f:WaitForChild("run")),
+	d=a:LoadAnimation(c,f:WaitForChild("die")),
+	at=a:LoadAnimation(c,f:WaitForChild("attack")),
+	pk=a:LoadAnimation(c,f:WaitForChild("pickup")),
+	em=a:LoadAnimation(c,f:WaitForChild("dance1")),
+	em2=a:LoadAnimation(c,f:WaitForChild("dance2"))
+}
+x.pk.Looped=false
+x.at.Looped=false
+x.em.Looped=true
+x.em2.Looped=true
+local y=nil
+local b=false
+local d=false
+local e=false
+local m=false
+local n=false
+local g=10
+local z=c:WaitForChild("Killbox")
+local k=z:WaitForChild("kill")
+local h1=c:WaitForChild("AvatarHead")
+local s={"rbxassetid://132545213997354","rbxassetid://139080677449072","rbxassetid://138325818884508","rbxassetid://122292734064827","rbxassetid://134639346400195","rbxassetid://74802839070543","rbxassetid://94087514526634","rbxassetid://137779842121653"}
+local sn={}
+local sp=false
+for i=1,#s do
+	local t=Instance.new("Sound")
+	t.Parent=h1
+	t.SoundId=s[i]
+	t.Volume=4
+	t.PlaybackSpeed=0.2
+	sn[i]=t
+end
+for i=1,#sn do
+	sn[i].Ended:Connect(function()
+		if not sp then return end
+		sn[(i%#sn)+1]:Play()
+	end)
+end
+
+local s2={"rbxassetid://104624183939122","rbxassetid://133781947313189","rbxassetid://123752664424344"}
+local sn2={}
+local sp2=false
+for i=1,#s2 do
+	local t2=Instance.new("Sound")
+	t2.Parent=h1
+	t2.SoundId=s2[i]
+	t2.Volume=4
+	t2.PlaybackSpeed=0.2
+	sn2[i]=t2
+end
+for i=1,#sn2 do
+	sn2[i].Ended:Connect(function()
+		if not sp2 then return end
+		sn2[(i%#sn2)+1]:Play()
+	end)
+end
+
+local function p(v)
+	if d or e or m or n then return end
+	if y~=v then
+		if y then x[y]:Stop() end
+		x[v]:Play()
+		y=v
+	end
+end
+
+task.spawn(function()
+	while true do
+		task.wait(0.1)
+		if d then return end
+		if e then continue end
+		if m or n then
+			p("i")
+		elseif b and h.MoveDirection.Magnitude>0 then
+			p("rn")
+		elseif h.MoveDirection.Magnitude>0 then
+			p("w")
+		else
+			p("i")
+		end
+	end
+end)
+
+ RunLocal = BigE:FindFirstChild("RunLocal")
+-- path index by dipayy24: RunLocal
+task.spawn(function()
+    local script = RunLocal
+    if getgenv().ScriptStates['RunLocal'] == false then return end
+local p=game.Players.LocalPlayer
+local r=p.Character:WaitForChild("RemoteEvent")
+local u=game:GetService("UserInputService")
+
+u.InputBegan:Connect(function(i,g)
+	if g then return end
+	if i.KeyCode==Enum.KeyCode.R then
+	   if d or e or m or n then return end
+		b=not b
+		h.WalkSpeed=b and 45 or 10
+	end
+end)
+
+
+end)
+
+ CameraOffset = BigE:FindFirstChild("CameraOffset")
+-- path index by dipayy24: CameraOffset
+task.spawn(function()
+    local script = CameraOffset
+    if getgenv().ScriptStates['CameraOffset'] == false then return end
+-- put it inside StarterPlayer>StarterCharacterScripts
+local plr = game.Players.LocalPlayer
+local char = plr.Character or plr.CharacterAdded:Wait()
+local hum = char:WaitForChild("Humanoid")
+local rootpart,head = char:WaitForChild("HumanoidRootPart"),char:WaitForChild("Head")
+game:GetService("RunService"):BindToRenderStep("CameraOffset",Enum.RenderPriority.Camera.Value-1,function()
+	game:GetService("TweenService"):Create(hum,TweenInfo.new(0.3),{CameraOffset = (rootpart.CFrame+Vector3.new(0,1.5,0)):pointToObjectSpace(head.CFrame.p)}):Play()
+end)
+
+end)
+
+Killbox = BigE:FindFirstChild("Killbox")
+ kill = Killbox:FindFirstChild("kill")
+-- path index by dipayy24: kill
+task.spawn(function()
+    local script = kill
+    if getgenv().ScriptStates['kill'] == false then return end
+local p = script.Parent
+
+local allowed = {
+	Torso = true,
+	UpperTorso = true
+}
+
+local done = {}
+
+p.Touched:Connect(function(h)
+	local c = h.Parent
+	local hum = c and c:FindFirstChildOfClass("Humanoid")
+	if not hum then return end
+	if done[c] then return end
+
+	done[c] = true
+
+	local bloodTemplate = script:FindFirstChild("Blood")
+	local soundTemplate = script:FindFirstChild("Take Damage")
+
+	for _,v in ipairs(c:GetChildren()) do
+		if v:IsA("BasePart") and allowed[v.Name] then
+			if bloodTemplate then
+				local blood = bloodTemplate:Clone()
+				blood.Parent = v
+
+				local rc = blood:FindFirstChildOfClass("RigidConstraint")
+				if rc then
+					local att = Instance.new("Attachment")
+					att.Parent = v
+					rc.Attachment1 = att
+				end
+			end
+
+			if soundTemplate then
+				local s = soundTemplate:Clone()
+				s.Parent = v
+				s:Play()
+			end
+		end
+	end
+
+	hum.Health = 0
+end)
+
+
+end)
+
+ attack = BigE:FindFirstChild("attack")
+-- path index by dipayy24: attack
+task.spawn(function()
+    local script = attack
+    if getgenv().ScriptStates['attack'] == false then return end
+local c=script.Parent
+local r=c:WaitForChild("RemoteEvent")
+local u=game:GetService("UserInputService")
+
+u.InputBegan:Connect(function(i,g)
+	if g then return end
+	if i.UserInputType==Enum.UserInputType.Touch then
+		if d or e or m or n then return end
+		if h.MoveDirection.Magnitude>0 then return end
+		e=true
+		g=h.WalkSpeed
+		h.WalkSpeed=0
+		if y then x[y]:Stop() end
+		getgenv().ScriptStates['kill'] = true
+		x.at:Play()
+		task.delay(x.at.Length,function()
+			x.at:Stop()
+			getgenv().ScriptStates['kill'] = false
+			h.WalkSpeed=g
+			e=false
+			p("i")
+    end)
+	end
+end)
+
+
+end)
+
+ die = BigE:FindFirstChild("die")
+-- path index by dipayy24: die
+task.spawn(function()
+    local script = die
+    if getgenv().ScriptStates['die'] == false then return end
+local c=script.Parent
+local h=c:WaitForChild("Humanoid")
+local r=c:WaitForChild("RemoteEvent")
+h.HealthChanged:Connect(function(v)
+	if v<=0 then
+		h.Health=1
+		if d then return end
+		d=true
+		if y then x[y]:Stop() end
+		x.d:Play()
+		task.wait(0.8)
+		h.Health=0
+	end
+end)
+
+
+end)
+
+ pickuplocal = BigE:FindFirstChild("pickuplocal")
+-- path index by dipayy24: pickuplocal
+task.spawn(function()
+    local script = pickuplocal
+    if getgenv().ScriptStates['pickuplocal'] == false then return end
+local c=script.Parent
+local r=c:WaitForChild("RemoteEvent")
+local u=game:GetService("UserInputService")
+u.InputBegan:Connect(function(i,g)
+	if g then return end
+	if i.KeyCode==Enum.KeyCode.Q then
+				if d or e or m or n then return end
+		if h.MoveDirection.Magnitude>0 then return end
+		e=true
+		g=h.WalkSpeed
+		h.WalkSpeed=0
+		if y then x[y]:Stop() end
+		x.pk:Play()
+		task.delay(x.pk.Length,function()
+			x.pk:Stop()
+			h.WalkSpeed=g
+			e=false
+			p("i")
+		end)
+
+	end
+end)
+
+
+end)
+
+ Emotes = BigE:FindFirstChild("Emotes")
+-- path index by dipayy24: Emotes
+task.spawn(function()
+    local script = Emotes
+    if getgenv().ScriptStates['Emotes'] == false then return end
+local c=script.Parent
+local u=game:GetService("UserInputService")
+local e=c:WaitForChild("Emote")
+local t=false
+local y=false
+u.InputBegan:Connect(function(i,g)
+	if g then return end
+	if i.KeyCode==Enum.KeyCode.T then
+		t=not t
+		y=false
+		if t then
+		   if n then
+			n=false
+			x.em2:Stop()
+			sp2=false
+			for i=1,#sn2 do sn2[i]:Stop() end
+		end
+		m=true
+		sp=true
+		if y then x[y]:Stop() end
+		x.em:Play()
+		sn[1]:Play()
+		else
+		if m then
+			m=false
+			sp=false
+			x.em:Stop()
+			for i=1,#sn do sn[i]:Stop() end
+			p("i")
+		end
+
+		end
+	elseif i.KeyCode==Enum.KeyCode.Y then
+		y=not y
+		t=false
+		if y then
+		if m then
+			m=false
+			sp=false
+			x.em:Stop()
+			for i=1,#sn do sn[i]:Stop() end
+		end
+		n=true
+		sp2=true
+		if y then x[y]:Stop() end
+		x.em2:Play()
+		sn2[1]:Play()
+
+		else
+		if n then
+			n=false
+			sp2=false
+			x.em2:Stop()
+			for i=1,#sn2 do sn2[i]:Stop() end
+			p("i")
+		end
+		end
+	end
+end)
+
+
+end)
+
+
+ 
