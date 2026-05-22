@@ -1,0 +1,373 @@
+--// F3X Convert by gavinrgb27 \--
+
+ local ReplicatedStorage = game:GetService("ReplicatedStorage") local player = game.Players.LocalPlayer local RequestCommand = ReplicatedStorage:WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent local hrp = player.Character and player.Character:FindFirstChild("HumanoidRootPart") RequestCommand:InvokeServer(";btools me") task.wait(1.2) RequestCommand:InvokeServer(";punish all") task.wait(0.2) local backpack = player.Backpack local character = player.Character local function getF3X() for _, v in ipairs(backpack:GetChildren()) do if v:FindFirstChild("SyncAPI") then return v end end for _, v in ipairs(character:GetChildren()) do if v:FindFirstChild("SyncAPI") then return v end end return nil end local f3x = getF3X() if not f3x then warn("F3X / SyncAPI not found – please equip btools and try again") return end local syncapi = f3x.SyncAPI local endpoint = syncapi.ServerEndpoint task.wait(1) function music(id,pch,vol) RequestCommand:InvokeServer("/music "..id) RequestCommand:InvokeServer("/volume "..vol) RequestCommand:InvokeServer("/pitch "..pch) end function Sky(Id) if not hrp then return end local cf = hrp.CFrame + Vector3.new(0,6,0) local part = endpoint:InvokeServer("CreatePart","Ball",cf,workspace) task.wait() if part then endpoint:InvokeServer("SetName",{part},"Skybox") endpoint:InvokeServer("CreateMeshes",{{Part=part,MeshType="SpecialMesh"}}) endpoint:InvokeServer("SyncMesh",{{Part=part,MeshId="rbxassetid://111891702759441"}}) endpoint:InvokeServer("SyncMesh",{{Part=part,TextureId=Id}}) endpoint:InvokeServer("SyncMesh",{{Part=part,Scale=Vector3.new(7200,7200,7200)}}) endpoint:InvokeServer("SetLocked",{part},true) end end 
+
+--// Load Script \--
+----[NameTarget={Model}>>]
+--Total--[=={29}==]--Part--
+
+local P = {}
+local partDefs = {}
+local partData = {}
+local doSyncMoveGroup = false
+local Deleted = true
+
+	
+	if Deleted == true then	
+	for _, v in ipairs(workspace:GetDescendants()) do	
+	    if v:IsA("BasePart") or v:IsA("UnionOperation") or v:IsA("MeshPart") then	
+	        task.spawn(function()	
+	            pcall(function()	
+	                endpoint:InvokeServer("Remove", {v})	
+	            end)	
+	        end)	
+	    end	
+	end	
+	else	
+	end	
+	
+	partDefs[1]={shape="Normal",cframe=CFrame.new(-2,3.835500717163086,289.1007080078125,1,0,0,0,1,0,0,0,1)}
+partData[1]={size=Vector3.new(4.124935150146484,5.271003246307373,12.59999942779541),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="Sofa",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[2]={shape="Seat",cframe=CFrame.new(-2.5,3.200000762939453,286.2006530761719,0,0,1,0,1,-0,-1,0,0)}
+partData[2]={size=Vector3.new(5.199999809265137,2.4000000953674316,2.799999952316284),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="Seat2",trans=1,reflect=0,collide=false,anchored=true,material=Enum.Material.Plastic}
+partDefs[3]={shape="Seat",cframe=CFrame.new(-2.5,3.200000762939453,292.0006408691406,0,0,1,0,1,-0,-1,0,0)}
+partData[3]={size=Vector3.new(5.199999809265137,2.4000000953674316,2.799999952316284),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="Seat",trans=1,reflect=0,collide=false,anchored=true,material=Enum.Material.Plastic}
+partDefs[4]={shape="Normal",cframe=CFrame.new(-78.48595428466797,7.200002670288086,223.11717224121094,-0.9659297466278076,0,-0.2588047981262207,0,1,0,0.2588047981262207,0,-0.9659297466278076)}
+partData[4]={size=Vector3.new(2.000000476837158,4.000000953674316,2.000000476837158),color=Color3.new(0.9764705896377563,0.9764705896377563,0.9764705896377563),name="Right Arm",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[5]={shape="Normal",cframe=CFrame.new(-75.58819580078125,10.200004577636719,222.34072875976562,-0.9659297466278076,0,-0.2588047981262207,0,1,0,0.2588047981262207,0,-0.9659297466278076)}
+partData[5]={size=Vector3.new(4.000000953674316,2.000000476837158,2.000000476837158),color=Color3.new(0.9764705896377563,0.9764705896377563,0.9764705896377563),name="Head",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[6]={shape="Normal",cframe=CFrame.new(-75.58819580078125,7.200002670288086,222.34072875976562,-0.9659297466278076,0,-0.2588047981262207,0,1,0,0.2588047981262207,0,-0.9659297466278076)}
+partData[6]={size=Vector3.new(4.000000953674316,4.000000953674316,2.000000476837158),color=Color3.new(0.6784313917160034,0,0),name="Torso",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[7]={shape="Normal",cframe=CFrame.new(-75.58819580078125,7.200002670288086,222.34072875976562,-0.9659297466278076,0,-0.2588047981262207,0,1,0,0.2588047981262207,0,-0.9659297466278076)}
+partData[7]={size=Vector3.new(4.000000953674316,4.000000953674316,2.000000476837158),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="HumanoidRootPart",trans=1,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[8]={shape="Normal",cframe=CFrame.new(-76.55413818359375,3.200000762939453,222.59954833984375,-0.9659297466278076,0,-0.2588047981262207,0,1,0,0.2588047981262207,0,-0.9659297466278076)}
+partData[8]={size=Vector3.new(2.000000476837158,4.000000953674316,2.000000476837158),color=Color3.new(0.9764705896377563,0.9764705896377563,0.9764705896377563),name="Right Leg",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[9]={shape="Normal",cframe=CFrame.new(-72.18860626220703,9.374879837036133,221.42982482910156,0.7399665117263794,-0.620853066444397,-0.25882628560066223,-0.6427502632141113,-0.766075849533081,0.00002658367156982422,-0.19829705357551575,0.16634099185466766,-0.9659239053726196)}
+partData[9]={size=Vector3.new(2.000000476837158,4.000000953674316,2.000000476837158),color=Color3.new(0.9764705896377563,0.9764705896377563,0.9764705896377563),name="Left Arm",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[10]={shape="Normal",cframe=CFrame.new(-75.48912048339844,10.748868942260742,222.1304473876953,-0.9659297466278076,0,-0.2588047981262207,0,1,0,0.2588047981262207,0,-0.9659297466278076)}
+partData[10]={size=Vector3.new(2.000000476837158,2.000000476837158,2.000000476837158),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="Handle",trans=0,reflect=0,collide=false,anchored=true,material=Enum.Material.Plastic}
+partDefs[11]={shape="Normal",cframe=CFrame.new(-74.62225341796875,3.200000762939453,222.0819091796875,-0.9659297466278076,0,-0.2588047981262207,0,1,0,0.2588047981262207,0,-0.9659297466278076)}
+partData[11]={size=Vector3.new(2.000000476837158,4.000000953674316,2.000000476837158),color=Color3.new(0.9764705896377563,0.9764705896377563,0.9764705896377563),name="Left Leg",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[12]={shape="Normal",cframe=CFrame.new(1,30.600000381469727,254.5,1,0,0,0,1,0,0,0,1)}
+partData[12]={size=Vector3.new(1,61.20000076293945,90.0009994506836),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="Part5",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.DiamondPlate}
+partDefs[13]={shape="Normal",cframe=CFrame.new(-83,30.600000381469727,254.5,1,0,0,0,1,0,0,0,1)}
+partData[13]={size=Vector3.new(1,61.20000076293945,90.0009994506836),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="Part",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.DiamondPlate}
+partDefs[14]={shape="Normal",cframe=CFrame.new(-41.5,30.600000381469727,298.5,1,0,0,0,1,0,0,0,1)}
+partData[14]={size=Vector3.new(86,61.20000076293945,2.000999927520752),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="Part4",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.DiamondPlate}
+partDefs[15]={shape="Spawn",cframe=CFrame.new(-32.49998474121094,1,280.0500793457031,1,0,0,0,1,0,0,0,1)}
+partData[15]={size=Vector3.new(6.999998092651367,1.2000000476837158,6.5),color=Color3.new(1,1,1),name="SpawnLocation5",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[16]={shape="Normal",cframe=CFrame.new(-31.46426773071289,7.049999237060547,218.98170471191406,-0.9961918592453003,0,-0.08718843013048172,0,1,0,0.08718843013048172,0,-0.9961918592453003)}
+partData[16]={size=Vector3.new(10.699999809265137,12.100000381469727,3.200000047683716),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="Penguin",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[17]={shape="Spawn",cframe=CFrame.new(-43.49998474121094,1,287.0500793457031,1,0,0,0,1,0,0,0,1)}
+partData[17]={size=Vector3.new(6.999998092651367,1.2000000476837158,6.5),color=Color3.new(1,1,1),name="SpawnLocation4",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[18]={shape="Normal",cframe=CFrame.new(-41.5,30.600000381469727,214.5,1,0,0,0,1,0,0,0,1)}
+partData[18]={size=Vector3.new(86,61.20000076293945,2.000999927520752),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="Part3",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.DiamondPlate}
+partDefs[19]={shape="Normal",cframe=CFrame.new(-41.352745056152344,29.300024032592773,297.0083312988281,0,0,-1,0,1,0,1,0,0)}
+partData[19]={size=Vector3.new(1.0010000467300415,30.200010299682617,81.60001373291016),color=Color3.new(0,0,0),name="DecalImage",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[20]={shape="Spawn",cframe=CFrame.new(-54.49998474121094,1,280.0500793457031,1,0,0,0,1,0,0,0,1)}
+partData[20]={size=Vector3.new(6.999998092651367,1.2000000476837158,6.5),color=Color3.new(1,1,1),name="SpawnLocation3",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[21]={shape="Normal",cframe=CFrame.new(0.1999969482421875,29.300024032592773,234.29974365234375,1,0,0,0,1,0,0,0,1)}
+partData[21]={size=Vector3.new(0.0010000000474974513,30.200010299682617,34.600013732910156),color=Color3.new(0,0,0),name="DecalImage",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[22]={shape="Spawn",cframe=CFrame.new(-22.499984741210938,1,288.0500793457031,1,0,0,0,1,0,0,0,1)}
+partData[22]={size=Vector3.new(6.999998092651367,1.2000000476837158,6.5),color=Color3.new(1,1,1),name="SpawnLocation",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[23]={shape="Spawn",cframe=CFrame.new(-66.49998474121094,1,286.0500793457031,1,0,0,0,1,0,0,0,1)}
+partData[23]={size=Vector3.new(6.999998092651367,1.2000000476837158,6.5),color=Color3.new(1,1,1),name="SpawnLocation2",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[24]={shape="Normal",cframe=CFrame.new(-52.5,21.30000114440918,216,1,0,0,0,1,0,0,0,1)}
+partData[24]={size=Vector3.new(34,32.20000076293945,0.0010000000474974513),color=Color3.new(0,0,0),name="Part6",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[25]={shape="Normal",cframe=CFrame.new(-2,3.835500717163086,225.5,1,0,0,0,1,0,0,0,1)}
+partData[25]={size=Vector3.new(4.124935150146484,5.271003246307373,12.59999942779541),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="Sofa",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[26]={shape="Seat",cframe=CFrame.new(-2.5,3.200000762939453,222.59994506835938,0,0,1,0,1,-0,-1,0,0)}
+partData[26]={size=Vector3.new(5.199999809265137,2.4000000953674316,2.799999952316284),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="Seat2",trans=1,reflect=0,collide=false,anchored=true,material=Enum.Material.Plastic}
+partDefs[27]={shape="Seat",cframe=CFrame.new(-2.5,3.200000762939453,228.3999481201172,0,0,1,0,1,-0,-1,0,0)}
+partData[27]={size=Vector3.new(5.199999809265137,2.4000000953674316,2.799999952316284),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="Seat",trans=1,reflect=0,collide=false,anchored=true,material=Enum.Material.Plastic}
+partDefs[28]={shape="Normal",cframe=CFrame.new(-41.5,0.6000003814697266,256.5,1,0,0,0,1,0,0,0,1)}
+partData[28]={size=Vector3.new(86,1.2000000476837158,86),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="Part2",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.DiamondPlate}
+partDefs[29]={shape="Normal",cframe=CFrame.new(-22.852745056152344,29.300024032592773,215.90811157226562,0,0,1,0,1,-0,-1,0,0)}
+partData[29]={size=Vector3.new(0.0010000000474974513,30.200010299682617,34.600013732910156),color=Color3.new(0,0,0),name="DecalImage",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+	
+	
+
+
+
+
+	local finished = false	
+	local P = {}	
+	local pending = 0	
+	
+	for id, def in pairs(partDefs) do	
+	    pending += 1	
+	
+	    task.spawn(function()	
+	        local ok, part = pcall(function()	
+	            return endpoint:InvokeServer("CreatePart", def.shape, def.cframe, workspace)	
+	        end)	
+	
+	        if ok and part then	
+	            P[id] = part	
+	        end	
+	
+	        pending -= 1	
+	    end)	
+	end	
+	
+	while pending > 0 do task.wait() end	
+	finished = true	
+
+
+		local resizeBatch={}	
+	local colorBatch={}	
+	local matBatch={}	
+	local colBatch={}	
+	local anchorBatch={}	
+	local rotateBatch = {}	
+	local lightData = {}	
+	local extraData = {}	
+	local moveBatch = {}	
+	
+	for id,data in pairs(partData) do	
+	    local p = P[id]	
+	
+	     task.spawn(function()	
+	
+	             if p then	
+	                resizeBatch[#resizeBatch+1]={Part=p,CFrame=p.CFrame,Size=data.size}	
+	                colorBatch[#colorBatch+1]={Part=p,Color=data.color,UnionColoring=false}	
+	                matBatch[#matBatch+1]={Part=p,Material=data.material,Transparency=data.trans,Reflectance=data.reflect}
+	                colBatch[#colBatch+1]={Part=p,CanCollide=data.collide}	
+	                anchorBatch[#anchorBatch+1]={Part=p,Anchored=data.anchored}	
+	                rotateBatch[#rotateBatch+1] = {Part = p,CFrame = partDefs[id].cframe}	
+	                if data.name and data.name ~= "" then	
+	                        endpoint:InvokeServer("SetName",{p},data.name)	
+	                end	
+
+	                        endpoint:InvokeServer("SetLocked",{p},true)	
+	            end	
+	
+	   end) 	
+	
+	end	
+	
+if #rotateBatch > 0 then endpoint:InvokeServer("SyncRotate", rotateBatch) end
+if #resizeBatch>0 then endpoint:InvokeServer("SyncResize",resizeBatch) end
+if #colorBatch>0 then endpoint:InvokeServer("SyncColor",colorBatch) end
+if #matBatch>0 then endpoint:InvokeServer("SyncMaterial",matBatch) end
+if #anchorBatch>0 then endpoint:InvokeServer("SyncAnchor",anchorBatch) end
+task.wait(0.3)
+if #colBatch>0 then
+    endpoint:InvokeServer("SyncCollision",colBatch)
+end
+	
+	if doSyncMoveGroup == true then	
+	if hrp then local firstPart = nil for _,p in pairs(P) do if p then firstPart = p break end end if firstPart then local pivotCF = firstPart.CFrame 	
+	      local targetCF =	
+	            CFrame.new(hrp.Position, hrp.Position + hrp.CFrame.LookVector)	
+	            * CFrame.Angles(0, math.pi, 0)	
+	            + hrp.CFrame.LookVector * 70	
+	            + Vector3.new(0,154,0)	
+	
+	     for _,p in pairs(P) do if p then local offset = pivotCF:ToObjectSpace(p.CFrame) local newCF = targetCF * offset table.insert(moveBatch,{ Part = p,CFrame = newCF}) end end	
+	        endpoint:InvokeServer("SyncMove", moveBatch)	
+	    end	
+	end	
+	else	
+	end	
+
+table.insert(extraData,{type="Surface",id=1,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=2,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=3,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=4,surf={Top="Studs",Bottom="Inlet",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=5,surf={Top="Smooth",Bottom="Inlet",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=6,surf={Top="Studs",Bottom="Inlet",Left="Weld",Right="Weld",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=7,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=8,surf={Top="Studs",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=9,surf={Top="Studs",Bottom="Inlet",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=10,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=11,surf={Top="Studs",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=12,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=13,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=14,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=15,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=16,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=17,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=18,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=19,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=20,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=21,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=22,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=23,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=24,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=25,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=26,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=27,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=28,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=29,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+task.spawn(function()
+  if P[1] then
+    endpoint:InvokeServer("CreateMeshes", {{Part=P[1]}})
+    endpoint:InvokeServer("SyncMesh", {{Part=P[1],MeshType=Enum.MeshType.FileMesh}})
+    endpoint:InvokeServer("SyncMesh", {{Part=P[1],MeshId="rbxassetid://6031790762"}})
+    endpoint:InvokeServer("SyncMesh", {{Part=P[1],TextureId="rbxassetid://6031790886"}})
+    endpoint:InvokeServer("SyncMesh", {{Part=P[1],Scale=Vector3.new(0.17460091412067413,0.24664275348186493,0.25199997425079346)}})
+  end
+end)
+
+task.spawn(function()
+  if P[5] then
+    endpoint:InvokeServer("CreateMeshes", {{Part=P[5]}})
+    endpoint:InvokeServer("SyncMesh", {{Part=P[5],MeshType=Enum.MeshType.Head}})
+    endpoint:InvokeServer("SyncMesh", {{Part=P[5],Scale=Vector3.new(1.25,1.25,1.25)}})
+    endpoint:InvokeServer("SyncMesh", {{Part=P[5],Offset=Vector3.new(0,0,0)}})
+  end
+end)
+
+task.spawn(function()
+  if P[5] then
+    endpoint:InvokeServer("CreateTextures", {{Part=P[5],Face=Enum.NormalId.Right,TextureType="Decal"}})
+    endpoint:InvokeServer("SyncTexture", {{Part=P[5],Face=Enum.NormalId.Right,TextureType="Decal",Texture="rbxasset://textures/face.png"}})
+  end
+end)
+
+task.spawn(function()
+  if P[6] then
+    endpoint:InvokeServer("CreateTextures", {{Part=P[6],Face=Enum.NormalId.Front,TextureType="Decal"}})
+    endpoint:InvokeServer("SyncTexture", {{Part=P[6],Face=Enum.NormalId.Front,TextureType="Decal",Texture="http://www.roblox.com/asset/?id=17013631000"}})
+  end
+end)
+
+task.spawn(function()
+  if P[10] then
+    endpoint:InvokeServer("CreateMeshes", {{Part=P[10]}})
+    endpoint:InvokeServer("SyncMesh", {{Part=P[10],MeshType=Enum.MeshType.FileMesh}})
+    endpoint:InvokeServer("SyncMesh", {{Part=P[10],MeshId="rbxassetid://91835009087897"}})
+    endpoint:InvokeServer("SyncMesh", {{Part=P[10],TextureId="rbxassetid://135188798907403"}})
+    endpoint:InvokeServer("SyncMesh", {{Part=P[10],Scale=Vector3.new(2.000000476837158,2.000000476837158,2.000000476837158)}})
+    endpoint:InvokeServer("SyncMesh", {{Part=P[10],Offset=Vector3.new(0,0,0)}})
+  end
+end)
+
+task.spawn(function()
+  if P[15] then
+    endpoint:InvokeServer("CreateTextures", {{Part=P[15],Face=Enum.NormalId.Top,TextureType="Decal"}})
+    endpoint:InvokeServer("SyncTexture", {{Part=P[15],Face=Enum.NormalId.Top,TextureType="Decal",Texture="rbxassetid://1213422374"}})
+  end
+end)
+
+task.spawn(function()
+  if P[16] then
+    endpoint:InvokeServer("CreateMeshes", {{Part=P[16]}})
+    endpoint:InvokeServer("SyncMesh", {{Part=P[16],MeshType=Enum.MeshType.FileMesh}})
+    endpoint:InvokeServer("SyncMesh", {{Part=P[16],MeshId="rbxassetid://5136636446"}})
+    endpoint:InvokeServer("SyncMesh", {{Part=P[16],TextureId="rbxassetid://5136636473"}})
+    endpoint:InvokeServer("SyncMesh", {{Part=P[16],Scale=Vector3.new(8.413695335388184,11.442373275756836,4.954864025115967)}})
+  end
+end)
+
+task.spawn(function()
+  if P[17] then
+    endpoint:InvokeServer("CreateTextures", {{Part=P[17],Face=Enum.NormalId.Top,TextureType="Decal"}})
+    endpoint:InvokeServer("SyncTexture", {{Part=P[17],Face=Enum.NormalId.Top,TextureType="Decal",Texture="rbxassetid://1213422374"}})
+  end
+end)
+
+task.spawn(function()
+  if P[19] then
+    endpoint:InvokeServer("CreateTextures", {{Part=P[19],Face=Enum.NormalId.Left,TextureType="Decal"}})
+    endpoint:InvokeServer("SyncTexture", {{Part=P[19],Face=Enum.NormalId.Left,TextureType="Decal",Texture="rbxthumb://type=Asset&id=76814801028474&w=420&h=420"}})
+  end
+end)
+
+task.spawn(function()
+  if P[20] then
+    endpoint:InvokeServer("CreateTextures", {{Part=P[20],Face=Enum.NormalId.Top,TextureType="Decal"}})
+    endpoint:InvokeServer("SyncTexture", {{Part=P[20],Face=Enum.NormalId.Top,TextureType="Decal",Texture="rbxassetid://1213422374"}})
+  end
+end)
+
+task.spawn(function()
+  if P[21] then
+    endpoint:InvokeServer("CreateTextures", {{Part=P[21],Face=Enum.NormalId.Left,TextureType="Decal"}})
+    endpoint:InvokeServer("SyncTexture", {{Part=P[21],Face=Enum.NormalId.Left,TextureType="Decal",Texture="rbxthumb://type=Asset&id=88578114073171&w=420&h=420"}})
+  end
+end)
+
+task.spawn(function()
+  if P[22] then
+    endpoint:InvokeServer("CreateTextures", {{Part=P[22],Face=Enum.NormalId.Top,TextureType="Decal"}})
+    endpoint:InvokeServer("SyncTexture", {{Part=P[22],Face=Enum.NormalId.Top,TextureType="Decal",Texture="rbxassetid://1213422374"}})
+  end
+end)
+
+task.spawn(function()
+  if P[23] then
+    endpoint:InvokeServer("CreateTextures", {{Part=P[23],Face=Enum.NormalId.Top,TextureType="Decal"}})
+    endpoint:InvokeServer("SyncTexture", {{Part=P[23],Face=Enum.NormalId.Top,TextureType="Decal",Texture="rbxassetid://1213422374"}})
+  end
+end)
+
+task.spawn(function()
+  if P[24] then
+    endpoint:InvokeServer("CreateTextures", {{Part=P[24],Face=Enum.NormalId.Back,TextureType="Decal"}})
+    endpoint:InvokeServer("SyncTexture", {{Part=P[24],Face=Enum.NormalId.Back,TextureType="Decal",Texture="rbxthumb://type=Asset&id=91009147335850&w=420&h=420"}})
+  end
+end)
+
+task.spawn(function()
+  if P[25] then
+    endpoint:InvokeServer("CreateMeshes", {{Part=P[25]}})
+    endpoint:InvokeServer("SyncMesh", {{Part=P[25],MeshType=Enum.MeshType.FileMesh}})
+    endpoint:InvokeServer("SyncMesh", {{Part=P[25],MeshId="rbxassetid://6031790762"}})
+    endpoint:InvokeServer("SyncMesh", {{Part=P[25],TextureId="rbxassetid://6031790886"}})
+    endpoint:InvokeServer("SyncMesh", {{Part=P[25],Scale=Vector3.new(0.17460091412067413,0.24664275348186493,0.25199997425079346)}})
+  end
+end)
+
+task.spawn(function()
+  if P[29] then
+    endpoint:InvokeServer("CreateTextures", {{Part=P[29],Face=Enum.NormalId.Left,TextureType="Decal"}})
+    endpoint:InvokeServer("SyncTexture", {{Part=P[29],Face=Enum.NormalId.Left,TextureType="Decal",Texture="rbxthumb://type=Asset&id=96396797057034&w=420&h=420"}})
+  end
+end)
+
+   wait(1.5)
+
+	task.spawn(function()	
+
+   for _, data in ipairs(extraData) do
+       local p = P[data.id]
+
+       if p then
+
+           if data.type == "Decoration" then
+               endpoint:InvokeServer("CreateDecorations", {{
+                   Part = p,
+                   DecorationType = data.dec
+               }})
+           end
+
+           if data.type == "Surface" then
+               endpoint:InvokeServer("SyncSurface", {{
+                   Part = p,
+                   Surfaces = {
+                       Top = Enum.SurfaceType[data.surf.Top],
+                       Bottom = Enum.SurfaceType[data.surf.Bottom],
+                       Left = Enum.SurfaceType[data.surf.Left],
+                       Right = Enum.SurfaceType[data.surf.Right],
+                       Front = Enum.SurfaceType[data.surf.Front],
+                       Back = Enum.SurfaceType[data.surf.Back]
+                   }
+               }})
+           end
+       end
+   end
+   end)
+   music(119414415681261,1,4)
+	
+	if finished then	
+	    if RequestCommand then	
+	        RequestCommand:InvokeServer("/savemap")	
+	        RequestCommand:InvokeServer("/res all")	
+           RequestCommand:InvokeServer("/btools me")	
+           RequestCommand:InvokeServer("/sh map Made By 0zca")	
+	    end	
+	end	
+	
