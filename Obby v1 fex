@@ -1,0 +1,326 @@
+--// F3X Convert by gavinrgb27 \--
+
+ local ReplicatedStorage = game:GetService("ReplicatedStorage") local player = game.Players.LocalPlayer local RequestCommand = ReplicatedStorage:WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent local hrp = player.Character and player.Character:FindFirstChild("HumanoidRootPart") RequestCommand:InvokeServer(";btools me") task.wait(1.2) RequestCommand:InvokeServer(";punish all") task.wait(0.2) local backpack = player.Backpack local character = player.Character local function getF3X() for _, v in ipairs(backpack:GetChildren()) do if v:FindFirstChild("SyncAPI") then return v end end for _, v in ipairs(character:GetChildren()) do if v:FindFirstChild("SyncAPI") then return v end end return nil end local f3x = getF3X() if not f3x then warn("F3X / SyncAPI not found – please equip btools and try again") return end local syncapi = f3x.SyncAPI local endpoint = syncapi.ServerEndpoint task.wait(1) function music(id,pch,vol) RequestCommand:InvokeServer("/music "..id) RequestCommand:InvokeServer("/volume "..vol) RequestCommand:InvokeServer("/pitch "..pch) end function Sky(Id) if not hrp then return end local cf = hrp.CFrame + Vector3.new(0,6,0) local part = endpoint:InvokeServer("CreatePart","Ball",cf,workspace) task.wait() if part then endpoint:InvokeServer("SetName",{part},"Skybox") endpoint:InvokeServer("CreateMeshes",{{Part=part,MeshType="SpecialMesh"}}) endpoint:InvokeServer("SyncMesh",{{Part=part,MeshId="rbxassetid://111891702759441"}}) endpoint:InvokeServer("SyncMesh",{{Part=part,TextureId=Id}}) endpoint:InvokeServer("SyncMesh",{{Part=part,Scale=Vector3.new(7200,7200,7200)}}) endpoint:InvokeServer("SetLocked",{part},true) end end 
+
+--// Load Script \--
+----[NameTarget={FullCode}>>]
+--Total--[=={53}==]--Part--
+
+local P = {}
+local partDefs = {}
+local partData = {}
+local doSyncMoveGroup = false
+local Deleted = true
+
+	
+	if Deleted == true then	
+	for _, v in ipairs(workspace:GetDescendants()) do	
+	    if v:IsA("BasePart") or v:IsA("UnionOperation") or v:IsA("MeshPart") then	
+	        task.spawn(function()	
+	            pcall(function()	
+	                endpoint:InvokeServer("Remove", {v})	
+	            end)	
+	        end)	
+	    end	
+	end	
+	else	
+	end	
+	
+	partDefs[1]={shape="Truss",cframe=CFrame.new(-20.5,1,67,1,0,0,0,1,0,0,0,1)}
+partData[1]={size=Vector3.new(2,2,2),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="Truss",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[2]={shape="Normal",cframe=CFrame.new(0,14.999581336975098,-30,-1,0,0,0,1,0,0,0,-1)}
+partData[2]={size=Vector3.new(1,1,1),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="FlyCameraFocus",trans=1,reflect=0,collide=false,anchored=false,material=Enum.Material.Plastic}
+partDefs[3]={shape="Normal",cframe=CFrame.new(0.0008387771085835993,14.996792793273926,-29.996999740600586,-1,0,0,0,1,0,0,0,-1)}
+partData[3]={size=Vector3.new(1,1,1),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="FlyCameraFocus",trans=1,reflect=0,collide=false,anchored=false,material=Enum.Material.Plastic}
+partDefs[4]={shape="Normal",cframe=CFrame.new(-18.364355087280273,32.441741943359375,98.1218032836914,-1,0,0,0,1,0,0,0,-1)}
+partData[4]={size=Vector3.new(1,1,1),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="FlyCameraFocus",trans=1,reflect=0,collide=false,anchored=false,material=Enum.Material.Plastic}
+partDefs[5]={shape="Normal",cframe=CFrame.new(0,14.999581336975098,-30,-1,0,0,0,1,0,0,0,-1)}
+partData[5]={size=Vector3.new(1,1,1),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="FlyCameraFocus",trans=1,reflect=0,collide=false,anchored=false,material=Enum.Material.Plastic}
+partDefs[6]={shape="Normal",cframe=CFrame.new(-95.35442352294922,81.53071594238281,67.17414093017578,-1,0,0,0,1,0,0,0,-1)}
+partData[6]={size=Vector3.new(1,1,1),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="FlyCameraFocus",trans=1,reflect=0,collide=false,anchored=false,material=Enum.Material.Plastic}
+partDefs[7]={shape="Normal",cframe=CFrame.new(-10.97606372833252,23.304330825805664,112.8439712524414,-1,0,0,0,1,0,0,0,-1)}
+partData[7]={size=Vector3.new(1,1,1),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="FlyCameraFocus",trans=1,reflect=0,collide=false,anchored=false,material=Enum.Material.Plastic}
+partDefs[8]={shape="Normal",cframe=CFrame.new(-91.33305358886719,27.310325622558594,120.34396362304688,0.6842913627624512,0.09061732888221741,-0.7235562801361084,0.7247202396392822,0.025410890579223633,0.6885745525360107,0.08078297972679138,-0.9955614805221558,-0.04828381538391113)}
+partData[8]={size=Vector3.new(2,1.5,28),color=Color3.new(0.772549033164978,0.5803921818733215,0.3843137323856354),name="Part5",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.WoodPlanks}
+partDefs[9]={shape="Normal",cframe=CFrame.new(26.442771911621094,0.5,61.99933624267578,-1.1920928955078125e-07,0,1.0000001192092896,0,1,0,-1.0000001192092896,0,-1.1920928955078125e-07)}
+partData[9]={size=Vector3.new(46,1,6),color=Color3.new(0.7490196228027344,1,1),name="Part1",trans=0.949999988079071,reflect=0,collide=true,anchored=true,material=Enum.Material.DiamondPlate}
+partDefs[10]={shape="Normal",cframe=CFrame.new(-0.5,0.5,9.5,1,0,0,0,1,0,0,0,1)}
+partData[10]={size=Vector3.new(12,1,1),color=Color3.new(0.7490196228027344,1,1),name="Part1",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.DiamondPlate}
+partDefs[11]={shape="Normal",cframe=CFrame.new(14.062542915344238,-7.5,2.4274845123291016,0,0,1,0,1,-0,-1,0,0)}
+partData[11]={size=Vector3.new(19.00000762939453,1,6),color=Color3.new(0.7490196228027344,1,1),name="Part1",trans=0.9900000095367432,reflect=0,collide=true,anchored=true,material=Enum.Material.DiamondPlate}
+partDefs[12]={shape="Normal",cframe=CFrame.new(-17,22.5,81,1,0,0,0,1,0,0,0,1)}
+partData[12]={size=Vector3.new(35,6.5,4.000999927520752),color=Color3.new(0.7490196228027344,1,1),name="Part6",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.DiamondPlate}
+partDefs[13]={shape="Normal",cframe=CFrame.new(-19.478595733642578,17.5,123.04364013671875,0.6427633166313171,-0,-0.7660649418830872,0,1,-0,0.7660649418830872,0,0.6427633166313171)}
+partData[13]={size=Vector3.new(2,0.5,17),color=Color3.new(0.772549033164978,0.5803921818733215,0.3843137323856354),name="Part5",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.WoodPlanks}
+partDefs[14]={shape="Normal",cframe=CFrame.new(4.900389671325684,13.375004768371582,114.31178283691406,0.4330037236213684,0.2499951273202896,0.866031289100647,-0.49997490644454956,0.8660398721694946,-0.000017061829566955566,-0.7500219345092773,-0.4329864978790283,0.4999898076057434)}
+partData[14]={size=Vector3.new(49.50001907348633,1,6),color=Color3.new(0.7490196228027344,1,1),name="Part1",trans=0.949999988079071,reflect=0,collide=true,anchored=true,material=Enum.Material.DiamondPlate}
+partDefs[15]={shape="Normal",cframe=CFrame.new(19.334972381591797,-5.58754825592041,2.4274845123291016,0.0000426173210144043,-0.42262619733810425,0.906304121017456,0.000009462237358093262,0.906304121017456,0.42262619733810425,-1,-0.000009462237358093262,0.0000426173210144043)}
+partData[15]={size=Vector3.new(20.400009155273438,1,6),color=Color3.new(0.7490196228027344,1,1),name="Part1",trans=0.9990000128746033,reflect=0,collide=true,anchored=true,material=Enum.Material.DiamondPlate}
+partDefs[16]={shape="Normal",cframe=CFrame.new(-55.67452621459961,18.968965530395508,123.87773132324219,-0.08507955074310303,0.0667816549539566,-0.9941336512565613,0.06165449321269989,0.9961921572685242,0.06164344772696495,0.9944648146629333,-0.056048210710287094,-0.08887290954589844)}
+partData[16]={size=Vector3.new(2,0.5,67),color=Color3.new(0.772549033164978,0.5803921818733215,0.3843137323856354),name="Part5",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.WoodPlanks}
+partDefs[17]={shape="Normal",cframe=CFrame.new(-19.5,5,78,1,0,0,0,1,0,0,0,1)}
+partData[17]={size=Vector3.new(12,10,12),color=Color3.new(1,1,1),name="Part4",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Air}
+partDefs[18]={shape="Truss",cframe=CFrame.new(-15.5,4,72,1,0,0,0,1,0,0,0,1)}
+partData[18]={size=Vector3.new(2,8,2),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="Truss",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[19]={shape="Normal",cframe=CFrame.new(10.062542915344238,-12.5,2.4274845123291016,0,0,1,0,1,-0,-1,0,0)}
+partData[19]={size=Vector3.new(19.00000762939453,1,6),color=Color3.new(0.7490196228027344,1,1),name="Part1",trans=0.9800000190734863,reflect=0,collide=true,anchored=true,material=Enum.Material.DiamondPlate}
+partDefs[20]={shape="Normal",cframe=CFrame.new(-8.739507675170898,24.125003814697266,127.93678283691406,0.4330037236213684,0.2499951273202896,0.866031289100647,-0.49997490644454956,0.8660398721694946,-0.000017061829566955566,-0.7500219345092773,-0.4329864978790283,0.4999898076057434)}
+partData[20]={size=Vector3.new(6.500019073486328,1,16),color=Color3.new(0.7490196228027344,1,1),name="Part1",trans=0.949999988079071,reflect=0,collide=true,anchored=true,material=Enum.Material.DiamondPlate}
+partDefs[21]={shape="Normal",cframe=CFrame.new(-19.5,6.5,88,1,0,0,0,1,0,0,0,1)}
+partData[21]={size=Vector3.new(12,8.5,8.000999450683594),color=Color3.new(0.7490196228027344,1,1),name="Part6",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.DiamondPlate}
+partDefs[22]={shape="Normal",cframe=CFrame.new(-19.5,12,78,1,0,0,0,1,0,0,0,1)}
+partData[22]={size=Vector3.new(12,4,12),color=Color3.new(0,0,0),name="Part4",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Air}
+partDefs[23]={shape="Normal",cframe=CFrame.new(-17.5,9,50,1,0,-0,0,0,1,0,-1,0)}
+partData[23]={size=Vector3.new(22,3,27),color=Color3.new(0.7411764860153198,0.5568627715110779,0.5568627715110779),name="Part2",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Brick}
+partDefs[24]={shape="Truss",cframe=CFrame.new(-19,8.5,47,1,0,0,0,1,0,0,0,1)}
+partData[24]={size=Vector3.new(2,32,2),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="Truss",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[25]={shape="Truss",cframe=CFrame.new(-17,8.5,47,1,0,0,0,1,0,0,0,1)}
+partData[25]={size=Vector3.new(2,32,2),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="Truss",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[26]={shape="Truss",cframe=CFrame.new(-15,8.5,47,1,0,0,0,1,0,0,0,1)}
+partData[26]={size=Vector3.new(2,32,2),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="Truss",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[27]={shape="Truss",cframe=CFrame.new(-23,8.5,47,1,0,0,0,1,0,0,0,1)}
+partData[27]={size=Vector3.new(2,32,2),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="Truss",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[28]={shape="Truss",cframe=CFrame.new(-11,8.5,47,1,0,0,0,1,0,0,0,1)}
+partData[28]={size=Vector3.new(2,32,2),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="Truss",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[29]={shape="Truss",cframe=CFrame.new(-13,8.5,47,1,0,0,0,1,0,0,0,1)}
+partData[29]={size=Vector3.new(2,32,2),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="Truss",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[30]={shape="Truss",cframe=CFrame.new(-21,8.5,47,1,0,0,0,1,0,0,0,1)}
+partData[30]={size=Vector3.new(2,32,2),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="Truss",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[31]={shape="Truss",cframe=CFrame.new(-24.5,1,56,1,0,0,0,1,0,0,0,1)}
+partData[31]={size=Vector3.new(2,2,2),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="Truss",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[32]={shape="Normal",cframe=CFrame.new(-0.7724791169166565,9.5,21.245140075683594,-0.8191560506820679,0,-0.5735712647438049,0,1,0,0.5735712647438049,0,-0.8191560506820679)}
+partData[32]={size=Vector3.new(5,1,1),color=Color3.new(0.7490196228027344,1,1),name="Part1",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.DiamondPlate}
+partDefs[33]={shape="Normal",cframe=CFrame.new(-22.2956600189209,7.984601974487305,36.638450622558594,0.9547353982925415,-0.2973734736442566,0.007023148238658905,0.16220544278621674,0.5402712821960449,0.8257095813751221,-0.2493385374546051,-0.7871949672698975,0.5640516877174377)}
+partData[33]={size=Vector3.new(3.000999927520752,1,18),color=Color3.new(0,1,0),name="Part1",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.DiamondPlate}
+partDefs[34]={shape="Normal",cframe=CFrame.new(-8.55880355834961,9.984768867492676,37.90327453613281,0.8682478070259094,-0.29735344648361206,-0.39714813232421875,0.4959750771522522,0.5402687788009644,0.6797928810119629,0.01242797076702118,-0.7872042655944824,0.616567075252533)}
+partData[34]={size=Vector3.new(3.000999927520752,1,22),color=Color3.new(1,1,0),name="Part1",trans=0,reflect=0,collide=false,anchored=true,material=Enum.Material.DiamondPlate}
+partDefs[35]={shape="Normal",cframe=CFrame.new(-23.67890739440918,10.5,24.28887176513672,-0.9848126173019409,0,-0.17362114787101746,0,1,0,0.17362114787101746,0,-0.9848126173019409)}
+partData[35]={size=Vector3.new(9.000999450683594,1,1),color=Color3.new(0.7490196228027344,1,1),name="Part1",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.DiamondPlate}
+partDefs[36]={shape="Normal",cframe=CFrame.new(-9.300131797790527,10.5,26.580305099487305,0.9062966704368591,-0,-0.4226420819759369,0,1,-0,0.4226420819759369,0,0.9062966704368591)}
+partData[36]={size=Vector3.new(11,1,1),color=Color3.new(0.7490196228027344,1,1),name="Part1",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.DiamondPlate}
+partDefs[37]={shape="Normal",cframe=CFrame.new(-19.5,17.5,97.5,1,0,0,0,1,0,0,0,1)}
+partData[37]={size=Vector3.new(12,0.5,17),color=Color3.new(0.772549033164978,0.5803921818733215,0.3843137323856354),name="Part5",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.WoodPlanks}
+partDefs[38]={shape="Normal",cframe=CFrame.new(16.050464630126953,0.5,94.99933624267578,0.49995946884155273,0,0.8660488128662109,0,1,0,-0.8660488128662109,0,0.49995946884155273)}
+partData[38]={size=Vector3.new(46,1,6),color=Color3.new(0.7490196228027344,1,1),name="Part1",trans=0.949999988079071,reflect=0,collide=true,anchored=true,material=Enum.Material.DiamondPlate}
+partDefs[39]={shape="Normal",cframe=CFrame.new(-4.213937759399414,6.5,16.330223083496094,-0.7660616636276245,0,0.642767608165741,0,1,0,-0.642767608165741,0,-0.7660616636276245)}
+partData[39]={size=Vector3.new(5,1,1),color=Color3.new(0.7490196228027344,1,1),name="Part1",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.DiamondPlate}
+partDefs[40]={shape="Normal",cframe=CFrame.new(-13.5,17.5,111.5,1,0,0,0,1,0,0,0,1)}
+partData[40]={size=Vector3.new(2,0.5,17),color=Color3.new(0.772549033164978,0.5803921818733215,0.3843137323856354),name="Part5",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.WoodPlanks}
+partDefs[41]={shape="Truss",cframe=CFrame.new(-18.5,1,71,1,0,0,0,1,0,0,0,1)}
+partData[41]={size=Vector3.new(14,2,2),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="Truss",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[42]={shape="Normal",cframe=CFrame.new(26.442771911621094,0.5,22.99934196472168,-0.17362427711486816,0,0.9848119020462036,0,1,0,-0.9848119020462036,0,-0.17362427711486816)}
+partData[42]={size=Vector3.new(46,1,6),color=Color3.new(0.7490196228027344,1,1),name="Part1",trans=0.949999988079071,reflect=0,collide=true,anchored=true,material=Enum.Material.DiamondPlate}
+partDefs[43]={shape="Spawn",cframe=CFrame.new(-1,-5.5,4.5,1,0,0,0,1,0,0,0,1)}
+partData[43]={size=Vector3.new(16,1,21),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="SpawnLocation",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[44]={shape="Normal",cframe=CFrame.new(0,14.999571800231934,-30,-1,0,0,0,1,0,0,0,-1)}
+partData[44]={size=Vector3.new(1,1,1),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="FlyCameraFocus",trans=1,reflect=0,collide=false,anchored=false,material=Enum.Material.Plastic}
+partDefs[45]={shape="Truss",cframe=CFrame.new(-20.5,1,60,1,0,0,0,1,0,0,0,1)}
+partData[45]={size=Vector3.new(2,2,2),color=Color3.new(0.6392157077789307,0.6352941393852234,0.6470588445663452),name="Truss",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[46]={shape="Cylinder",cframe=CFrame.new(-113.93600463867188,25.274076461791992,147.9879150390625,0,1,-0,-1,0,0,0,0,1)}
+partData[46]={size=Vector3.new(6.921595573425293,2.7902042865753174,2.6711721420288086),color=Color3.new(1,0,0),name="tube2",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[47]={shape="Ball",cframe=CFrame.new(-107.05439758300781,28.866823196411133,147.9879150390625,0,1,-0,-1,0,0,0,0,1)}
+partData[47]={size=Vector3.new(2.6767752170562744,2.6767752170562744,2.6767752170562744),color=Color3.new(1,0,0),name="tubeTop",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[48]={shape="Cylinder",cframe=CFrame.new(-107.0498046875,25.274076461791992,147.9879150390625,0,1,-0,-1,0,0,0,0,1)}
+partData[48]={size=Vector3.new(6.921595573425293,2.7902042865753174,2.6711721420288086),color=Color3.new(1,0,0),name="tube",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[49]={shape="Ball",cframe=CFrame.new(-113.93002319335938,28.866823196411133,147.9879150390625,0,1,-0,-1,0,0,0,0,1)}
+partData[49]={size=Vector3.new(2.6767752170562744,2.6767752170562744,2.6767752170562744),color=Color3.new(1,0,0),name="tube2Top",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[50]={shape="Normal",cframe=CFrame.new(-110.64424133300781,25.485488891601562,148.02133178710938,-1,0,0,0,1,0,0,0,-1)}
+partData[50]={size=Vector3.new(7.302848815917969,3.1866374015808105,2.851762294769287),color=Color3.new(0.10588235408067703,0.16470588743686676,0.2078431397676468),name="Handle",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Plastic}
+partDefs[51]={shape="Normal",cframe=CFrame.new(-110.5,10,128.75,1,0,0,0,1,0,0,0,1)}
+partData[51]={size=Vector3.new(12,20,53.5),color=Color3.new(0.7411764860153198,0.5568627715110779,0.5568627715110779),name="Part7",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.Brick}
+partDefs[52]={shape="Normal",cframe=CFrame.new(-1,3.5,12.5,0.8191556930541992,0,0.5735712647438049,0,1,0,-0.5735712647438049,0,0.8191556930541992)}
+partData[52]={size=Vector3.new(5,1,1),color=Color3.new(0.7490196228027344,1,1),name="Part1",trans=0,reflect=0,collide=true,anchored=true,material=Enum.Material.DiamondPlate}
+partDefs[53]={shape="Normal",cframe=CFrame.new(-14.766551971435547,8.235363960266113,35.93972396850586,0.9207791090011597,-0.38998499512672424,0.008806407451629639,0.2892785966396332,0.6978020668029785,0.6552788019180298,-0.2616939842700958,-0.6008195877075195,0.755335807800293)}
+partData[53]={size=Vector3.new(3.000999927520752,1,22),color=Color3.new(1,0,0),name="Part1",trans=0,reflect=0,collide=false,anchored=true,material=Enum.Material.DiamondPlate}
+	
+	
+
+
+
+
+	local finished = false	
+	local P = {}	
+	local pending = 0	
+	
+	for id, def in pairs(partDefs) do	
+	    pending += 1	
+	
+	    task.spawn(function()	
+	        local ok, part = pcall(function()	
+	            return endpoint:InvokeServer("CreatePart", def.shape, def.cframe, workspace)	
+	        end)	
+	
+	        if ok and part then	
+	            P[id] = part	
+	        end	
+	
+	        pending -= 1	
+	    end)	
+	end	
+	
+	while pending > 0 do task.wait() end	
+	finished = true	
+
+
+		local resizeBatch={}	
+	local colorBatch={}	
+	local matBatch={}	
+	local colBatch={}	
+	local anchorBatch={}	
+	local rotateBatch = {}	
+	local lightData = {}	
+	local extraData = {}	
+	local moveBatch = {}	
+	
+	for id,data in pairs(partData) do	
+	    local p = P[id]	
+	
+	     task.spawn(function()	
+	
+	             if p then	
+	                resizeBatch[#resizeBatch+1]={Part=p,CFrame=p.CFrame,Size=data.size}	
+	                colorBatch[#colorBatch+1]={Part=p,Color=data.color,UnionColoring=false}	
+	                matBatch[#matBatch+1]={Part=p,Material=data.material,Transparency=data.trans,Reflectance=data.reflect}
+	                colBatch[#colBatch+1]={Part=p,CanCollide=data.collide}	
+	                anchorBatch[#anchorBatch+1]={Part=p,Anchored=data.anchored}	
+	                rotateBatch[#rotateBatch+1] = {Part = p,CFrame = partDefs[id].cframe}	
+	                if data.name and data.name ~= "" then	
+	                        endpoint:InvokeServer("SetName",{p},data.name)	
+	                end	
+
+	                        endpoint:InvokeServer("SetLocked",{p},true)	
+	            end	
+	
+	   end) 	
+	
+	end	
+	
+if #rotateBatch > 0 then endpoint:InvokeServer("SyncRotate", rotateBatch) end
+if #resizeBatch>0 then endpoint:InvokeServer("SyncResize",resizeBatch) end
+if #colorBatch>0 then endpoint:InvokeServer("SyncColor",colorBatch) end
+if #matBatch>0 then endpoint:InvokeServer("SyncMaterial",matBatch) end
+if #anchorBatch>0 then endpoint:InvokeServer("SyncAnchor",anchorBatch) end
+task.wait(0.3)
+if #colBatch>0 then
+    endpoint:InvokeServer("SyncCollision",colBatch)
+end
+	
+	if doSyncMoveGroup == true then	
+	if hrp then local firstPart = nil for _,p in pairs(P) do if p then firstPart = p break end end if firstPart then local pivotCF = firstPart.CFrame 	
+	      local targetCF =	
+	            CFrame.new(hrp.Position, hrp.Position + hrp.CFrame.LookVector)	
+	            * CFrame.Angles(0, math.pi, 0)	
+	            + hrp.CFrame.LookVector * 70	
+	            + Vector3.new(0,154,0)	
+	
+	     for _,p in pairs(P) do if p then local offset = pivotCF:ToObjectSpace(p.CFrame) local newCF = targetCF * offset table.insert(moveBatch,{ Part = p,CFrame = newCF}) end end	
+	        endpoint:InvokeServer("SyncMove", moveBatch)	
+	    end	
+	end	
+	else	
+	end	
+
+table.insert(extraData,{type="Surface",id=1,surf={Top="Smooth",Bottom="Smooth",Left="Universal",Right="Universal",Front="Universal",Back="Universal"}})
+table.insert(extraData,{type="Surface",id=2,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=3,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=4,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=5,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=6,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=7,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=8,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=9,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=10,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=11,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=12,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=13,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=14,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=15,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=16,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=17,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=18,surf={Top="Smooth",Bottom="Smooth",Left="Universal",Right="Universal",Front="Universal",Back="Universal"}})
+table.insert(extraData,{type="Surface",id=19,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=20,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=21,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=22,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=23,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=24,surf={Top="Smooth",Bottom="Smooth",Left="Universal",Right="Universal",Front="Universal",Back="Universal"}})
+table.insert(extraData,{type="Surface",id=25,surf={Top="Smooth",Bottom="Smooth",Left="Universal",Right="Universal",Front="Universal",Back="Universal"}})
+table.insert(extraData,{type="Surface",id=26,surf={Top="Smooth",Bottom="Smooth",Left="Universal",Right="Universal",Front="Universal",Back="Universal"}})
+table.insert(extraData,{type="Surface",id=27,surf={Top="Smooth",Bottom="Smooth",Left="Universal",Right="Universal",Front="Universal",Back="Universal"}})
+table.insert(extraData,{type="Surface",id=28,surf={Top="Smooth",Bottom="Smooth",Left="Universal",Right="Universal",Front="Universal",Back="Universal"}})
+table.insert(extraData,{type="Surface",id=29,surf={Top="Smooth",Bottom="Smooth",Left="Universal",Right="Universal",Front="Universal",Back="Universal"}})
+table.insert(extraData,{type="Surface",id=30,surf={Top="Smooth",Bottom="Smooth",Left="Universal",Right="Universal",Front="Universal",Back="Universal"}})
+table.insert(extraData,{type="Surface",id=31,surf={Top="Smooth",Bottom="Smooth",Left="Universal",Right="Universal",Front="Universal",Back="Universal"}})
+table.insert(extraData,{type="Surface",id=32,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=33,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=34,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=35,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=36,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=37,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=38,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=39,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=40,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=41,surf={Top="Smooth",Bottom="Smooth",Left="Universal",Right="Universal",Front="Universal",Back="Universal"}})
+table.insert(extraData,{type="Surface",id=42,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Decoration",id=43,dec="Sparkles"})
+table.insert(extraData,{type="Surface",id=43,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=44,surf={Top="Smooth",Bottom="Smooth",Left="Smooth",Right="Smooth",Front="Smooth",Back="Smooth"}})
+table.insert(extraData,{type="Surface",id=45,surf={Top="Smooth",Bottom="Smooth",Left="Universal",Right="Universal",Front="Universal",Back="Universal"}})
+table.insert(extraData,{type="Surface",id=46,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=47,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=48,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=49,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=50,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=51,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=52,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+table.insert(extraData,{type="Surface",id=53,surf={Top="Smooth",Bottom="Smooth",Left="SmoothNoOutlines",Right="SmoothNoOutlines",Front="SmoothNoOutlines",Back="SmoothNoOutlines"}})
+task.spawn(function()
+  if P[43] then
+    endpoint:InvokeServer("CreateTextures", {{Part=P[43],Face=Enum.NormalId.Top,TextureType="Decal"}})
+    endpoint:InvokeServer("SyncTexture", {{Part=P[43],Face=Enum.NormalId.Top,TextureType="Decal",Texture="rbxasset://textures/SpawnLocation.png"}})
+  end
+end)
+
+   wait(1.5)
+
+	task.spawn(function()	
+
+   for _, data in ipairs(extraData) do
+       local p = P[data.id]
+
+       if p then
+
+           if data.type == "Decoration" then
+               endpoint:InvokeServer("CreateDecorations", {{
+                   Part = p,
+                   DecorationType = data.dec
+               }})
+           end
+
+           if data.type == "Surface" then
+               endpoint:InvokeServer("SyncSurface", {{
+                   Part = p,
+                   Surfaces = {
+                       Top = Enum.SurfaceType[data.surf.Top],
+                       Bottom = Enum.SurfaceType[data.surf.Bottom],
+                       Left = Enum.SurfaceType[data.surf.Left],
+                       Right = Enum.SurfaceType[data.surf.Right],
+                       Front = Enum.SurfaceType[data.surf.Front],
+                       Back = Enum.SurfaceType[data.surf.Back]
+                   }
+               }})
+           end
+       end
+   end
+   end)
+   music(12222253,1,0.5)
+	
+	if finished then	
+	    if RequestCommand then	
+	        RequestCommand:InvokeServer("/savemap")	
+	        RequestCommand:InvokeServer("/res all")	
+           RequestCommand:InvokeServer("/btools me")	
+           RequestCommand:InvokeServer("/sh map Made By 0zca")	
+	    end	
+	end	
+	
