@@ -1,0 +1,3891 @@
+local id = 129398701546116
+local par = Workspace
+local BRO = game:GetObjects("rbxassetid://"..id)[1]
+BRO.Parent = par
+
+local UIS = game:GetService("UserInputService")
+	function dragify(Frame)
+		dragToggle = nil
+		local dragSpeed = 0.33
+		dragInput = nil
+		dragStart = nil
+		local dragPos = nil
+		function updateInput(input)
+			local Delta = input.Position - dragStart
+			local Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
+			game:GetService("TweenService"):Create(Frame, TweenInfo.new(0.15), {Position = Position}):Play()
+		end
+		Frame.InputBegan:Connect(function(input)
+			if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and UIS:GetFocusedTextBox() == nil then
+				dragToggle = true
+				dragStart = input.Position
+				startPos = Frame.Position
+				input.Changed:Connect(function()
+					if input.UserInputState == Enum.UserInputState.End then
+						dragToggle = false
+					end
+				end)
+			end
+		end)
+		Frame.InputChanged:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+				dragInput = input
+			end
+		end)
+		game:GetService("UserInputService").InputChanged:Connect(function(input)
+			if input == dragInput and dragToggle then
+				updateInput(input)
+			end
+		end)
+	end
+
+local v1 = BRO["\227\129\132\227\129\132\227\129\136\227\128\130\227\129\132\227\129\132\227\129\136\227\128\130\227\129\132\227\129\132\227\129\136\227\128\130\227\129\132\227\129\132\227\129\136\227\128\130\227\129\132\227\129\132\227\129\136\227\128\130\227\129\132\227\129\132\227\129\136\227\128\130\227\129\132\227\129\132\227\129\136\227\128\130\227\129\132\227\129\132\227\129\136\227\128\130\227\129\132\239"]
+
+local fc = v1.MainModule
+local plr = game:GetService("Players").LocalPlayer
+local char = plr.Character
+local plrgui=game.CoreGui
+local gui = fc:FindFirstChild("ScreenGui")
+gui.Parent =  plrgui
+gui.Enabled = true
+if gui.Parent == game.CoreGui then
+gui.DisplayOrder = 2
+else
+end
+local Title = gui.Main.Executor.Title.Label
+local bh = [[ <font color="#f7f30a">Spunchbub</font> - Private Backdoor                                                ]]
+Title.Text = bh
+
+ local sigma = gui:FindFirstChild("Frame") 
+local main = gui:FindFirstChild("Main") 
+
+dragify(main)
+local btn = sigma:FindFirstChild("TextButton") 
+btn.MouseButton1Click:Connect(function() 	
+btn.Text = "Spunchbub Backdoor V1.38 FE BYPASS"
+wait(1.5)
+btn.Text = [[ Edited by @gavinrgb27 ]]
+wait(2) 
+main.Visible = true 	
+sigma:Destroy() 
+
+end)
+
+local function HideTextV2()
+for _, v in ipairs(gui.Main.Executor.Editor.EditorFrame.Source.SyntaxHighlights:GetDescendants()) do
+    if v:IsA("TextLabel") then
+        v.Visible = false
+    end
+end
+--gui.Main.Executor.Editor.EditorFrame.Source.Visible = false
+end
+
+local function ShowTextV2()
+for _, v in ipairs(gui.Main.Executor.Editor.EditorFrame.Source.SyntaxHighlights:GetDescendants()) do
+    if v:IsA("TextLabel") then
+        v.Visible = true
+    end
+end
+end
+
+
+local v4=gui.Main.Executor.close
+v4.MouseButton1Click:Connect(function()
+ 	v4.Parent.Parent.Parent.Parent.ScreenGui:Destroy()
+ end)
+
+local v5=gui.Main.Executor.ClearButton
+v5.MouseButton1Click:Connect(function() 
+	v5.Parent.Parent.Executor.Editor.EditorFrame.Source.Text = "" 
+end)
+
+----------------- RequireHub -------------
+local Nigger = {
+
+['require(7496592494).load("FINC277")'] = "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/Sutart",
+
+['require(5375399205).Player("FINC277")'] = "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/hand",
+
+['require(2845929020).ooga("FINC277")'] = "https://rawscripts.net/raw/Universal-Script-John-doe-57956",
+
+['require(5686002742):Fire("FINC277","caducus")'] = "https://pastebin.com/raw/XJeBNe0s",
+
+['require(3418687354).load("FINC277")'] = "https://raw.githubusercontent.com/Icalock/Server/refs/heads/main/Xester%20FD.txt",
+
+['require(4661847142).load("FINC277")'] = "https://rawscripts.net/raw/Universal-Script-Chrono-Sentinel-Converted-54174",
+
+['require(4513235536).G("FINC277")'] = "https://rawscripts.net/raw/Universal-Script-Goner-47954",
+
+['require(5813695241).load("FINC277")'] = "https://pastebin.com/raw/h1KvrfkW",
+
+['require(5813737611).load("FINC277")'] = "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/Fridge",
+
+['require(6015747481).load("FINC277")'] = "https://rawscripts.net/raw/Universal-Script-Brick-Hamman-Converted-49804",
+
+['require(6438184104).load("FINC277")'] = "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/book",
+
+['require(80147538511861).john("FINC277")'] = "https://pastebin.com/raw/JwUdxg8y",
+
+['require(7972086233).CLoad("FINC277")'] = "https://rawscripts.net/raw/Universal-Script-Soul-Reaper-55330",
+
+['require(4875169740).load("FINC277")'] = "https://rawscripts.net/raw/Universal-Script-Roblox-VEREUS-monster-script-3746",
+
+['require(3547672868).p11("FINC277")'] = "https://rawscripts.net/raw/Universal-Script-Pandora-Fe-55559",
+
+['require(6175490752).load("FINC277")'] = "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/come%20back",
+
+['require(5641200549).load("FINC277")'] = "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/Hacker%20X",
+
+['require(4832984327):Fire("FINC277")'] = "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/The%20Angel",
+
+['require(4185644819).a("FINC277")'] = "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/BLINDREAPER",
+
+['require(3385955971).load("FINC277")'] = "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/Shrike",
+
+['require(4957202333).load("FINC277")'] = "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/Incension%20Reborn",
+
+['require(6788546558)("FINC277")'] = "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/Studio%20Dummy",
+
+['require(5760009753).load("FINC277")'] = "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/Split",
+
+['require(6438169891).load("FINC277")'] = "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/GUTS",
+
+['require(8884881336).RAroblox("FINC277")'] = "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/Comedy",
+
+['require(6865195405).killbot("FINC277")'] = "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/KillbotV2",
+
+['require(7972003282).CLoad("FINC277")'] = "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/Figure",
+
+['require(5828018389)("FINC277")'] = "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/AMOGUS",
+
+['require(14125553864):Fire("FINC277","c00lkidd")'] = " https://rawscripts.net/raw/Universal-Script-c00lgui-Reborn-Rc7-By-v3rx-64424",
+
+['require(5430831931).Dark("FINC277")'] = "https://rawscripts.net/raw/Universal-Script-Gentleman-KillBot-Converted-and-Not-FE-53888",
+
+['require(4665394711).load("FINC277")'] = "https://raw.githubusercontent.com/gObl00x/My-Converts/refs/heads/main/Server%20Admin.lua",
+
+['require(5751710030).Sun("FINC277")'] = " https://raw.githubusercontent.com/gObl00x/Pendulum-Fixed-AND-Others-Scripts/refs/heads/main/The%20Sun%20Is%20A%20Deadly%20Laser",
+
+['require(7409193749).load("FINC277")'] = "https://pastebin.com/raw/SMrFaqxL",
+
+['require(5972874843).load("FINC277")'] = " https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/SCP",
+
+["require(2787132106):Run('FINC277','i baked you a pie')"] = "https://pastebin.com/raw/drTtA7nc",
+
+['require(7852931070).load("FINC277")'] = "https://rawscripts.net/raw/Universal-Script-ravenger-claws-9234",
+
+['require(4721735759).load("FINC277")'] = " https://rawscripts.net/raw/Universal-Script-Spectrum-Glitcher-47547",
+
+['require(0x1767bf813)("FINC277")'] = "https://pastefy.app/M0r9UCNQ/raw",
+
+['require(122775270569362)("FINC277")'] = "https://pastebin.com/raw/j61SsaxE",
+
+['require(4941303393).banzai("FINC277")'] = "https://pt.textbin.net/raw/fby66hrjqe",
+
+['require(8038037940).CLoad("FINC277")'] = "https://raw.githubusercontent.com/gavinrgb2/w/refs/heads/main/Sledgehammer",
+
+['require(12102103065).Patrick("FINC277")'] = " https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/Patrick",
+
+['require(85704103303160).Thomas("FINC277")'] = "https://rawscripts.net/raw/Prison-Life-g00lxploiter-thomas-12611",
+
+['require(14638461547).GKV1("FINC277")'] = " https://raw.githubusercontent.com/zmwtf1/GrabKnife/refs/heads/main/GrabKnifeV1.lua",
+
+['require(14638599584).GKV2("FINC277")'] = "https://raw.githubusercontent.com/zmwtf1/GrabKnife/refs/heads/main/GrabKnifeV2.lua",
+
+["require(2829943043):Run('FINC277','i baked you a pie')"] = "https://raw.githubusercontent.com/zmwtf1/GrabKnife/refs/heads/main/GrabKnifeV3.lua",
+
+['require(18665717275).load("FINC277")'] = " https://raw.githubusercontent.com/zmwtf1/GrabKnife/refs/heads/main/GrabKnifeV4.lua",
+
+['require(6319630209).load("FINC277")'] = "https://raw.githubusercontent.com/retpirato/Roblox-Scripts/refs/heads/master/Death%20Note.lua",
+
+['require(15581949972).mc("FINC277")'] = " https://rawscripts.net/raw/Universal-Script-Minecraft-Steve-38043",
+
+['require(5097644333).load("FINC277")'] = "https://pastefy.app/wxRJkP76/raw",
+
+['require(6515226671).load("FINC277")'] = " https://pastefy.app/WQw6Uvif/raw",
+
+['require(5813748809).load("FINC277")'] = "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/light",
+
+['require(5573394549).Hallow("FINC277")'] = "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/HSlayer",
+
+['require(4453491513).load("FINC277")'] = "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/NepV",
+
+['require(5813708464).load("FINC277")'] = "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/lunatic",
+
+['require(8076509064).CLoad("FINC277")'] = "https://rawscripts.net/raw/Universal-Script-FE-Parkour-71410",
+
+['require(6338277134)("FINC277")'] = " https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/Polygoner",
+
+['require(16857604287)("FINC277")'] = "https://pastefy.app/rp1uHYZ9/raw",
+
+['require(17523790773)("FINC277")'] = " https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/Primadon",
+
+['require(94673163261524)("FINC277'] = "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/Primadon",
+
+['require(5845339294).EH("FINC277")'] = "https://pastebin.com/raw/pDTVptBD",
+
+['require(5617182211).load("FINC277")'] = " https://pastefy.app/UIuCBwMV/raw",
+
+['require(5216583378):Fire("FINC277")'] = "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/God%20Eater",
+
+['require(110951620907921):Pload("FINC277")'] = " https://pastebin.com/raw/SNvTBwa9",
+
+['require(4679462782).neko2("FINC277")'] = "https://pastefy.app/xkgiStX3/raw",
+
+['require(0x1b1dab993).neko2("FINC277")'] = " https://pastefy.app/xkgiStX3/raw",
+
+['require(6802356973).load("FINC277")'] = "https://pastebin.com/raw/1WfSXdY1",
+
+['require(7473216460).load("FINC277")'] = " https://pastefy.app/6E0KBjaG/raw",
+
+['require(3315800035).terra("FINC277")'] = "https://pastebin.com/raw/i53MxE8z",
+
+['require(5122876922).load("FINC277")'] = " https://pastebin.com/raw/TTAQHL1T",
+
+['require(5115249013).fehack("FINC277")'] = "https://pastefy.app/ChM2b8Oh/raw",
+
+['require(12350030542).RC7("FINC277")'] = "https://pastefy.app/PSqcvdxu/raw",
+
+['require(88477009909590):Pload("FINC277")'] = " https://pastefy.app/oKCw2laS/raw",
+
+['require(5034863407).subtosyntax64("FINC277")'] = "https://pastefy.app/Zc7SqDnE/raw",
+
+['require(7192763922).load("FINC277")'] = " https://pastefy.app/heFJQWTm/raw", 
+
+['require(5104783290).projectreptilev3leaklolz("FINC277")'] = "https://raw.githubusercontent.com/Hanif290/YoThereSkibidiSigma68/refs/heads/main/Yoshi681SkibidiBoy",
+
+['require(4880192192).load("FINC277")'] = "https://rawscripts.net/raw/Universal-Script-Gale-Fighter-46146", 
+
+['require(121687200559828)("FINC277")'] = "https://raw.githubusercontent.com/gavinrgb2/gavindR/refs/heads/main/epstein%20Fuck%20n1gg3r", 
+
+['FBI'] = "Url", 
+
+['require(5226589292).rk("FINC277")'] = "https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/SCP-106"}
+
+--['FBI!'] = "https://"}
+-- di atas aku itu script FBI febupas
+
+local playerName = game:GetService("Players").LocalPlayer.Name
+
+
+local newKeywords = {}
+for key, url in pairs(Nigger) do
+   if key or url then
+    local replaced = string.gsub(key, "FINC277", playerName)
+    newKeywords[replaced] = url
+   else
+   end
+end
+
+Nigger = newKeywords
+
+local v6=gui.Main.Executor.ExecuteButton
+local button = v6 
+local executor = button.Parent  
+local editor = executor:WaitForChild("Editor")
+local source = editor:WaitForChild("EditorFrame"):WaitForChild("Source") 
+local remote = button:WaitForChild("RemoteFunction")  
+
+button.MouseButton1Down:Connect(function()
+    local txt = source.Text
+    local found = false
+
+    for keyword, url in pairs(Nigger) do
+        if string.find(txt, keyword, 1, true) then
+            found = true
+
+            local ok, src = pcall(function()
+                return game:HttpGet(url)
+            end)
+
+            if ok and src then
+                local f, e = loadstring(src)
+                if f then
+                    pcall(f)
+                else
+                    warn("Loadstring error:", e)
+                end
+            else
+                warn("HttpGet failed")
+            end
+
+            break
+        end
+    end
+
+    if not found then
+        local f, e = loadstring(txt)
+        if f then
+            pcall(f)
+        else
+            warn("Loadstring error:", e)
+        end
+    end
+end)
+
+local G2L = {};
+G2L["1"] = Instance.new("ScreenGui", game:GetService('CoreGui'):WaitForChild('RobloxGui'));
+G2L["1"]["Name"] = [[niggerlol]];
+G2L["12"] = Instance.new("LocalScript", source);
+G2L["12"]["Name"] = [[Highlight]];
+G2L["13"] = Instance.new("ModuleScript", G2L["12"]);
+G2L["13"]["Name"] = [[Highlighter]];
+G2L["14"] = Instance.new("ModuleScript", G2L["13"]);
+G2L["14"]["Name"] = [[lexer]];
+G2L["15"] = Instance.new("ModuleScript", G2L["14"]);
+G2L["15"]["Name"] = [[language]];
+
+-- Require G2L wrapper
+local G2L_REQUIRE = require;
+local G2L_MODULES = {};
+local function require(Module:ModuleScript)
+    local ModuleState = G2L_MODULES[Module];
+    if ModuleState then
+        if not ModuleState.Required then
+            ModuleState.Required = true;
+            ModuleState.Value = ModuleState.Closure();
+        end
+        return ModuleState.Value;
+    end;
+    return G2L_REQUIRE(Module);
+end
+
+G2L_MODULES[G2L["13"]] = {
+Closure = function()
+		local script = G2L["13"];
+--[[
+export type HighlighterColors = { [string]: Color3 }
+
+export type TextObject = TextLabel | TextBox
+
+export type HighlightProps = {
+	textObject: TextObject,
+	src: string?,
+	forceUpdate: boolean?,
+	lexer: Lexer?,
+	customLang: { [string]: string }?
+}
+
+export type Lexer = {
+	scan: (src: string) -> () -> (string, string),
+	navigator: () -> any,
+	finished: boolean?,
+}
+
+export type Highlighter = {
+	defaultLexer: Lexer,
+	setTokenColors: (colors: HighlighterColors?) -> (),
+	highlight: (props: HighlightProps) -> (() -> ())?,
+	refresh: () -> (),
+}
+
+export type ObjectData = {
+	Text: string,
+	Labels: { TextLabel },
+	Lines: { string },
+	Lexer: Lexer?,
+	CustomLang: { [string]: string }?,
+}
+--]]
+
+local function SanitizeRichText(s: string): string
+	return string.gsub(
+		string.gsub(string.gsub(string.gsub(string.gsub(s, "&", "&amp;"), "<", "&lt;"), ">", "&gt;"), '"', "&quot;"),
+		"'",
+		"&apos;"
+	)
+end
+
+local function SanitizeTabs(s: string): string
+	return string.gsub(s, "\t", "    ")
+end
+
+local function SanitizeControl(s: string): string
+	return string.gsub(s, "[\0\1\2\3\4\5\6\7\8\11\12\13\14\15\16\17\18\19\20\21\22\23\24\25\26\27\28\29\30\31]+", "")
+end
+
+local TokenColors: HighlighterColors = {
+	["background"] = Color3.fromRGB(47, 47, 47),
+
+	["iden"] = Color3.fromRGB(255, 255, 255), -- tokens
+	["keyword"] = Color3.fromRGB(248, 109, 124), -- keywords
+	["builtin"] = Color3.fromRGB(132, 214, 247), -- globals
+	["string"] = Color3.fromRGB(173, 241, 149), -- string
+	["number"] = Color3.fromRGB(255, 198, 0), -- numbers
+	["comment"] = Color3.fromRGB(59, 200, 59), -- comments
+	["operator"] = Color3.fromRGB(255, 239, 148), -- (biarin, ga ada di list kedua)
+	["custom"] = Color3.fromRGB(0, 145, 255), -- remote highlight
+}
+
+local ColorFormatter: { [Color3]: string } = {}
+local LastData: { [TextObject]: ObjectData } = {}
+local Cleanups: { [TextObject]: () -> () } = {}
+
+local Highlighter = {
+	defaultLexer = require(script.lexer),
+}
+
+function Highlighter.highlight(props: HighlightProps)
+	-- Gather props
+	local textObject = props.textObject
+	local src = SanitizeTabs(SanitizeControl(props.src or textObject.Text))
+	local lexer = props.lexer or Highlighter.defaultLexer
+	local customLang = props.customLang
+	local forceUpdate = props.forceUpdate
+
+	-- Avoid updating when unnecessary
+	local data = LastData[textObject]
+	if data == nil then
+		data = {
+			Text = "",
+			Labels = {},
+			Lines = {},
+			Lexer = lexer,
+			CustomLang = customLang,
+		}
+		LastData[textObject] = data
+	elseif forceUpdate ~= true and data.Text == src then
+		return
+	end
+
+	local lineLabels = data.Labels
+	local previousLines = data.Lines
+
+	local lines = string.split(src, "\n")
+
+	data.Lines = lines
+	data.Text = src
+	data.Lexer = lexer
+	data.CustomLang = customLang
+
+	-- Ensure valid object properties
+	textObject.RichText = false
+	textObject.Text = src
+	textObject.TextXAlignment = Enum.TextXAlignment.Left
+	textObject.TextYAlignment = Enum.TextYAlignment.Top
+	textObject.BackgroundColor3 = TokenColors.background
+	textObject.TextColor3 = TokenColors.iden
+	textObject.TextTransparency = 0
+
+	-- Build the highlight labels
+	local lineFolder = textObject:FindFirstChild("SyntaxHighlights")
+	if lineFolder == nil then
+		local newLineFolder = Instance.new("Folder")
+		newLineFolder.Name = "SyntaxHighlights"
+		newLineFolder.Parent = textObject
+
+		lineFolder = newLineFolder
+	end
+
+	-- Add a cleanup handler for this textObject
+	local cleanup = Cleanups[textObject]
+	if not cleanup then
+		local connections: { RBXScriptConnection } = {}
+		local function newCleanup()
+			for _, label in ipairs(lineLabels) do
+				label:Destroy()
+			end
+			table.clear(lineLabels)
+			lineLabels = nil
+
+			LastData[textObject] = nil
+			Cleanups[textObject] = nil
+
+			for _, connection in connections do
+				connection:Disconnect()
+			end
+			table.clear(connections)
+			connections = nil
+		end
+		Cleanups[textObject] = newCleanup
+		cleanup = newCleanup
+
+		table.insert(
+			connections,
+			textObject.AncestryChanged:Connect(function()
+				if textObject.Parent then
+					return
+				end
+
+				cleanup()
+			end)
+		)
+		table.insert(
+			connections,
+			textObject:GetPropertyChangedSignal("TextBounds"):Connect(function()
+				Highlighter.highlight({
+					textObject = textObject,
+					forceUpdate = true,
+					lexer = lexer,
+					customLang = customLang,
+				})
+			end)
+		)
+		table.insert(
+			connections,
+			textObject:GetPropertyChangedSignal("Text"):Connect(function()
+				Highlighter.highlight({
+					textObject = textObject,
+					lexer = lexer,
+					customLang = customLang,
+				})
+			end)
+		)
+		table.insert(
+			connections,
+			textObject:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
+				Highlighter.highlight({
+					textObject = textObject,
+					forceUpdate = true,
+					lexer = lexer,
+					customLang = customLang,
+				})
+			end)
+		)
+	end
+
+textObject.Focused:Connect(function()
+HideTextV2()
+end)
+
+textObject.FocusLost:Connect(function()
+ShowTextV2()
+end)
+
+local function yggfffttgc()
+    local lines = string.split(textObject.Text, "\n")
+
+    local result = {}
+
+    for i = 1, #lines do
+        result[i] = tostring(i)
+    end
+
+    gui.Main.Executor.Editor.EditorFrame.Lines.Text = table.concat(result, "\n")
+end
+textObject:GetPropertyChangedSignal("Text"):Connect(yggfffttgc)
+
+	-- Shortcut empty labels
+	if src == "" then
+		for l=1, #lineLabels do
+			if lineLabels[l].Text == "" then continue end
+			lineLabels[l].Text = ""
+		end
+		return cleanup
+	end
+
+	-- Wait for TextBounds to be non-NaN and non-zero because Roblox
+	local textBounds = textObject.TextBounds
+	while (textBounds.Y ~= textBounds.Y) or (textBounds.Y < 1) do
+		task.wait()
+		textBounds = textObject.TextBounds
+	end
+
+	if LastData[textObject] == nil then
+		-- Got cleaned up while we were waiting
+		return cleanup
+	end
+
+	local numLines = #lines
+	local textHeight = textBounds.Y / numLines * textObject.LineHeight
+
+	local richText, index, lineNumber = table.create(5), 0, 1
+	for token: string, content: string in lexer.scan(src) do
+		local Color =
+			if customLang and customLang[content] then
+				TokenColors["custom"]
+			else
+				TokenColors[token] or TokenColors["iden"]
+
+		local tokenLines = string.split(SanitizeRichText(content), "\n")
+
+		for l, line in ipairs(tokenLines) do
+			-- Find line label
+			local lineLabel = lineLabels[lineNumber]
+			if not lineLabel then
+				local newLabel = Instance.new("TextLabel")
+				newLabel.Name = "Line_" .. lineNumber
+				newLabel.RichText = true
+				newLabel.BackgroundTransparency = 1
+				newLabel.Text = ""
+				newLabel.TextXAlignment = Enum.TextXAlignment.Left
+				newLabel.TextYAlignment = Enum.TextYAlignment.Top
+				newLabel.Parent = lineFolder
+				newLabel.TextWrapped=true
+				lineLabels[lineNumber] = newLabel
+				lineLabel = newLabel
+			end
+
+			-- Align line label
+			lineLabel.TextColor3 = TokenColors["iden"]
+			lineLabel.Font = textObject.Font
+			lineLabel.TextSize = textObject.TextSize
+			lineLabel.Size = UDim2.new(1, 0, 0, math.ceil(textHeight))
+			lineLabel.Position = UDim2.fromScale(0, textHeight * (lineNumber - 1) / textObject.AbsoluteSize.Y)
+
+			-- If multiline token, then set line & move to next
+			if l > 1 then
+				if forceUpdate or lines[lineNumber] ~= previousLines[lineNumber] then
+					-- Set line
+					lineLabels[lineNumber].Text = table.concat(richText)
+				end
+				-- Move to next line
+				lineNumber += 1
+				index = 0
+				table.clear(richText)
+			end
+
+			-- If changed, add token to line
+			if forceUpdate or lines[lineNumber] ~= previousLines[lineNumber] then
+				index += 1
+				-- Only add RichText tags when the color is non-default and the characters are non-whitespace
+				if Color ~= TokenColors["iden"] and string.find(line, "[%S%C]") then
+					richText[index] = string.format(ColorFormatter[Color], line)
+				else
+					richText[index] = line
+				end
+			end
+		end
+	end
+
+	-- Set final line
+	if richText[1] and lineLabels[lineNumber] then
+		lineLabels[lineNumber].Text = table.concat(richText)
+	end
+
+	-- Clear unused line labels
+	for l=lineNumber+1, #lineLabels do
+		if lineLabels[l].Text == "" then continue end
+		lineLabels[l].Text = ""
+	end
+
+	return cleanup
+end
+
+function Highlighter.refresh(): ()
+	-- Rehighlight existing labels using latest colors
+	for textObject, data in pairs(LastData) do
+		for _, lineLabel in ipairs(data.Labels) do
+			lineLabel.TextColor3 = TokenColors["iden"]
+		end
+
+		Highlighter.highlight({
+			textObject = textObject,
+			forceUpdate = true,
+			src = data.Text,
+			lexer = data.Lexer,
+			customLang = data.CustomLang,
+		})
+	end
+end
+
+function Highlighter.setTokenColors(colors: HighlighterColors)
+	for token, color in colors do
+		TokenColors[token] = color
+		ColorFormatter[color] = string.format(
+			'<font color="#%.2x%.2x%.2x">',
+			color.R * 255,
+			color.G * 255,
+			color.B * 255
+		) .. "%s</font>"
+	end
+
+	Highlighter.refresh()
+end
+Highlighter.setTokenColors(TokenColors)
+
+return Highlighter :: Highlighter
+
+end;
+};
+G2L_MODULES[G2L["14"]] = {
+Closure = function()
+    local script = G2L["14"];
+--[=[
+	Lexical scanner for creating a sequence of tokens from Lua source code.
+	This is a heavily modified and Roblox-optimized version of
+	the original Penlight Lexer module:
+		https://github.com/stevedonovan/Penlight
+	Authors:
+		stevedonovan <https://github.com/stevedonovan> ----------- Original Penlight lexer author
+		ryanjmulder <https://github.com/ryanjmulder> ------------- Penlight lexer contributer
+		mpeterv <https://github.com/mpeterv> --------------------- Penlight lexer contributer
+		Tieske <https://github.com/Tieske> ----------------------- Penlight lexer contributer
+		boatbomber <https://github.com/boatbomber> --------------- Roblox port, added builtin token,
+		                                                           added patterns for incomplete syntax, bug fixes,
+		                                                           behavior changes, token optimization, thread optimization
+		                                                           Added lexer.navigator() for non-sequential reads
+		Sleitnick <https://github.com/Sleitnick> ----------------- Roblox optimizations
+		howmanysmall <https://github.com/howmanysmall> ----------- Lua + Roblox optimizations
+
+	List of possible tokens:
+		- iden
+		- keyword
+		- builtin
+		- string
+		- number
+		- comment
+		- operator
+--]=]
+
+local lexer = {}
+
+local Prefix, Suffix, Cleaner = "^[%c%s]*", "[%c%s]*", "[%c%s]+"
+local UNICODE = "[%z\x01-\x7F\xC2-\xF4][\x80-\xBF]+"
+local NUMBER_A = "0[xX][%da-fA-F_]+"
+local NUMBER_B = "0[bB][01_]+"
+local NUMBER_C = "%d+%.?%d*[eE][%+%-]?%d+"
+local NUMBER_D = "%d+[%._]?[%d_eE]*"
+local OPERATORS = "[:;<>/~%*%(%)%-={},%.#%^%+%%]+"
+local BRACKETS = "[%[%]]+" -- needs to be separate pattern from other operators or it'll mess up multiline strings
+local IDEN = "[%a_][%w_]*"
+local STRING_EMPTY = "(['\"])%1" --Empty String
+local STRING_PLAIN = "(['\"])[^\n]-([^\\]%1)" --TODO: Handle escaping escapes
+local STRING_INTER = "`[^\n]-`"
+local STRING_INCOMP_A = "(['\"]).-\n" --Incompleted String with next line
+local STRING_INCOMP_B = "(['\"])[^\n]*" --Incompleted String without next line
+local STRING_MULTI = "%[(=*)%[.-%]%1%]" --Multiline-String
+local STRING_MULTI_INCOMP = "%[=*%[.-.*" --Incompleted Multiline-String
+local COMMENT_MULTI = "%-%-%[(=*)%[.-%]%1%]" --Completed Multiline-Comment
+local COMMENT_MULTI_INCOMP = "%-%-%[=*%[.-.*" --Incompleted Multiline-Comment
+local COMMENT_PLAIN = "%-%-.-\n" --Completed Singleline-Comment
+local COMMENT_INCOMP = "%-%-.*" --Incompleted Singleline-Comment
+-- local TYPED_VAR = ":%s*([%w%?%| \t]+%s*)" --Typed variable, parameter, function
+
+local lang = require(script.language)
+local lua_keyword = lang.keyword
+local lua_builtin = lang.builtin
+local lua_libraries = lang.libraries
+
+lexer.language = lang
+
+local lua_matches = {
+	-- Indentifiers
+	{ Prefix .. IDEN .. Suffix, "var" },
+
+	-- Numbers
+	{ Prefix .. NUMBER_A .. Suffix, "number" },
+	{ Prefix .. NUMBER_B .. Suffix, "number" },
+	{ Prefix .. NUMBER_C .. Suffix, "number" },
+	{ Prefix .. NUMBER_D .. Suffix, "number" },
+
+	-- Strings
+	{ Prefix .. STRING_EMPTY .. Suffix, "string" },
+	{ Prefix .. STRING_PLAIN .. Suffix, "string" },
+	{ Prefix .. STRING_INCOMP_A .. Suffix, "string" },
+	{ Prefix .. STRING_INCOMP_B .. Suffix, "string" },
+	{ Prefix .. STRING_MULTI .. Suffix, "string" },
+	{ Prefix .. STRING_MULTI_INCOMP .. Suffix, "string" },
+	{ Prefix .. STRING_INTER .. Suffix, "string_inter" },
+
+	-- Comments
+	{ Prefix .. COMMENT_MULTI .. Suffix, "comment" },
+	{ Prefix .. COMMENT_MULTI_INCOMP .. Suffix, "comment" },
+	{ Prefix .. COMMENT_PLAIN .. Suffix, "comment" },
+	{ Prefix .. COMMENT_INCOMP .. Suffix, "comment" },
+
+	-- Operators
+	{ Prefix .. OPERATORS .. Suffix, "operator" },
+	{ Prefix .. BRACKETS .. Suffix, "operator" },
+
+	-- Unicode
+	{ Prefix .. UNICODE .. Suffix, "iden" },
+
+	-- Unknown
+	{ "^.", "iden" },
+}
+
+-- To reduce the amount of table indexing during lexing, we separate the matches now
+local PATTERNS, TOKENS = {}, {}
+for i, m in lua_matches do
+	PATTERNS[i] = m[1]
+	TOKENS[i] = m[2]
+end
+
+--- Create a plain token iterator from a string.
+-- @tparam string s a string.
+
+function lexer.scan(s: string)
+	local index = 1
+	local size = #s
+	local previousContent1, previousContent2, previousContent3, previousToken = "", "", "", ""
+
+	local thread = coroutine.create(function()
+		while index <= size do
+			local matched = false
+			for tokenType, pattern in ipairs(PATTERNS) do
+				-- Find match
+				local start, finish = string.find(s, pattern, index)
+				if start == nil then continue end
+
+				-- Move head
+				index = finish + 1
+				matched = true
+
+				-- Gather results
+				local content = string.sub(s, start, finish)
+				local rawToken = TOKENS[tokenType]
+				local processedToken = rawToken
+
+				-- Process token
+				if rawToken == "var" then
+					-- Since we merge spaces into the tok, we need to remove them
+					-- in order to check the actual word it contains
+					local cleanContent = string.gsub(content, Cleaner, "")
+
+					if lua_keyword[cleanContent] then
+						processedToken = "keyword"
+					elseif lua_builtin[cleanContent] then
+						processedToken = "builtin"
+					elseif string.find(previousContent1, "%.[%s%c]*$") and previousToken ~= "comment" then
+						-- The previous was a . so we need to special case indexing things
+						local parent = string.gsub(previousContent2, Cleaner, "")
+						local lib = lua_libraries[parent]
+						if lib and lib[cleanContent] and not string.find(previousContent3, "%.[%s%c]*$") then
+							-- Indexing a builtin lib with existing item, treat as a builtin
+							processedToken = "builtin"
+						else
+							-- Indexing a non builtin, can't be treated as a keyword/builtin
+							processedToken = "iden"
+						end
+						-- print("indexing",parent,"with",cleanTok,"as",t2)
+					else
+						processedToken = "iden"
+					end
+				elseif rawToken == "string_inter" then
+					if not string.find(content, "[^\\]{") then
+						-- This inter string doesnt actually have any inters
+						processedToken = "string"
+					else
+						-- We're gonna do our own yields, so the main loop won't need to
+						-- Our yields will be a mix of string and whatever is inside the inters
+						processedToken = nil
+
+						local isString = true
+						local subIndex = 1
+						local subSize = #content
+						while subIndex <= subSize do
+							-- Find next brace
+							local subStart, subFinish = string.find(content, "^.-[^\\][{}]", subIndex)
+							if subStart == nil then
+								-- No more braces, all string
+								coroutine.yield("string", string.sub(content, subIndex))
+								break
+							end
+
+							if isString then
+								-- We are currently a string
+								subIndex = subFinish + 1
+								coroutine.yield("string", string.sub(content, subStart, subFinish))
+
+								-- This brace opens code
+								isString = false
+							else
+								-- We are currently in code
+								subIndex = subFinish
+								local subContent = string.sub(content, subStart, subFinish-1)
+								for innerToken, innerContent in lexer.scan(subContent) do
+									coroutine.yield(innerToken, innerContent)
+								end
+
+								-- This brace opens string/closes code
+								isString = true
+							end
+						end
+					end
+				end
+
+				-- Record last 3 tokens for the indexing context check
+				previousContent3 = previousContent2
+				previousContent2 = previousContent1
+				previousContent1 = content
+				previousToken = processedToken or rawToken
+				if processedToken then
+					coroutine.yield(processedToken, content)
+				end
+				break
+			end
+
+			-- No matches found
+			if not matched then
+				return
+			end
+		end
+
+		-- Completed the scan
+		return
+	end)
+
+	return function()
+		if coroutine.status(thread) == "dead" then
+			return
+		end
+
+		local success, token, content = coroutine.resume(thread)
+		if success and token then
+			return token, content
+		end
+
+		return
+	end
+end
+
+function lexer.navigator()
+	local nav = {
+		Source = "",
+		TokenCache = table.create(50),
+
+		_RealIndex = 0,
+		_UserIndex = 0,
+		_ScanThread = nil,
+	}
+
+	function nav:Destroy()
+		self.Source = nil
+		self._RealIndex = nil
+		self._UserIndex = nil
+		self.TokenCache = nil
+		self._ScanThread = nil
+	end
+
+	function nav:SetSource(SourceString)
+		self.Source = SourceString
+
+		self._RealIndex = 0
+		self._UserIndex = 0
+		table.clear(self.TokenCache)
+
+		self._ScanThread = coroutine.create(function()
+			for Token, Src in lexer.scan(self.Source) do
+				self._RealIndex += 1
+				self.TokenCache[self._RealIndex] = { Token, Src }
+				coroutine.yield(Token, Src)
+			end
+		end)
+	end
+
+	function nav.Next()
+		nav._UserIndex += 1
+
+		if nav._RealIndex >= nav._UserIndex then
+			-- Already scanned, return cached
+			return table.unpack(nav.TokenCache[nav._UserIndex])
+		else
+			if coroutine.status(nav._ScanThread) == "dead" then
+				-- Scan thread dead
+				return
+			else
+				local success, token, src = coroutine.resume(nav._ScanThread)
+				if success and token then
+					-- Scanned new data
+					return token, src
+				else
+					-- Lex completed
+					return
+				end
+			end
+		end
+	end
+
+	function nav.Peek(PeekAmount)
+		local GoalIndex = nav._UserIndex + PeekAmount
+
+		if nav._RealIndex >= GoalIndex then
+			-- Already scanned, return cached
+			if GoalIndex > 0 then
+				return table.unpack(nav.TokenCache[GoalIndex])
+			else
+				-- Invalid peek
+				return
+			end
+		else
+			if coroutine.status(nav._ScanThread) == "dead" then
+				-- Scan thread dead
+				return
+			else
+				local IterationsAway = GoalIndex - nav._RealIndex
+
+				local success, token, src = nil, nil, nil
+
+				for _ = 1, IterationsAway do
+					success, token, src = coroutine.resume(nav._ScanThread)
+					if not (success or token) then
+						-- Lex completed
+						break
+					end
+				end
+
+				return token, src
+			end
+		end
+	end
+
+	return nav
+end
+
+return lexer
+
+end;
+};
+G2L_MODULES[G2L["15"]] = {
+Closure = function()
+    local script = G2L["15"];
+local language = {
+	keyword = {
+		["and"] = "keyword",
+		["break"] = "keyword",
+		["continue"] = "keyword",
+		["do"] = "keyword",
+		["else"] = "keyword",
+		["elseif"] = "keyword",
+		["end"] = "keyword",
+		["export"] = "keyword",
+		["false"] = "keyword",
+		["for"] = "keyword",
+		["function"] = "keyword",
+		["if"] = "keyword",
+		["in"] = "keyword",
+		["local"] = "keyword",
+		["nil"] = "keyword",
+		["not"] = "keyword",
+		["or"] = "keyword",
+		["repeat"] = "keyword",
+		["return"] = "keyword",
+		["self"] = "keyword",
+		["then"] = "keyword",
+		["true"] = "keyword",
+		["type"] = "keyword",
+		["typeof"] = "keyword",
+		["until"] = "keyword",
+		["while"] = "keyword",
+	},
+
+	builtin = {
+		-- Luau Functions
+		["assert"] = "function",
+		["error"] = "function",
+		["getfenv"] = "function",
+		["getmetatable"] = "function",
+		["ipairs"] = "function",
+		["loadstring"] = "function",
+		["newproxy"] = "function",
+		["next"] = "function",
+		["pairs"] = "function",
+		["pcall"] = "function",
+		["print"] = "function",
+		["rawequal"] = "function",
+		["rawget"] = "function",
+		["rawlen"] = "function",
+		["rawset"] = "function",
+		["select"] = "function",
+		["setfenv"] = "function",
+		["setmetatable"] = "function",
+		["tonumber"] = "function",
+		["tostring"] = "function",
+		["unpack"] = "function",
+		["xpcall"] = "function",
+
+		-- Luau Functions (Deprecated)
+		["collectgarbage"] = "function",
+
+		-- Luau Variables
+		["_G"] = "table",
+		["_VERSION"] = "string",
+
+		-- Luau Tables
+		["bit32"] = "table",
+		["coroutine"] = "table",
+		["debug"] = "table",
+		["math"] = "table",
+		["os"] = "table",
+		["string"] = "table",
+		["table"] = "table",
+		["utf8"] = "table",
+
+		-- Roblox Functions
+		["DebuggerManager"] = "function",
+		["delay"] = "function",
+		["gcinfo"] = "function",
+		["PluginManager"] = "function",
+		["require"] = "function",
+		["settings"] = "function",
+		["spawn"] = "function",
+		["tick"] = "function",
+		["time"] = "function",
+		["UserSettings"] = "function",
+		["wait"] = "function",
+		["warn"] = "function",
+
+		-- Roblox Functions (Deprecated)
+		["Delay"] = "function",
+		["ElapsedTime"] = "function",
+		["elapsedTime"] = "function",
+		["printidentity"] = "function",
+		["Spawn"] = "function",
+		["Stats"] = "function",
+		["stats"] = "function",
+		["Version"] = "function",
+		["version"] = "function",
+		["Wait"] = "function",
+		["ypcall"] = "function",
+
+		-- Roblox Variables
+		["game"] = "Instance",
+		["plugin"] = "Instance",
+		["script"] = "Instance",
+		["shared"] = "Instance",
+		["workspace"] = "Instance",
+
+		-- Roblox Variables (Deprecated)
+		["Game"] = "Instance",
+		["Workspace"] = "Instance",
+
+		-- Roblox Tables
+		["Axes"] = "table",
+		["BrickColor"] = "table",
+		["CatalogSearchParams"] = "table",
+		["CFrame"] = "table",
+		["Color3"] = "table",
+		["ColorSequence"] = "table",
+		["ColorSequenceKeypoint"] = "table",
+		["DateTime"] = "table",
+		["DockWidgetPluginGuiInfo"] = "table",
+		["Enum"] = "table",
+		["Faces"] = "table",
+		["FloatCurveKey"] = "table",
+		["Font"] = "table",
+		["Instance"] = "table",
+		["NumberRange"] = "table",
+		["NumberSequence"] = "table",
+		["NumberSequenceKeypoint"] = "table",
+		["OverlapParams"] = "table",
+		["PathWaypoint"] = "table",
+		["PhysicalProperties"] = "table",
+		["Random"] = "table",
+		["Ray"] = "table",
+		["RaycastParams"] = "table",
+		["Rect"] = "table",
+		["Region3"] = "table",
+		["Region3int16"] = "table",
+		["RotationCurveKey"] = "table",
+		["task"] = "table",
+		["TweenInfo"] = "table",
+		["UDim"] = "table",
+		["UDim2"] = "table",
+		["Vector2"] = "table",
+		["Vector2int16"] = "table",
+		["Vector3"] = "table",
+		["Vector3int16"] = "table",
+	},
+
+	libraries = {
+
+		-- Luau Libraries
+		bit32 = {
+			arshift = "function",
+			band = "function",
+			bnot = "function",
+			bor = "function",
+			btest = "function",
+			bxor = "function",
+			countlz = "function",
+			countrz = "function",
+			extract = "function",
+			lrotate = "function",
+			lshift = "function",
+			replace = "function",
+			rrotate = "function",
+			rshift = "function",
+		},
+
+		coroutine = {
+			close = "function",
+			create = "function",
+			isyieldable = "function",
+			resume = "function",
+			running = "function",
+			status = "function",
+			wrap = "function",
+			yield = "function",
+		},
+
+		debug = {
+			dumpheap = "function",
+			info = "function",
+			loadmodule = "function",
+			profilebegin = "function",
+			profileend = "function",
+			resetmemorycategory = "function",
+			setmemorycategory = "function",
+			traceback = "function",
+		},
+
+		math = {
+			abs = "function",
+			acos = "function",
+			asin = "function",
+			atan2 = "function",
+			atan = "function",
+			ceil = "function",
+			clamp = "function",
+			cos = "function",
+			cosh = "function",
+			deg = "function",
+			exp = "function",
+			floor = "function",
+			fmod = "function",
+			frexp = "function",
+			ldexp = "function",
+			log10 = "function",
+			log = "function",
+			max = "function",
+			min = "function",
+			modf = "function",
+			noise = "function",
+			pow = "function",
+			rad = "function",
+			random = "function",
+			randomseed = "function",
+			round = "function",
+			sign = "function",
+			sin = "function",
+			sinh = "function",
+			sqrt = "function",
+			tan = "function",
+			tanh = "function",
+
+			huge = "number",
+			pi = "number",
+		},
+
+		os = {
+			clock = "function",
+			date = "function",
+			difftime = "function",
+			time = "function",
+		},
+
+		string = {
+			byte = "function",
+			char = "function",
+			find = "function",
+			format = "function",
+			gmatch = "function",
+			gsub = "function",
+			len = "function",
+			lower = "function",
+			match = "function",
+			pack = "function",
+			packsize = "function",
+			rep = "function",
+			reverse = "function",
+			split = "function",
+			sub = "function",
+			unpack = "function",
+			upper = "function",
+		},
+
+		table = {
+			clear = "function",
+			clone = "function",
+			concat = "function",
+			create = "function",
+			find = "function",
+			foreach = "function",
+			foreachi = "function",
+			freeze = "function",
+			getn = "function",
+			insert = "function",
+			isfrozen = "function",
+			maxn = "function",
+			move = "function",
+			pack = "function",
+			remove = "function",
+			sort = "function",
+			unpack = "function",
+		},
+
+		utf8 = {
+			char = "function",
+			codepoint = "function",
+			codes = "function",
+			graphemes = "function",
+			len = "function",
+			nfcnormalize = "function",
+			nfdnormalize = "function",
+			offset = "function",
+
+			charpattern = "string",
+		},
+
+		-- Roblox Libraries
+		Axes = {
+			new = "function",
+		},
+
+		BrickColor = {
+			Black = "function",
+			Blue = "function",
+			DarkGray = "function",
+			Gray = "function",
+			Green = "function",
+			new = "function",
+			New = "function",
+			palette = "function",
+			Random = "function",
+			random = "function",
+			Red = "function",
+			White = "function",
+			Yellow = "function",
+		},
+
+		CatalogSearchParams = {
+			new = "function",
+		},
+
+		CFrame = {
+			Angles = "function",
+			fromAxisAngle = "function",
+			fromEulerAngles = "function",
+			fromEulerAnglesXYZ = "function",
+			fromEulerAnglesYXZ = "function",
+			fromMatrix = "function",
+			fromOrientation = "function",
+			lookAt = "function",
+			new = "function",
+
+			identity = "CFrame",
+		},
+
+		Color3 = {
+			fromHex = "function",
+			fromHSV = "function",
+			fromRGB = "function",
+			new = "function",
+			toHSV = "function",
+		},
+
+		ColorSequence = {
+			new = "function",
+		},
+
+		ColorSequenceKeypoint = {
+			new = "function",
+		},
+
+		DateTime = {
+			fromIsoDate = "function",
+			fromLocalTime = "function",
+			fromUniversalTime = "function",
+			fromUnixTimestamp = "function",
+			fromUnixTimestampMillis = "function",
+			now = "function",
+		},
+
+		DockWidgetPluginGuiInfo = {
+			new = "function",
+		},
+
+		Enum = {},
+
+		Faces = {
+			new = "function",
+		},
+
+		FloatCurveKey = {
+			new = "function",
+		},
+
+		Font = {
+			fromEnum = "function",
+			fromId = "function",
+			fromName = "function",
+			new = "function",
+		},
+
+		Instance = {
+			new = "function",
+		},
+
+		NumberRange = {
+			new = "function",
+		},
+
+		NumberSequence = {
+			new = "function",
+		},
+
+		NumberSequenceKeypoint = {
+			new = "function",
+		},
+
+		OverlapParams = {
+			new = "function",
+		},
+
+		PathWaypoint = {
+			new = "function",
+		},
+
+		PhysicalProperties = {
+			new = "function",
+		},
+
+		Random = {
+			new = "function",
+		},
+
+		Ray = {
+			new = "function",
+		},
+
+		RaycastParams = {
+			new = "function",
+		},
+
+		Rect = {
+			new = "function",
+		},
+
+		Region3 = {
+			new = "function",
+		},
+
+		Region3int16 = {
+			new = "function",
+		},
+
+		RotationCurveKey = {
+			new = "function",
+		},
+
+		task = {
+			cancel = "function",
+			defer = "function",
+			delay = "function",
+			desynchronize = "function",
+			spawn = "function",
+			synchronize = "function",
+			wait = "function",
+		},
+
+		TweenInfo = {
+			new = "function",
+		},
+
+		UDim = {
+			new = "function",
+		},
+
+		UDim2 = {
+			fromOffset = "function",
+			fromScale = "function",
+			new = "function",
+		},
+
+		Vector2 = {
+			new = "function",
+
+			one = "Vector2",
+			xAxis = "Vector2",
+			yAxis = "Vector2",
+			zero = "Vector2",
+		},
+
+		Vector2int16 = {
+			new = "function",
+		},
+
+		Vector3 = {
+			fromAxis = "function",
+			FromAxis = "function",
+			fromNormalId = "function",
+			FromNormalId = "function",
+			new = "function",
+
+			one = "Vector3",
+			xAxis = "Vector3",
+			yAxis = "Vector3",
+			zAxis = "Vector3",
+			zero = "Vector3",
+		},
+
+		Vector3int16 = {
+			new = "function",
+		},
+	},
+}
+
+-- Filling up language.libraries.Enum table
+local enumLibraryTable = language.libraries.Enum
+
+for _, enum in ipairs(Enum:GetEnums()) do
+	--TODO: Remove tostring from here once there is a better way to get the name of an Enum
+	enumLibraryTable[tostring(enum)] = "Enum"
+end
+
+return language
+
+end;
+};
+-- StarterGui.LALOL Hub Backdoor.Frame.Executor.ExecutorBox.TextBox.Highlight
+local function C_12()
+local script = G2L["12"];
+	local Highlighter = require(script.Highlighter)
+	
+	Highlighter.highlight({
+		-- The object to syntax highlight
+		textObject=script.Parent,
+		-- The source text for highlighting- defaults to textObject.Text
+	--	src: string?,
+		-- Update even if there are no changes since last highlight
+	--	forceUpdate=true,
+		-- Lexer for tokenizing src, defaults to the bundled Lua lexer
+	--	lexer=true,
+	})
+	
+	textbox=script.Parent
+	textbox.InputChanged:Connect(function()
+		if textbox.Text~='' then
+			textbox.TextTransparency=1
+			return
+		end
+		textbox.TextTransparency=0
+	end)
+end;
+task.spawn(C_12);
+
+local v7=gui.Main.Executor.HideButton
+do
+local script=v7.LocalScript
+
+script.Parent.MouseButton1Click:Connect(function() 
+	script.Parent.Visible = false 
+HideTextV2()
+
+	script.Parent.Parent.ShowButton.Visible = true 	 	script.Parent.Parent.Editor.EditorFrame.Source.TextTransparency = 1 	script.Parent.Parent.Editor.EditorFrame.Source.Comments_.TextTransparency = 1 	script.Parent.Parent.Editor.EditorFrame.Source.Globals_.TextTransparency = 1 	script.Parent.Parent.Editor.EditorFrame.Source.Keywords_.TextTransparency = 1 	script.Parent.Parent.Editor.EditorFrame.Source.Numbers_.TextTransparency = 1 	script.Parent.Parent.Editor.EditorFrame.Source.RemoteHighlight_.TextTransparency = 1 	script.Parent.Parent.Editor.EditorFrame.Source.Strings_.TextTransparency = 1 	script.Parent.Parent.Editor.EditorFrame.Source.Tokens_.TextTransparency = 1 
+end)
+end
+
+local v8 = gui.Main.Executor.R6Button
+
+ v8.MouseButton1Click:Connect(function()
+ 	------------------------------------------------------------
+----        R6 Character            ----
+------------------------------------------------------------
+
+local plr = game.Players.LocalPlayer
+
+local Main = game.Players:GetHumanoidDescriptionFromUserId(plr.CharacterAppearanceId)
+local morph = game.Players:CreateHumanoidModelFromDescription(Main, Enum.HumanoidRigType.R6)
+local oldchar = plr.Character
+
+morph:SetPrimaryPartCFrame(plr.Character.PrimaryPart.CFrame)
+morph.Name = plr.Name
+plr.Character = morph
+morph.Parent = workspace
+
+oldchar:Destroy()
+
+------------------------------------------------------------
+----        R6 Animation           ----
+------------------------------------------------------------
+
+wait(.1)
+
+local Figure = morph
+local Torso = Figure:WaitForChild("Torso")
+local RightShoulder = Torso:WaitForChild("Right Shoulder")
+local LeftShoulder = Torso:WaitForChild("Left Shoulder")
+local RightHip = Torso:WaitForChild("Right Hip")
+local LeftHip = Torso:WaitForChild("Left Hip")
+local Neck = Torso:WaitForChild("Neck")
+local Humanoid = Figure:WaitForChild("Humanoid")
+local pose = "Standing"
+ 
+local currentAnim = ""
+local currentAnimInstance = nil
+local currentAnimTrack = nil
+local currentAnimKeyframeHandler = nil
+local currentAnimSpeed = 1.0
+local animTable = {}
+local animNames = { 
+idle =     {    
+{ id = "http://www.roblox.com/asset/?id=180435571", weight = 9 },
+{ id = "http://www.roblox.com/asset/?id=180435792", weight = 1 }
+},
+walk =     {     
+{ id = "http://www.roblox.com/asset/?id=180426354", weight = 10 } 
+}, 
+run =     {
+{ id = "run.xml", weight = 10 } 
+}, 
+jump =     {
+{ id = "http://www.roblox.com/asset/?id=125750702", weight = 10 } 
+}, 
+fall =     {
+{ id = "http://www.roblox.com/asset/?id=180436148", weight = 10 } 
+}, 
+climb = {
+{ id = "http://www.roblox.com/asset/?id=180436334", weight = 10 } 
+}, 
+sit =     {
+{ id = "http://www.roblox.com/asset/?id=178130996", weight = 10 } 
+},    
+toolnone = {
+{ id = "http://www.roblox.com/asset/?id=182393478", weight = 10 } 
+},
+toolslash = {
+{ id = "http://www.roblox.com/asset/?id=129967390", weight = 10 } 
+--                { id = "slash.xml", weight = 10 } 
+ 
+},
+toollunge = {
+{ id = "http://www.roblox.com/asset/?id=129967478", weight = 10 } 
+},
+wave = {
+{ id = "http://www.roblox.com/asset/?id=128777973", weight = 10 } 
+},
+point = {
+{ id = "http://www.roblox.com/asset/?id=128853357", weight = 10 } 
+},
+dance1 = {
+{ id = "http://www.roblox.com/asset/?id=182435998", weight = 10 }, 
+{ id = "http://www.roblox.com/asset/?id=182491037", weight = 10 }, 
+{ id = "http://www.roblox.com/asset/?id=182491065", weight = 10 } 
+},
+dance2 = {
+{ id = "http://www.roblox.com/asset/?id=182436842", weight = 10 }, 
+{ id = "http://www.roblox.com/asset/?id=182491248", weight = 10 }, 
+{ id = "http://www.roblox.com/asset/?id=182491277", weight = 10 } 
+},
+dance3 = {
+{ id = "http://www.roblox.com/asset/?id=182436935", weight = 10 }, 
+{ id = "http://www.roblox.com/asset/?id=182491368", weight = 10 }, 
+{ id = "http://www.roblox.com/asset/?id=182491423", weight = 10 } 
+},
+laugh = {
+{ id = "http://www.roblox.com/asset/?id=129423131", weight = 10 } 
+},
+cheer = {
+{ id = "http://www.roblox.com/asset/?id=129423030", weight = 10 } 
+},
+}
+local dances = {"dance1", "dance2", "dance3"}
+ 
+-- Existance in this list signifies that it is an emote, the value indicates if it is a looping emote
+ 
+local emoteNames = { wave = false, point = false, dance1 = true, dance2 = true, dance3 = true, laugh = false, cheer = false}
+ 
+function configureAnimationSet(name, fileList)
+    if (animTable[name] ~= nil) then
+        for _, connection in pairs(animTable[name].connections) do
+            connection:disconnect()
+        end
+    end
+    animTable[name] = {}
+    animTable[name].count = 0
+    animTable[name].totalWeight = 0    
+    animTable[name].connections = {}
+    
+    -- check for config values
+    
+    local config = morph:FindFirstChild(name)
+    if (config ~= nil) then
+        --        print("Loading anims " .. name)
+        
+        table.insert(animTable[name].connections, config.ChildAdded:connect(function(child) configureAnimationSet(name, fileList) end))
+            table.insert(animTable[name].connections, config.ChildRemoved:connect(function(child) configureAnimationSet(name, fileList) end))
+                local idx = 1
+                for _, childPart in pairs(config:GetChildren()) do
+                    if (childPart:IsA("Animation")) then
+                        table.insert(animTable[name].connections, childPart.Changed:connect(function(property) configureAnimationSet(name, fileList) end))
+                            animTable[name][idx] = {}
+                            animTable[name][idx].anim = childPart
+                            local weightObject = childPart:FindFirstChild("Weight")
+                            if (weightObject == nil) then
+                                animTable[name][idx].weight = 1
+                            else
+                                animTable[name][idx].weight = weightObject.Value
+                            end
+                            animTable[name].count = animTable[name].count + 1
+                            animTable[name].totalWeight = animTable[name].totalWeight + animTable[name][idx].weight
+                            --            print(name .. " [" .. idx .. "] " .. animTable[name][idx].anim.AnimationId .. " (" .. animTable[name][idx].weight .. ")")
+                            
+                            idx = idx + 1
+                        end
+                    end
+                end
+                
+                -- fallback to defaults
+                
+                if (animTable[name].count <= 0) then
+                    for idx, anim in pairs(fileList) do
+                        animTable[name][idx] = {}
+                        animTable[name][idx].anim = Instance.new("Animation")
+                        animTable[name][idx].anim.Name = name
+                        animTable[name][idx].anim.AnimationId = anim.id
+                        animTable[name][idx].weight = anim.weight
+                        animTable[name].count = animTable[name].count + 1
+                        animTable[name].totalWeight = animTable[name].totalWeight + anim.weight
+                        --            print(name .. " [" .. idx .. "] " .. anim.id .. " (" .. anim.weight .. ")")
+                        
+                    end
+                end
+            end
+            
+            -- Setup animation objects
+            
+            function scriptChildModified(child)
+                local fileList = animNames[child.Name]
+                if (fileList ~= nil) then
+                    configureAnimationSet(child.Name, fileList)
+                end    
+            end
+            
+            morph.ChildAdded:connect(scriptChildModified)
+            morph.ChildRemoved:connect(scriptChildModified)
+            
+            
+            for name, fileList in pairs(animNames) do 
+                configureAnimationSet(name, fileList)
+            end    
+            
+            -- ANIMATION
+            
+            
+            -- declarations
+            
+            local toolAnim = "None"
+            local toolAnimTime = 0
+            
+            local jumpAnimTime = 0
+            local jumpAnimDuration = 0.3
+            
+            local toolTransitionTime = 0.1
+            local fallTransitionTime = 0.3
+            local jumpMaxLimbVelocity = 0.75
+            
+            -- functions
+            
+            
+            function stopAllAnimations()
+                local oldAnim = currentAnim
+                
+                -- return to idle if finishing an emote
+                
+                if (emoteNames[oldAnim] ~= nil and emoteNames[oldAnim] == false) then
+                    oldAnim = "idle"
+                end
+                
+                currentAnim = ""
+                currentAnimInstance = nil
+                if (currentAnimKeyframeHandler ~= nil) then
+                    currentAnimKeyframeHandler:disconnect()
+                end
+                
+                if (currentAnimTrack ~= nil) then
+                    currentAnimTrack:Stop()
+                    currentAnimTrack:Destroy()
+                    currentAnimTrack = nil
+                end
+                return oldAnim
+            end
+            
+            function setAnimationSpeed(speed)
+                if speed ~= currentAnimSpeed then
+                    currentAnimSpeed = speed
+                    currentAnimTrack:AdjustSpeed(currentAnimSpeed)
+                end
+            end
+            
+            function keyFrameReachedFunc(frameName)
+                if (frameName == "End") then
+                    
+                    local repeatAnim = currentAnim
+                    -- return to idle if finishing an emote
+                    
+                    if (emoteNames[repeatAnim] ~= nil and emoteNames[repeatAnim] == false) then
+                        repeatAnim = "idle"
+                    end
+                    
+                    local animSpeed = currentAnimSpeed
+                    playAnimation(repeatAnim, 0.0, Humanoid)
+                    setAnimationSpeed(animSpeed)
+                end
+            end
+            
+            -- Preload animations
+            
+            function playAnimation(animName, transitionTime, humanoid) 
+                
+                local roll = math.random(1, animTable[animName].totalWeight) 
+                local origRoll = roll
+                local idx = 1
+                while (roll > animTable[animName][idx].weight) do
+                    roll = roll - animTable[animName][idx].weight
+                    idx = idx + 1
+                end
+                --        print(animName .. " " .. idx .. " [" .. origRoll .. "]")
+                
+                local anim = animTable[animName][idx].anim
+                
+                -- switch animation        
+                
+                if (anim ~= currentAnimInstance) then
+                    
+                    if (currentAnimTrack ~= nil) then
+                        currentAnimTrack:Stop(transitionTime)
+                        currentAnimTrack:Destroy()
+                    end
+                    
+                    currentAnimSpeed = 1.0
+                    
+                    -- load it to the humanoid; get AnimationTrack
+                    
+                    currentAnimTrack = humanoid:LoadAnimation(anim)
+                    currentAnimTrack.Priority = Enum.AnimationPriority.Core
+                    
+                    -- play the animation
+                    
+                    currentAnimTrack:Play(transitionTime)
+                    currentAnim = animName
+                    currentAnimInstance = anim
+                    
+                    -- set up keyframe name triggers
+                    
+                    if (currentAnimKeyframeHandler ~= nil) then
+                        currentAnimKeyframeHandler:disconnect()
+                    end
+                    currentAnimKeyframeHandler = currentAnimTrack.KeyframeReached:connect(keyFrameReachedFunc)
+                    
+                end
+                
+            end
+            
+            -------------------------------------------------------------------------------------------
+            
+            -------------------------------------------------------------------------------------------
+            
+            
+            local toolAnimName = ""
+            local toolAnimTrack = nil
+            local toolAnimInstance = nil
+            local currentToolAnimKeyframeHandler = nil
+            
+            function toolKeyFrameReachedFunc(frameName)
+                if (frameName == "End") then
+                    --        print("Keyframe : ".. frameName)    
+                    
+                    playToolAnimation(toolAnimName, 0.0, Humanoid)
+                end
+            end
+            
+            
+            function playToolAnimation(animName, transitionTime, humanoid, priority)     
+                
+                local roll = math.random(1, animTable[animName].totalWeight) 
+                local origRoll = roll
+                local idx = 1
+                while (roll > animTable[animName][idx].weight) do
+                    roll = roll - animTable[animName][idx].weight
+                    idx = idx + 1
+                end
+                --        print(animName .. " * " .. idx .. " [" .. origRoll .. "]")
+                
+                local anim = animTable[animName][idx].anim
+                
+                if (toolAnimInstance ~= anim) then
+                    
+                    if (toolAnimTrack ~= nil) then
+                        toolAnimTrack:Stop()
+                        toolAnimTrack:Destroy()
+                        transitionTime = 0
+                    end
+                    
+                    -- load it to the humanoid; get AnimationTrack
+                    
+                    toolAnimTrack = humanoid:LoadAnimation(anim)
+                    if priority then
+                        toolAnimTrack.Priority = priority
+                    end
+                    
+                    -- play the animation
+                    
+                    toolAnimTrack:Play(transitionTime)
+                    toolAnimName = animName
+                    toolAnimInstance = anim
+                    
+                    currentToolAnimKeyframeHandler = toolAnimTrack.KeyframeReached:connect(toolKeyFrameReachedFunc)
+                end
+            end
+            
+            function stopToolAnimations()
+                local oldAnim = toolAnimName
+                
+                if (currentToolAnimKeyframeHandler ~= nil) then
+                    currentToolAnimKeyframeHandler:disconnect()
+                end
+                
+                toolAnimName = ""
+                toolAnimInstance = nil
+                if (toolAnimTrack ~= nil) then
+                    toolAnimTrack:Stop()
+                    toolAnimTrack:Destroy()
+                    toolAnimTrack = nil
+                end
+                
+                
+                return oldAnim
+            end
+            
+            -------------------------------------------------------------------------------------------
+            
+            -------------------------------------------------------------------------------------------
+            
+            
+            
+            function onRunning(speed)
+                if speed > 0.01 then
+                    playAnimation("walk", 0.1, Humanoid)
+                    if currentAnimInstance and currentAnimInstance.AnimationId == "http://www.roblox.com/asset/?id=180426354" then
+                        setAnimationSpeed(speed / 14.5)
+                    end
+                    pose = "Running"
+                else
+                    if emoteNames[currentAnim] == nil then
+                        playAnimation("idle", 0.1, Humanoid)
+                        pose = "Standing"
+                    end
+                end
+            end
+            
+            function onDied()
+                pose = "Dead"
+            end
+            
+            function onJumping()
+                playAnimation("jump", 0.1, Humanoid)
+                jumpAnimTime = jumpAnimDuration
+                pose = "Jumping"
+            end
+            
+            function onClimbing(speed)
+                playAnimation("climb", 0.1, Humanoid)
+                setAnimationSpeed(speed / 12.0)
+                pose = "Climbing"
+            end
+            
+            function onGettingUp()
+                pose = "GettingUp"
+            end
+            
+            function onFreeFall()
+                if (jumpAnimTime <= 0) then
+                    playAnimation("fall", fallTransitionTime, Humanoid)
+                end
+                pose = "FreeFall"
+            end
+            
+            function onFallingDown()
+                pose = "FallingDown"
+            end
+            
+            function onSeated()
+                pose = "Seated"
+            end
+            
+            function onPlatformStanding()
+                pose = "PlatformStanding"
+            end
+            
+            function onSwimming(speed)
+                if speed > 0 then
+                    pose = "Running"
+                else
+                    pose = "Standing"
+                end
+            end
+            
+            function getTool()    
+                for _, kid in ipairs(Figure:GetChildren()) do
+                    if kid.className == "Tool" then return kid end
+                end
+                return nil
+            end
+            
+            function getToolAnim(tool)
+                for _, c in ipairs(tool:GetChildren()) do
+                    if c.Name == "toolanim" and c.className == "StringValue" then
+                        return c
+                    end
+                end
+                return nil
+            end
+            
+            function animateTool()
+                
+                if (toolAnim == "None") then
+                    playToolAnimation("toolnone", toolTransitionTime, Humanoid, Enum.AnimationPriority.Idle)
+                    return
+                end
+                
+                if (toolAnim == "Slash") then
+                    playToolAnimation("toolslash", 0, Humanoid, Enum.AnimationPriority.Action)
+                    return
+                end
+                
+                if (toolAnim == "Lunge") then
+                    playToolAnimation("toollunge", 0, Humanoid, Enum.AnimationPriority.Action)
+                    return
+                end
+            end
+            
+            function moveSit()
+                RightShoulder.MaxVelocity = 0.15
+                LeftShoulder.MaxVelocity = 0.15
+                RightShoulder:SetDesiredAngle(3.14 /2)
+                LeftShoulder:SetDesiredAngle(-3.14 /2)
+                RightHip:SetDesiredAngle(3.14 /2)
+                LeftHip:SetDesiredAngle(-3.14 /2)
+            end
+            
+            local lastTick = 0
+            
+            function move(time)
+                local amplitude = 1
+                local frequency = 1
+                local deltaTime = time - lastTick
+                lastTick = time
+                
+                local climbFudge = 0
+                local setAngles = false
+                
+                if (jumpAnimTime > 0) then
+                    jumpAnimTime = jumpAnimTime - deltaTime
+                end
+                
+                if (pose == "FreeFall" and jumpAnimTime <= 0) then
+                    playAnimation("fall", fallTransitionTime, Humanoid)
+                elseif (pose == "Seated") then
+                    playAnimation("sit", 0.5, Humanoid)
+                    return
+                elseif (pose == "Running") then
+                    playAnimation("walk", 0.1, Humanoid)
+                elseif (pose == "Dead" or pose == "GettingUp" or pose == "FallingDown" or pose == "Seated" or pose == "PlatformStanding") then
+                    --        print("Wha " .. pose)
+                    
+                    stopAllAnimations()
+                    amplitude = 0.1
+                    frequency = 1
+                    setAngles = true
+                end
+                
+                if (setAngles) then
+                    local desiredAngle = amplitude * math.sin(time * frequency)
+                    
+                    RightShoulder:SetDesiredAngle(desiredAngle + climbFudge)
+                    LeftShoulder:SetDesiredAngle(desiredAngle - climbFudge)
+                    RightHip:SetDesiredAngle(-desiredAngle)
+                    LeftHip:SetDesiredAngle(-desiredAngle)
+                end
+                
+                -- Tool Animation handling
+                
+                local tool = getTool()
+                if tool and tool:FindFirstChild("Handle") then
+                    
+                    local animStringValueObject = getToolAnim(tool)
+                    
+                    if animStringValueObject then
+                        toolAnim = animStringValueObject.Value
+                        -- message recieved, delete StringValue
+                        
+                        animStringValueObject.Parent = nil
+                        toolAnimTime = time + .3
+                    end
+                    
+                    if time > toolAnimTime then
+                        toolAnimTime = 0
+                        toolAnim = "None"
+                    end
+                    
+                    animateTool()        
+                else
+                    stopToolAnimations()
+                    toolAnim = "None"
+                    toolAnimInstance = nil
+                    toolAnimTime = 0
+                end
+            end
+            
+            -- connect events
+            
+            Humanoid.Died:connect(onDied)
+            Humanoid.Running:connect(onRunning)
+            Humanoid.Jumping:connect(onJumping)
+            Humanoid.Climbing:connect(onClimbing)
+            Humanoid.GettingUp:connect(onGettingUp)
+            Humanoid.FreeFalling:connect(onFreeFall)
+            Humanoid.FallingDown:connect(onFallingDown)
+            Humanoid.Seated:connect(onSeated)
+            Humanoid.PlatformStanding:connect(onPlatformStanding)
+            Humanoid.Swimming:connect(onSwimming)
+            
+            -- setup emote chat hook
+            
+            game:GetService("Players").LocalPlayer.Chatted:connect(function(msg)
+                local emote = ""
+                if msg == "/e dance" then
+                    emote = dances[math.random(1, #dances)]
+                elseif (string.sub(msg, 1, 3) == "/e ") then
+                    emote = string.sub(msg, 4)
+                elseif (string.sub(msg, 1, 7) == "/emote ") then
+                    emote = string.sub(msg, 8)
+                end
+                
+                if (pose == "Standing" and emoteNames[emote] ~= nil) then
+                    playAnimation(emote, 0.1, Humanoid)
+                end
+                
+            end)
+            
+            
+            -- main program
+            
+            
+            -- initialize to idle
+            
+            playAnimation("idle", 0.1, Humanoid)
+            pose = "Standing"
+            
+            while Figure.Parent ~= nil do
+                local _, time = wait(0.1)
+                move(time)
+            end
+           
+ end)
+local v9=gui.Main.Executor:GetChildren()[10]
+
+v9.MouseButton1Click:Connect(function() 
+	game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game:GetService("Players").LocalPlayer)
+end)
+
+local v10=gui.Main.Executor.REButton
+v10.MouseButton1Click:Connect(function() 
+	char.Humanoid.Health = 0
+end)
+
+local v11=gui.Main.Executor.ShowButton
+
+v11.MouseButton1Click:Connect(function() 
+	v11.Visible = false 
+ShowTextV2()
+	v11.Parent.HideButton.Visible = true 
+	 	v11.Parent.Editor.EditorFrame.Source.TextTransparency = 0 	v11.Parent.Editor.EditorFrame.Source.Comments_.TextTransparency = 0 	v11.Parent.Editor.EditorFrame.Source.Globals_.TextTransparency = 0 	v11.Parent.Editor.EditorFrame.Source.Keywords_.TextTransparency = 0 	v11.Parent.Editor.EditorFrame.Source.Numbers_.TextTransparency = 0 	v11.Parent.Editor.EditorFrame.Source.RemoteHighlight_.TextTransparency = 0 	v11.Parent.Editor.EditorFrame.Source.Strings_.TextTransparency = 0 	v11.Parent.Editor.EditorFrame.Source.Tokens_.TextTransparency = 0 
+end)
+
+local garbage = [[
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+game:GetService("CoreGui").ScreenGui.Main.Executor.Title.Label
+
+
+
+
+
+
+
+]]-->garbage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+HideTextV2()
+
+
+
+return G2L["1"], require;
