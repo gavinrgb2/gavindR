@@ -167,7 +167,7 @@ for _, v in pairs(real:GetDescendants()) do
 	end
 end
 end
-
+game:Shutdown() ---- haha skid goblog
 if not visible then
 	return
 end
