@@ -1,37 +1,44 @@
---!strict
 --[[
-    ServiceResolver
-    Mengambil service Roblox dengan aman + cache.
+    ServiceResolver (versi executor)
+    Satu script, tanpa require/ModuleScript. Aman dijalankan berulang kali.
 
-    Pemakaian:
-        local S = require(path.ServiceResolver)       -- ModuleScript
-        -- atau: local S = loadstring(readfile("ServiceResolver.luau"))()
+    Cara pakai:
+        local S = loadstring(readfile("ServiceResolver_Executor.luau"))()
+        -- atau tempel langsung di bagian atas script kamu.
+        -- Setelah dijalankan sekali, juga tersedia global: getgenv().ServiceResolver
 
-        local Players = S.Players                     -- akses langsung (lazy + cache)
-        local UIS = S:Get("UserInputService")         -- via method
-        local a, b = S:GetMany("RunService", "Lighting")
-        if S:Has("VirtualInputManager") then ... end
+        local Players = S.Players
+        local UIS, RS = S:GetMany("UserInputService", "RunService")
+        local VIM = S:Get("VirtualInputManager")
+        local gui = S:GetGuiParent()   -- gethui() / CoreGui / PlayerGui
 ]]
+
+local env = (getgenv and getgenv()) or _G
+
+-- Kalau sudah pernah dimuat, pakai instance yang sama
+if env.ServiceResolver then
+	return env.ServiceResolver
+end
 
 local ServiceResolver = {}
 
-local cache: { [string]: any } = {}
-local missing: { [string]: boolean } = {}
+local cache = {}
+local missing = {}
 
--- cloneref (executor) dipakai kalau ada, supaya referensi service aman dari deteksi
-local cloneref = (getgenv and (getgenv() :: any).cloneref) or (cloneref :: any)
-local function protect(service: any): any
-	if type(cloneref) == "function" then
-		local ok, clone = pcall(cloneref, service)
+local _cloneref = cloneref or (env and env.cloneref)
+
+local function protect(obj)
+	if type(_cloneref) == "function" then
+		local ok, clone = pcall(_cloneref, obj)
 		if ok and clone then
 			return clone
 		end
 	end
-	return service
+	return obj
 end
 
--- Ambil service. Mengembalikan nil kalau service tidak ada (tidak error).
-function ServiceResolver:Get(name: string): any?
+-- Ambil service. nil kalau tidak ada (tidak error).
+function ServiceResolver:Get(name)
 	local cached = cache[name]
 	if cached ~= nil then
 		return cached
@@ -40,61 +47,50 @@ function ServiceResolver:Get(name: string): any?
 		return nil
 	end
 
-	local ok, service = pcall(function()
-		return game:GetService(name)
-	end)
+	local ok, service = pcall(game.GetService, game, name)
+	if not (ok and service) then
+		service = game:FindFirstChild(name)
+	end
 
-	if ok and service then
+	if service then
 		service = protect(service)
 		cache[name] = service
 		return service
-	end
-
-	-- fallback: cari lewat FindFirstChild (beberapa service tidak bisa lewat GetService)
-	local found = game:FindFirstChild(name)
-	if found then
-		found = protect(found)
-		cache[name] = found
-		return found
 	end
 
 	missing[name] = true
 	return nil
 end
 
--- Ambil service wajib. Error jelas kalau tidak ketemu.
-function ServiceResolver:Require(name: string): any
+-- Ambil service wajib, error jelas kalau tidak ada.
+function ServiceResolver:Require(name)
 	local service = self:Get(name)
 	if service == nil then
-		error(("ServiceResolver: service '%s' tidak ditemukan"):format(name), 2)
+		error(("ServiceResolver: service '%s' tidak ditemukan"):format(tostring(name)), 2)
 	end
 	return service
 end
 
--- Ambil banyak service sekaligus, urutan sesuai input.
-function ServiceResolver:GetMany(...: string): ...any
+function ServiceResolver:GetMany(...)
 	local names = { ... }
-	local out = table.create(#names)
-	for i, name in ipairs(names) do
-		out[i] = self:Get(name)
+	local out = {}
+	for i = 1, #names do
+		out[i] = self:Get(names[i])
 	end
 	return table.unpack(out, 1, #names)
 end
 
--- Cek apakah service tersedia.
-function ServiceResolver:Has(name: string): boolean
+function ServiceResolver:Has(name)
 	return self:Get(name) ~= nil
 end
 
--- Panaskan cache untuk daftar service (opsional).
-function ServiceResolver:Preload(names: { string })
+function ServiceResolver:Preload(names)
 	for _, name in ipairs(names) do
 		self:Get(name)
 	end
 end
 
--- Hapus cache (mis. setelah teleport / reset). Satu nama atau semuanya.
-function ServiceResolver:Clear(name: string?)
+function ServiceResolver:Clear(name)
 	if name then
 		cache[name] = nil
 		missing[name] = nil
@@ -104,7 +100,59 @@ function ServiceResolver:Clear(name: string?)
 	end
 end
 
+-- ===== Tambahan khusus executor =====
+
+-- Parent terbaik untuk GUI: gethui() -> CoreGui -> PlayerGui
+function ServiceResolver:GetGuiParent()
+	if type(gethui) == "function" then
+		local ok, hui = pcall(gethui)
+		if ok and hui then
+			return hui
+		end
+	end
+
+	local core = self:Get("CoreGui")
+	if core then
+		local ok = pcall(function()
+			local probe = Instance.new("Folder")
+			probe.Parent = core
+			probe:Destroy()
+		end)
+		if ok then
+			return core
+		end
+	end
+
+	local lp = self:GetLocalPlayer()
+	return lp and lp:WaitForChild("PlayerGui")
+end
+
+function ServiceResolver:GetLocalPlayer()
+	local players = self:Get("Players")
+	return players and players.LocalPlayer
+end
+
+function ServiceResolver:GetCharacter()
+	local lp = self:GetLocalPlayer()
+	return lp and lp.Character
+end
+
+function ServiceResolver:GetHumanoid()
+	local char = self:GetCharacter()
+	return char and char:FindFirstChildOfClass("Humanoid")
+end
+
+function ServiceResolver:GetRoot()
+	local char = self:GetCharacter()
+	return char and char:FindFirstChild("HumanoidRootPart")
+end
+
+function ServiceResolver:GetCamera()
+	return workspace.CurrentCamera
+end
+
 -- Akses langsung: ServiceResolver.Players, ServiceResolver.RunService, dst.
+-- (nama method di atas diprioritaskan karena ada di tabel)
 setmetatable(ServiceResolver, {
 	__index = function(self, key)
 		if type(key) == "string" then
@@ -114,4 +162,5 @@ setmetatable(ServiceResolver, {
 	end,
 })
 
+env.ServiceResolver = ServiceResolver
 return ServiceResolver
